@@ -26,7 +26,7 @@ const FaceRecognition = () => {
   const initWebcam = async () => {
     try {
       await navigator.mediaDevices.getUserMedia({ video: true });
-      console.log('웹캠 활성화 완료');
+      console.log('웹캠 활성화 완료!');
     } catch (error) {
       console.error('웹캠 접근 불가:', error);
     }
