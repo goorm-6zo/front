@@ -5,8 +5,8 @@ interface CtaButtonContainer {
   children: React.ReactNode;
 }
 
-const CtaButtonWrapper: React.FC<CtaButtonContainer> = ({ children }) => {
+const CtaButtonContainer: React.FC<CtaButtonContainer> = ({ children }) => {
   return <S.CtaButtonContainer>{children}</S.CtaButtonContainer>;
 };
 
-export default CtaButtonWrapper;
+export default CtaButtonContainer;
