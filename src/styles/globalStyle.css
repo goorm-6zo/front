@@ -1,0 +1,20 @@
+@import url(./resetStyle.css);
+
+@font-face {
+  font-family: "Pretendard";
+  src: url(./font/PretendardVariable.ttf);
+}
+
+body * {
+  font-family: "Pretendard";
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.verticalwrap::-webkit-scrollbar {
+  display: none;
+}
+
+:root {
+
+}
