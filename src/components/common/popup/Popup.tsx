@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react';
-import CtaButton from './button/CtaButton.tsx';
+import CtaButton from '../button/CtaButton.tsx';
+import IconButton from '../button/IconButton.tsx';
 import * as S from './Popup.styles.ts';
-import IconButton from './button/IconButton.tsx';
 
 interface PopupProps {
   isOpen: boolean;

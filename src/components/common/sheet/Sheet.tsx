@@ -1,5 +1,5 @@
 import React from 'react';
-import IconButton from './button/IconButton';
+import IconButton from '../button/IconButton';
 import * as S from './Sheet.styles';
 
 interface SheetProps {
