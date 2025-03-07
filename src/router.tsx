@@ -1,7 +1,7 @@
 import { createBrowserRouter } from 'react-router-dom';
 import Home from './pages/home/Home';
 import FaceRecognition from './pages/face-recognition/FaceRecognition';
-import CommonComponentTest from './pages/home/CommonComponentTest';
+import CommonComponentTest from './pages/CommonComponentTest';
 
 const router = createBrowserRouter([
   { path: '/', element: <Home /> },

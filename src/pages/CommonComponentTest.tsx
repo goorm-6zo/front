@@ -1,23 +1,22 @@
 import { useState } from 'react';
-import Layout from '../../components/common/layout/Layout';
-import IconButton from '../../components/common/button/IconButton';
-import CtaButton from '../../components/common/button/CtaButton';
-import TextButton from '../../components/common/button/TextButton';
-import CtaButtonContainer from '../../components/common/container/CtaButtonContainer';
-import Display from '../../components/common/display/Display';
-import { Input, Textarea } from '../../components/common/input/Input';
-import Table from '../../components/common/table/Table';
-import { RadioButton } from '../../components/common/radio/Radio';
-import Popup from '../../components/common/popup/Popup';
-import Sheet from '../../components/common/sheet/Sheet';
+import Layout from '../components/common/layout/Layout';
+import IconButton from '../components/common/button/IconButton';
+import CtaButton from '../components/common/button/CtaButton';
+import CtaButtonContainer from '../components/common/container/CtaButtonContainer';
+import Display from '../components/common/display/Display';
+import { Input, Textarea } from '../components/common/input/Input';
+import Table from '../components/common/table/Table';
+import { RadioButton } from '../components/common/radio/Radio';
+import Popup from '../components/common/popup/Popup';
+import Sheet from '../components/common/sheet/Sheet';
 
 import { IoIosArrowBack } from 'react-icons/io';
 import { IoMenu } from 'react-icons/io5';
 
 const CommonComponentTest = () => {
   const [selected, setSelected] = useState<string>('전체');
-  const [isPopupOpen, setIsPopupOpen] = useState<boolean>(true);
-  const [isSheetOpen, setIsSheetOpen] = useState<boolean>(true);
+  const [isPopupOpen, setIsPopupOpen] = useState<boolean>(false);
+  const [isSheetOpen, setIsSheetOpen] = useState<boolean>(false);
 
   return (
     <Layout
@@ -42,9 +41,6 @@ const CommonComponentTest = () => {
         </CtaButtonContainer>
       }
     >
-      <div>
-        <TextButton>텍스트버튼입니다</TextButton>
-      </div>
       {/* ⬇️ Display 컴포넌트 */}
       <Display textAlign="center" padding="30px 50px" height="auto" contentPosition="center" gap="20px">
         <img src="https://cdn.pixabay.com/photo/2025/02/26/09/58/bird-9432600_1280.jpg" width={'300px'} />
@@ -83,6 +79,10 @@ const CommonComponentTest = () => {
 
       {/* ⬇️ Table 컴포넌트 */}
       <Table data={dummy} />
+      <CtaButtonContainer>
+        <CtaButton variant="primary">제출합니다~~~</CtaButton>
+        <CtaButton variant="secondary">정정합니다~~~</CtaButton>
+      </CtaButtonContainer>
     </Layout>
   );
 };
