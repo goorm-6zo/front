@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react';
-import Header from './Header.tsx';
-import Footer from './Footer.tsx';
+import Header from '../header/Header.tsx';
+import Footer from '../footer/Footer.tsx';
 import * as S from './Layout.styles.ts';
 
 interface LayoutProps {

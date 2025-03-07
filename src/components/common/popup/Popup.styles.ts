@@ -23,7 +23,7 @@ export const PopupContent = styled.div`
   width: 300px;
 `;
 
-export const CloseButtonWrapper = styled.button`
+export const CloseButtonWrapper = styled.div`
   position: absolute;
   top: 10px;
   right: 10px;

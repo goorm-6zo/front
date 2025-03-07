@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { DisplayProps } from './Display';
+import { DisplayProps } from './Display.tsx';
 
 export const DisplayBox = styled.div<
   Omit<DisplayProps, 'textAlign' | 'contentPosition' | 'padding' | 'gap'> & {
