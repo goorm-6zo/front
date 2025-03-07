@@ -1,5 +1,5 @@
 import React from 'react';
-import * as S from './TextButton.styles.ts';
+import * as S from './TextButton.style.ts';
 
 interface TextButtonProps {
   children: React.ReactNode;

@@ -1,5 +1,5 @@
 import React from 'react';
-import * as S from './CtaButtonContainer.styles';
+import * as S from './CtaButtonContainer.style.ts';
 
 interface CtaButtonContainer {
   children: React.ReactNode;

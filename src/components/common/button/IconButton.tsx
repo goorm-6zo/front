@@ -1,5 +1,5 @@
 import React from 'react';
-import * as S from './IconButton.styles.ts';
+import * as S from './IconButton.style.ts';
 
 interface IconButtonProps {
   children: React.ReactNode;

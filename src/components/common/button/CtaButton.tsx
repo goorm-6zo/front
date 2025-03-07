@@ -1,5 +1,5 @@
 import React from 'react';
-import * as S from './CtaButton.styles.ts';
+import * as S from './CtaButton.style.ts';
 
 interface CtaButtonProps {
   children: React.ReactNode; // 버튼 내부 텍스트 or 요소
