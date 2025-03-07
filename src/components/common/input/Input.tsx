@@ -1,4 +1,4 @@
-import * as S from './Input.styles.ts';
+import * as S from './Input.style.ts';
 
 type InputProps = React.InputHTMLAttributes<HTMLInputElement> & {
   variant?: 'solid' | 'outlined';

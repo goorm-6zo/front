@@ -1,4 +1,4 @@
-import * as S from './Table.styles';
+import * as S from './Table.style';
 
 interface TableProps {
   data: {

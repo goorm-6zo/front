@@ -1,5 +1,5 @@
 import React from 'react';
-import * as S from './Display.styles';
+import * as S from './Display.style.ts';
 
 export interface DisplayProps {
   children: React.ReactNode;

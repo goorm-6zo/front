@@ -1,4 +1,4 @@
-import * as S from './Radio.styles.ts';
+import * as S from './Radio.style.ts';
 
 type RadioButtonProps = {
   label: string;

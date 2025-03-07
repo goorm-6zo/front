@@ -1,6 +1,6 @@
 import React from 'react';
 import IconButton from '../button/IconButton';
-import * as S from './Sheet.styles';
+import * as S from './Sheet.style';
 
 interface SheetProps {
   isOpen: boolean;

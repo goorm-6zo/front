@@ -1,5 +1,5 @@
 import React from 'react';
-import * as S from './Header.styles.ts';
+import * as S from './Header.style.ts';
 
 interface HeaderProps {
   titlePosition?: 'center' | 'left';

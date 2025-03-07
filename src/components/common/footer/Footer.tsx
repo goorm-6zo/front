@@ -1,5 +1,5 @@
 import React from 'react';
-import * as S from './Footer.styles.ts';
+import * as S from './Footer.style.ts';
 
 interface FooterProps {
   footerContent?: React.ReactNode;
