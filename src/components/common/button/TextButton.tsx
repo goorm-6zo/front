@@ -1,13 +1,12 @@
 import React from 'react';
 import * as S from './TextButton.style.ts';
 
-interface TextButtonProps {
-  children: React.ReactNode;
-  onClick?: () => void; // 클릭 이벤트 핸들러
-}
+type TextButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement>;
 
 const TextButton: React.FC<TextButtonProps> = ({ children, onClick }) => {
-  return <S.TextButtonWrapper onClick={onClick}>{children}</S.TextButtonWrapper>;
+  return (
+    <S.TextButtonWrapper onClick={onClick}>{children}</S.TextButtonWrapper>
+  );
 };
 
 export default TextButton;
