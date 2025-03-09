@@ -14,9 +14,11 @@ export const CtaButtonWrapper = styled.button<CtaButtonWrapperProps>`
   font-weight: bold;
   border-radius: 8px;
   cursor: pointer;
-
-  border: ${(props) => (props.$variant === 'primary' ? 'none' : '1px solid #333')};
-  background-color: ${(props) => (props.$variant === 'primary' ? '#333' : 'white')};
+  width: 100%;
+  border: ${(props) =>
+    props.$variant === 'primary' ? 'none' : '1px solid #333'};
+  background-color: ${(props) =>
+    props.$variant === 'primary' ? '#333' : 'white'};
   color: ${(props) => (props.$variant === 'primary' ? 'white' : '#333')};
 
   /* 비활성화된 상태 */
