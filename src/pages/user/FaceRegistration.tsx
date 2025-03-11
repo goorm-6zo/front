@@ -4,7 +4,7 @@ const FaceRegistration = () => {
   return (
     <div>
       FaceRegistration
-      <FaceDetection />
+      <FaceDetection mode="register" />
     </div>
   );
 };

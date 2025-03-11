@@ -9,12 +9,16 @@ interface IBox {
   height: number;
 }
 
+interface FaceDetectionProps {
+  mode: 'register' | 'recognize';
+}
+
 const BOX_WIDTH = 230;
 const BOX_HEIGHT = 230;
 const FACE_RECOGNITION_THRESHOLD = 0.6;
 const DISTANCE_THRESHOLD = 50;
 
-export default function FaceDetection() {
+export default function FaceDetection({ mode }: FaceDetectionProps) {
   const webcamRef = useRef<Webcam | null>(null);
   const [isModelLoaded, setIsModelLoaded] = useState(false);
   const [isVideoLoaded, setIsVideoLoaded] = useState(false);
@@ -76,6 +80,11 @@ export default function FaceDetection() {
 
       if (isFaceInBox(faceBox, video)) {
         setIsFaceInside(true);
+
+        if (mode === 'register') {
+          captureImage();
+          return;
+        }
 
         const currentDescriptor = detection.descriptor;
 
