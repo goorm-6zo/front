@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import Webcam from 'react-webcam';
 import * as faceapi from 'face-api.js';
+import * as S from './FaceDetection.style';
 
 interface IBox {
   x: number;
@@ -167,33 +168,22 @@ export default function FaceDetection({ mode }: FaceDetectionProps) {
   }, [isModelLoaded, isVideoLoaded]);
 
   return (
-    <div>
+    <S.FaceDetectionContainer>
       {isLoading && <div>Loading...</div>}
-      <div style={{ position: 'relative' }}>
-        <Webcam
-          audio={false}
-          ref={webcamRef}
-          screenshotFormat="image/jpeg"
-          mirrored={true}
-          style={{ width: '100vw', height: '100vh' }}
-        />
-        {isVideoLoaded && (
-          <div
-            style={{
-              position: 'absolute',
-              top: '50%',
-              left: '50%',
-              width: `${BOX_WIDTH}px`,
-              height: `${BOX_HEIGHT}px`,
-              border: `3px solid ${isFaceInside ? 'green' : 'red'}`,
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
-              transform: 'translate(-50%, -50%)',
-            }}
-          ></div>
-        )}
-      </div>
+      <Webcam
+        audio={false}
+        ref={webcamRef}
+        screenshotFormat="image/jpeg"
+        mirrored={true}
+        style={{ width: '100vw', height: '100vh' }}
+      />
+      {isVideoLoaded && (
+        <S.Box
+          boxWidth={BOX_WIDTH}
+          boxHeight={BOX_HEIGHT}
+          isFaceInside={isFaceInside}
+        ></S.Box>
+      )}
       <h2 style={{ color: isFaceInside ? 'green' : 'red' }}>
         {isFaceInside
           ? '얼굴이 네모 안에 있습니다!'
@@ -208,6 +198,6 @@ export default function FaceDetection({ mode }: FaceDetectionProps) {
           />
         </div>
       )}
-    </div>
+    </S.FaceDetectionContainer>
   );
 }
