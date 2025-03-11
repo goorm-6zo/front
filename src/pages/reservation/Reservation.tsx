@@ -5,7 +5,7 @@ import { Input } from '../../components/common/input/Input';
 import CtaButton from '../../components/common/button/CtaButton';
 import CheckBoxList from '../../components/reservation/session/CheckBoxList';
 
-//dummydata
+//dummy data1
 const checkBoxItems = [
   { id: 1, label: '첫 번째 체크박스', checked: false },
   { id: 2, label: '두 번째 체크박스', checked: true },
