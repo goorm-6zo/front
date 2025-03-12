@@ -7,8 +7,9 @@ export const LoginContainer = styled.div`
   align-items: center;
   padding: 20px;
 `;
+
 export const Logo = styled.img`
-width: 200px;
+  width: 200px;
 `;
 
 export const Title = styled.h1`
