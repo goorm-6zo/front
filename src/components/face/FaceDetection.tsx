@@ -170,20 +170,22 @@ export default function FaceDetection({ mode }: FaceDetectionProps) {
   return (
     <S.FaceDetectionContainer>
       {isLoading && <div>Loading...</div>}
-      <Webcam
-        audio={false}
-        ref={webcamRef}
-        screenshotFormat="image/jpeg"
-        mirrored={true}
-        style={{ width: '100vw', height: '100vh' }}
-      />
-      {isVideoLoaded && (
-        <S.Box
-          boxWidth={BOX_WIDTH}
-          boxHeight={BOX_HEIGHT}
-          isFaceInside={isFaceInside}
-        ></S.Box>
-      )}
+      <S.VideoBox>
+        <Webcam
+          audio={false}
+          ref={webcamRef}
+          screenshotFormat="image/jpeg"
+          mirrored={true}
+          style={{ width: '100vw', height: '100vh', objectFit: 'cover' }}
+        />
+        {isVideoLoaded && (
+          <S.Box
+            boxWidth={BOX_WIDTH}
+            boxHeight={BOX_HEIGHT}
+            isFaceInside={isFaceInside}
+          ></S.Box>
+        )}
+      </S.VideoBox>
       <h2 style={{ color: isFaceInside ? 'green' : 'red' }}>
         {isFaceInside
           ? '얼굴이 네모 안에 있습니다!'
