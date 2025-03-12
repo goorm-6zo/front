@@ -1,5 +1,5 @@
 import { useForm } from 'react-hook-form';
-import { signup } from '../../api/login/useSignUp';
+import { signup } from '../../api/login/signup';
 const SignUp = () => {
   const { register, handleSubmit } = useForm();
 
