@@ -1,0 +1,47 @@
+name: Frontend CI
+
+on:
+  push:
+    branches:
+      - 'dev'
+      - 'main'
+  pull_request:
+    branches:
+      - 'dev'
+      - 'main'
+  workflow_dispatch:
+        
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+      # 1. Checkout repository
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      # 2. Set up Node.js
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+
+      # 3. Install dependencies
+      - name: Install dependencies
+        run: npm install
+
+      # 5. Build the project
+      - name: Build project
+        run: npm run build
+
+      # 6. (Optional) Deploy to production/staging (예시)
+      - name: Deploy to Vercel (or other service)
+        run: vercel --prod --token=${{ secrets.VERCEL_TOKEN }} --confirm
+        if: github.ref == 'refs/heads/main'  # main 브랜치에서만 실행되도록
+
+      # 7. Upload build artifacts (optional)
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: build
+          path: ./build  # 빌드 디렉토리 위치에 따라 조정
