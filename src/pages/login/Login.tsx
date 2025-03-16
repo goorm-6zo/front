@@ -41,6 +41,7 @@ export default function Login() {
           <TextButton type="submit">로그인</TextButton>
         </S.LoginForm>
         <span>회원가입</span>
+        <span>test</span>
       </S.LoginContainer>
     </Layout>
   );
