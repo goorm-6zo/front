@@ -1,12 +1,12 @@
 @import url(./resetStyle.css);
 
 @font-face {
-  font-family: "Pretendard";
+  font-family: 'Pretendard';
   src: url(./font/PretendardVariable.ttf);
 }
 
 body * {
-  font-family: "Pretendard";
+  font-family: 'Pretendard';
   box-sizing: border-box;
   overflow: hidden;
 }
@@ -16,5 +16,4 @@ body * {
 }
 
 :root {
-
 }
