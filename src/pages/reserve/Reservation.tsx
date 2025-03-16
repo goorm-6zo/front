@@ -16,7 +16,7 @@ const checkBoxItems = [
 ];
 
 const Reservation = () => {
-  const [hasSession, setHasSession] = useState(true);
+  const [hasSession, _setHasSession] = useState(true);
 
   return (
     <Layout hasHeader={false} hasFooter={false}>
