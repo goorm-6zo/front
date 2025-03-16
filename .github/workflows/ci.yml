@@ -41,7 +41,7 @@ jobs:
 
       # 7. Upload build artifacts (optional)
       - name: Upload build artifacts
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: build
           path: ./build  # 빌드 디렉토리 위치에 따라 조정
