@@ -15,6 +15,22 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: '16'
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run tests
+        run: npm test
+
+  deploy:
+    needs: build
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16'
       - name: Install Vercel CLI
         run: npm install -g vercel
 
@@ -39,9 +55,8 @@ jobs:
           destination-github-username: AhnRian
           destination-repository-name: front
           user-email: ${{ secrets.EMAIL }}
-          commit-message: |
-            ${{ github.event_name == 'pull_request' && github.event.pull_request.title || github.event.commits[0].message }}
-          target-branch: ${{ github.base_ref }}
+          commit-message: ${{ github.event.head_commit.message }}
+          target-branch: ${{ github.ref_name }}
 
       - name: Test get variable exported by push-to-another-repository
         run: echo $DESTINATION_CLONED_DIRECTORY
