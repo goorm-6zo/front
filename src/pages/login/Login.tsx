@@ -8,7 +8,6 @@ import { loginUser } from '../../api/login/login.ts';
 export default function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [test, setTest] = useState('');
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
