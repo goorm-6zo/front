@@ -1,25 +1,36 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import TextButton from '../../components/common/button/TextButton.tsx';
 import { Input } from '../../components/common/input/Input.tsx';
 import Layout from '../../components/common/layout/Layout.tsx';
 import * as S from './Login.style.ts';
 import { loginUser } from '../../api/login/login.ts';
+import { Link, useNavigate } from 'react-router-dom';
+import { useAuthStore } from '../../store/useAuthStore.ts';
 
 export default function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const navigate = useNavigate();
+  const { userInfo } = useAuthStore();
+
+  useEffect(() => {
+    if (userInfo) {
+      navigate(userInfo.role === 'ADMIN' ? '/admin/dashboard' : '/dashboard');
+    }
+  }, [userInfo, navigate]);
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     const response = await loginUser({ email, password });
     if (response) {
       console.log('로그인 성공');
-      window.location.href = '/dashboard';
+      navigate(response.role === 'USER' ? '/dashboard' : '/admin/dashboard');
     }
   };
 
   return (
     <Layout hasHeader={false} hasFooter={false}>
+      <Link to="/dashboard">대시보드</Link>
       <S.LoginContainer>
         <S.Logo src="/logo.png" alt="logo" />
         <S.Title>MASK PASS</S.Title>
@@ -40,8 +51,7 @@ export default function Login() {
           />
           <TextButton type="submit">로그인</TextButton>
         </S.LoginForm>
-        <span>회원가입</span>
-        <span>test333</span>
+        <Link to="/signup">회원가입</Link>
       </S.LoginContainer>
     </Layout>
   );
