@@ -30,7 +30,7 @@ const SignUp = () => {
           placeholder="비밀번호"
           required
         />
-        <input {...register('birth_date')} type="date" required />
+
         <input
           {...register('phone')}
           type="tel"
