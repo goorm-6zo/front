@@ -1,12 +1,15 @@
 @import url(./resetStyle.css);
 
 @font-face {
-  font-family: 'Pretendard';
-  src: url(./font/PretendardVariable.ttf);
+  font-family: 'Pretendard-Regular';
+  src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff')
+    format('woff');
+  font-weight: 400;
+  font-style: normal;
 }
 
 body * {
-  font-family: 'Pretendard';
+  font-family: 'Pretendard-Regular';
   box-sizing: border-box;
   overflow: hidden;
 }
@@ -15,5 +18,79 @@ body * {
   display: none;
 }
 
+/* Primitive Colors */
 :root {
+  --black: #000000;
+  --white: #ffffff;
+  --blue-100: #e8f0ff;
+  --blue-200: #cbddff;
+  --blue-300: #99bdff;
+  --blue-400: #659cff;
+  --blue-500: #1466ff;
+  --blue-600: #1052cc;
+  --blue-700: #0c3d99;
+  --blue-800: #092e73;
+  --blue-900: #072459;
+  --gray-100: #f4f4f5;
+  --gray-200: #eeeff0;
+  --gray-300: #dddddf;
+  --gray-400: #b3b5bb;
+  --gray-500: #909298;
+  --gray-600: #73757a;
+  --gray-700: #56585b;
+  --gray-800: #414244;
+  --gray-900: #323335;
+  --red-100: #ffecec;
+  --red-200: #ffd0d0;
+  --red-300: #ffa7a7;
+  --red-400: #ff7a7a;
+  --red-500: #fd4444;
+  --red-600: #e43d3d;
+  --red-700: #c62e2e;
+  --red-800: #982929;
+  --red-900: #591818;
+}
+
+/* Spacing */
+:root {
+  --spacing-0: 0px;
+  --spacing-2: 2px;
+  --spacing-4: 4px;
+  --spacing-8: 8px;
+  --spacing-12: 12px;
+  --spacing-16: 16px;
+  --spacing-20: 20px;
+  --spacing-24: 24px;
+  --spacing-28: 28px;
+  --spacing-36: 36px;
+  --spacing-44: 44px;
+}
+
+/* Radius */
+:root {
+  --radius-4: 4px;
+  --radius-8: 8px;
+  --radius-12: 12px;
+  --radius-16: 16px;
+  --radius-9999: 9999px;
+}
+
+/* Font */
+:root {
+  /* title */
+  --font-title-xs: 400 12px / 1.2 'Pretendard', sans-serif;
+  --font-title-s: 600 14px / 1.2 'Pretendard', sans-serif;
+  --font-title-m: 500 16px / 1.2 'Pretendard', sans-serif;
+  --font-title-l: 600 16px / 1.2 'Pretendard', sans-serif;
+  --font-title-xl: 600 20px / 1.2 'Pretendard', sans-serif;
+  --font-title-xxl: 500 24px / 1.2 'Pretendard', sans-serif;
+
+  /* body */
+  --font-title-s: 400 12px / 1.2 'Pretendard', sans-serif;
+  --font-title-m: 400 14px / 1.2 'Pretendard', sans-serif;
+  --font-title-l: 400 16px / 1.2 'Pretendard', sans-serif;
+
+  /* caption */
+  --font-title-s: 400 12px / 1.2 'Pretendard', sans-serif;
+  --font-title-m: 600 22px / 1.2 'Pretendard', sans-serif;
 }
