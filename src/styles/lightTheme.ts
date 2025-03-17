@@ -27,7 +27,7 @@ export const lightTheme = {
     icon: {
       white: 'var(--white)',
     },
-    text: {
+    typo: {
       disabled: 'var(--gray-500)',
       error: 'var(--red-500)',
       primary: 'var(--gray-900)',
