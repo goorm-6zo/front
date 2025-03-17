@@ -10,7 +10,7 @@ export const lightTheme = {
       tertiary: 'var(--gray-800)',
       tertiaryPressed: 'var(--gray-900)',
       weak: 'var(--blue-100)',
-      white: 'var(--b&w-white)',
+      white: 'var(--white)',
     },
     border: {
       error: 'var(--red-500)',
@@ -25,7 +25,7 @@ export const lightTheme = {
       primary: 'var(--gray-200)',
     },
     icon: {
-      white: 'var(--b&w-white)',
+      white: 'var(--white)',
     },
     text: {
       disabled: 'var(--gray-500)',
@@ -35,7 +35,7 @@ export const lightTheme = {
       tertiary: 'var(--gray-500)',
       true: 'var(--blue-500)',
       weak: 'var(--gray-400)',
-      white: 'var(--b&w-white)',
+      white: 'var(--white)',
     },
   },
 };
