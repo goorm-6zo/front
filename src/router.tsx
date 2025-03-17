@@ -16,16 +16,11 @@ import ConferenceInfo from './pages/user/ConferenceInfo';
 import Profile from './pages/user/Profile';
 import FaceRegistration from './pages/user/FaceRegistration';
 import NotFound from './pages/NotFound';
+import PrivateRoute from './components/common/PrivateRoute';
 
 const router = createBrowserRouter([
-  {
-    path: '/',
-    element: <Navigate to="/login" replace />, // 루트 접근 시 로그인 페이지로 리디렉트
-  },
-  {
-    path: '/login',
-    element: <Login />,
-  },
+  { path: '/', element: <Navigate to="/login" replace /> },
+  { path: '/login', element: <Login /> },
   { path: '/signup', element: <SignUp /> },
   { path: '/face-recognition', element: <FaceRecognition /> },
   { path: '/reservation', element: <Reservation /> },
@@ -33,6 +28,7 @@ const router = createBrowserRouter([
 
   {
     path: '/admin',
+    element: <PrivateRoute role="ADMIN" />,
     children: [
       { path: 'dashboard', element: <AdminDashboard /> },
       { path: 'conference-edit', element: <ConferenceEdit /> },
@@ -44,12 +40,27 @@ const router = createBrowserRouter([
     ],
   },
 
-  { path: '/dashboard', element: <UserDashboard /> },
-  { path: '/conference-info', element: <ConferenceInfo /> },
-  { path: '/profile', element: <Profile /> },
-  { path: '/face-registration', element: <FaceRegistration /> },
+  {
+    path: '/dashboard',
+    element: <PrivateRoute role="USER" />,
+    children: [{ path: '', element: <UserDashboard /> }],
+  },
+  {
+    path: '/conference-info',
+    element: <PrivateRoute role="USER" />,
+    children: [{ path: '', element: <ConferenceInfo /> }],
+  },
+  {
+    path: '/profile',
+    element: <PrivateRoute role="USER" />,
+    children: [{ path: '', element: <Profile /> }],
+  },
+  {
+    path: '/face-registration',
+    element: <PrivateRoute role="USER" />,
+    children: [{ path: '', element: <FaceRegistration /> }],
+  },
 
-  // 404 페이지 설정
   { path: '*', element: <NotFound /> },
 ]);
 

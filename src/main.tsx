@@ -6,11 +6,19 @@ import { ThemeProvider } from 'styled-components';
 import { lightTheme } from './styles/lightTheme.ts';
 // import { darkTheme } from './styles/darkTheme.ts';
 import './styles/globalStyle.css';
+import AuthProvider from './pages/AuthProvider.tsx';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+
+const queryClient = new QueryClient();
 
 createRoot(document.getElementById('root')!).render(
   <ThemeProvider theme={lightTheme}>
     <StrictMode>
-      <RouterProvider router={router} />
+      <QueryClientProvider client={queryClient}>
+        <AuthProvider>
+          <RouterProvider router={router} />
+        </AuthProvider>
+      </QueryClientProvider>
     </StrictMode>
   </ThemeProvider>,
 );
