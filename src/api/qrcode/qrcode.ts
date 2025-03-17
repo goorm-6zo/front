@@ -6,7 +6,7 @@ export const getQRCode = async () => {
       params: {
         conferenceId: 1,
         sessionId: 1,
-        url: 'http://localhost:5173/face-recognition',
+        url: 'https://maskpass-6zo.vercel.app/face-recognition',
       },
     });
 
