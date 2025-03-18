@@ -2,7 +2,6 @@ import { useAuthStore } from '../../store/useAuthStore';
 
 const UserDashboard = () => {
   const { userInfo } = useAuthStore();
-
   return (
     <div>
       메인
