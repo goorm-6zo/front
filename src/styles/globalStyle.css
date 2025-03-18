@@ -86,11 +86,11 @@ body * {
   --font-title-xxl: 500 24px / 1.2 'Pretendard', sans-serif;
 
   /* body */
-  --font-title-s: 400 12px / 1.2 'Pretendard', sans-serif;
-  --font-title-m: 400 14px / 1.2 'Pretendard', sans-serif;
-  --font-title-l: 400 16px / 1.2 'Pretendard', sans-serif;
+  --font-body-s: 400 12px / 1.2 'Pretendard', sans-serif;
+  --font-body-m: 400 14px / 1.2 'Pretendard', sans-serif;
+  --font-body-l: 400 16px / 1.2 'Pretendard', sans-serif;
 
   /* caption */
-  --font-title-s: 400 12px / 1.2 'Pretendard', sans-serif;
-  --font-title-m: 600 22px / 1.2 'Pretendard', sans-serif;
+  --font-caption-s: 400 12px / 1.2 'Pretendard', sans-serif;
+  --font-caption-m: 600 22px / 1.2 'Pretendard', sans-serif;
 }
