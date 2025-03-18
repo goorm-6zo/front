@@ -11,11 +11,11 @@ const HamburgerIcon: React.FC<BaseIconProps> = ({
       width={size}
       height={size}
       viewBox="0 0 24 24"
-      fill={color}
+      color={color}
     >
       <path
         d="M5 17H19M5 12H19M5 7H19"
-        stroke="black"
+        stroke={color}
         strokeWidth="2"
         strokeLinecap="round"
         strokeLinejoin="round"
