@@ -29,14 +29,22 @@ const Reservation = () => {
           {hasSession && <CheckBoxList items={checkBoxItems} />}
           {/* 예매자 이름 */}
           <S.InputDiv>
-            <S.Label>예매자</S.Label>
-            <Input variant="solid" type="text" placeholder="이름" />
+            <Input
+              title="예매자"
+              state="default"
+              type="text"
+              placeholder="이름"
+            />
           </S.InputDiv>
 
           {/* 전화번호 */}
           <S.InputDiv>
-            <S.Label>전화번호</S.Label>
-            <Input variant="solid" type="tel" placeholder="전화번호" />
+            <Input
+              title="전화번호"
+              state="default"
+              type="tel"
+              placeholder="전화번호"
+            />
           </S.InputDiv>
         </S.ReservationForm>
 

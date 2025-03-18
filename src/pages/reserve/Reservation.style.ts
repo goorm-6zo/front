@@ -23,10 +23,6 @@ export const ReservationForm = styled.form`
   gap: 20px;
 `;
 
-export const Label = styled.label`
-  font-size: 0.9rem;
-`;
-
 export const BtnWrapper = styled.div`
   margin-top: auto;
   padding-bottom: 20px;
