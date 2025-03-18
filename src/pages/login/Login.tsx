@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import TextButton from '../../components/common/button/TextButton.tsx';
 import { Input } from '../../components/common/input/Input.tsx';
 import Layout from '../../components/common/layout/Layout.tsx';
@@ -11,13 +11,7 @@ export default function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
-  const { userInfo, setUserInfo } = useAuthStore();
-
-  useEffect(() => {
-    if (userInfo) {
-      navigate(userInfo.role === 'ADMIN' ? '/admin/dashboard' : '/dashboard');
-    }
-  }, [userInfo, navigate]);
+  const { setUserInfo } = useAuthStore();
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
