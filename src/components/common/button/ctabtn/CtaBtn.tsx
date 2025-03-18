@@ -1,28 +1,32 @@
 import React from 'react';
 import * as S from './CtaBtn.style';
+import Icon from '../../icon/Icon';
+import { IconName } from '../../icon';
+import { useTheme } from 'styled-components';
 
-type CtaBtnProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
+type CtaBtnProps = Omit<
+  React.ButtonHTMLAttributes<HTMLButtonElement>,
+  'variant'
+> & {
   variant?: 'primary' | 'secondary' | 'tertiary';
-  state?: 'default' | 'disabled';
-  icon?: React.ReactNode;
+  icon?: IconName;
   children: React.ReactNode;
 };
 
 const CtaBtn: React.FC<CtaBtnProps> = ({
   variant = 'primary',
-  state = 'default',
   icon,
   children,
   ...props
 }) => {
+  const theme = useTheme();
+
   return (
-    <S.StyledButton
-      variant={variant}
-      state={state}
-      disabled={state === 'disabled'}
-      {...props}
-    >
-      {children} {icon && <span>{icon}</span>}
+    <S.StyledButton $variant={variant} {...props}>
+      {children}
+      {icon && (
+        <Icon size={20} name={icon} color={theme.colors.typo.secondary} />
+      )}
     </S.StyledButton>
   );
 };
