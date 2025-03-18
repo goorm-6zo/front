@@ -1,5 +1,4 @@
 import { useAuthStore } from '../../store/useAuthStore';
-
 const UserDashboard = () => {
   const { userInfo } = useAuthStore();
 
