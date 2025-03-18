@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 interface ButtonProps {
-  variant: 'primary' | 'secondary' | 'tertiary';
+  $variant: 'primary' | 'secondary' | 'tertiary';
 }
 
 export const StyledButton = styled.button<ButtonProps>`
@@ -9,12 +9,13 @@ export const StyledButton = styled.button<ButtonProps>`
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: var(--spacing-12);
   padding: var(--spacing-12) var(--spacing-12);
   font: var(--font-title-l);
   border-radius: var(--radius-12);
 
-  ${({ theme, variant }) => {
-    switch (variant) {
+  ${({ theme, $variant }) => {
+    switch ($variant) {
       case 'primary':
         return `
           background-color: ${theme.colors.background.primary};
