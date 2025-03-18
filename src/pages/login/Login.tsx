@@ -3,7 +3,7 @@ import TextButton from '../../components/common/button/TextButton.tsx';
 import { Input } from '../../components/common/input/Input.tsx';
 import Layout from '../../components/common/layout/Layout.tsx';
 import * as S from './Login.style.ts';
-import { loginUser } from '../../api/login/login.ts';
+import { getUserData, loginUser } from '../../api/login/login.ts';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuthStore } from '../../store/useAuthStore.ts';
 
@@ -11,7 +11,7 @@ export default function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
-  const { userInfo } = useAuthStore();
+  const { userInfo, setUserInfo } = useAuthStore();
 
   useEffect(() => {
     if (userInfo) {
@@ -23,6 +23,8 @@ export default function Login() {
     e.preventDefault();
     const response = await loginUser({ email, password });
     if (response) {
+      const userData = await getUserData();
+      setUserInfo(userData);
       console.log('로그인 성공');
       navigate(response.role === 'USER' ? '/dashboard' : '/admin/dashboard');
     }
