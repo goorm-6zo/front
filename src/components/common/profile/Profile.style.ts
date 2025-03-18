@@ -10,6 +10,7 @@ export const ProfileContainer = styled.div<{ size: number }>`
   align-items: center;
   justify-content: center;
   position: relative;
+  display: inline-block;
 `;
 
 export const ProfileImage = styled.img`
