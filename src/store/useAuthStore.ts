@@ -10,10 +10,10 @@ interface User {
 
 interface AuthStore {
   userInfo: User | null;
-  setUserInfo: (user: User) => void;
+  setUserInfo: (user: User | null) => void;
 }
 
 export const useAuthStore = create<AuthStore>((set) => ({
   userInfo: null,
-  setUserInfo: (user) => set({ userInfo: user }),
+  setUserInfo: (user: User | null) => set({ userInfo: user }),
 }));
