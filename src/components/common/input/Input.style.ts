@@ -1,30 +1,58 @@
 import styled from 'styled-components';
+import { InputProps } from './Input';
 
-export const StyledInput = styled.input<{ variant: 'solid' | 'outlined' }>`
-  width: 100%;
-  padding: 10px;
-  border-radius: ${({ variant }) => (variant === 'outlined' ? '6px' : '0px')};
-  font-size: 16px;
+export const StyledInputContainer = styled.div<InputProps>`
+  display: flex;
+  flex-direction: column;
+  padding-left: var(--spacing-12);
+`;
+
+export const StyledInputTitle = styled.div`
+  font: var(--font-title-l);
+  margin-bottom: var(--spacing-2);
+`;
+
+export const StyledInput = styled.input<InputProps>`
+  font: var(--font-body-m);
+  border: none;
   outline: none;
-  background-color: ${({ variant }) => (variant === 'solid' ? '#d9d9d9' : 'transparent')};
-  border: ${({ variant }) => (variant === 'outlined' ? '2px solid #ccc' : 'none')};
+  padding: var(--spacing-16) var(--spacing-4);
   &:focus {
-    background-color: ${({ variant }) => (variant === 'solid' ? '#e0e0e0' : 'transparent')};
-    border-color: ${({ variant }) => (variant === 'outlined' ? '#007bff' : 'none')};
+    border-bottom: 1px solid
+      ${({ theme }) => theme.colors.border.primaryPressed};
   }
+  ${({ state, theme }) => {
+    switch (state) {
+      case 'error':
+        return `
+          border-bottom: 1px solid ${theme.colors.border.error};
+        `;
+      case 'disabled':
+        return `
+          pointer-events: none;
+          color: ${theme.colors.typo.disabled};
+          border-bottom: 1px solid ${theme.colors.border.disabled};
+        `;
+      default:
+        return `
+          border-bottom: 1px solid ${theme.colors.border.primary};
+        `;
+    }
+  }}
 `;
 
 export const StyledTextarea = styled.textarea`
-  width: 100%;
-  padding: 10px;
-  border: none;
-  background-color: #d9d9d9;
+  display: flex;
+  padding: var(--spacing-16);
+  outline: none;
+  border: 1px solid ${({ theme }) => theme.colors.border.primary};
+  border-radius: var(--radius-16);
   font-size: 16px;
   resize: none;
   min-height: 100px;
-  outline: none;
+  font: var(--font-body-m);
+  color: ${({ theme }) => theme.colors.typo.primary};
   &:focus {
-    background-color: #e0e0e0;
-    border-color: #007bff;
+    border: 1px solid ${({ theme }) => theme.colors.border.primaryPressed};
   }
 `;
