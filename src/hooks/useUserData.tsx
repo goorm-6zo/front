@@ -3,7 +3,7 @@ import { getUserData } from '../api/login/login';
 import { useAuthStore } from '../store/useAuthStore';
 
 export default function useUserData() {
-  const { userInfo, setUserInfo } = useAuthStore();
+  const { setUserInfo } = useAuthStore();
 
   const userDataQuery = useQuery({
     queryKey: ['userData'],
@@ -16,7 +16,6 @@ export default function useUserData() {
       }
       return data;
     },
-    enabled: !!userInfo?.role,
   });
 
   return {
