@@ -32,20 +32,19 @@ export default function Login() {
 
   return (
     <Layout hasHeader={false} hasFooter={false}>
-      <Link to="/dashboard">대시보드</Link>
       <S.LoginContainer>
         <S.Logo src="/logo.png" alt="logo" />
         <S.Title>MASK PASS</S.Title>
         <S.LoginForm onSubmit={handleLogin}>
           <Input
-            variant="outlined"
+            state="default"
             // type="email"
             placeholder="이메일"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
           <Input
-            variant="outlined"
+            state="default"
             type="password"
             placeholder="비밀번호"
             value={password}

@@ -1,13 +1,23 @@
 import * as S from './Input.style.ts';
+import React from 'react';
 
-type InputProps = React.InputHTMLAttributes<HTMLInputElement> & {
-  variant?: 'solid' | 'outlined';
-};
+export interface InputProps
+  extends React.InputHTMLAttributes<HTMLInputElement> {
+  state?: 'default' | 'disabled' | 'error';
+}
 
-type TextareaProps = React.TextareaHTMLAttributes<HTMLTextAreaElement>;
+export interface TextareaProps
+  extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
+  state?: 'default' | 'disabled' | 'error';
+}
 
-export const Input = ({ variant = 'solid', ...props }: InputProps) => {
-  return <S.StyledInput variant={variant} {...props} />;
+export const Input = ({ title, state = 'default', ...props }: InputProps) => {
+  return (
+    <S.StyledInputContainer>
+      <S.StyledInputTitle>{title ? title : null}</S.StyledInputTitle>
+      <S.StyledInput state={state} {...props} />
+    </S.StyledInputContainer>
+  );
 };
 
 export const Textarea = (props: TextareaProps) => {
