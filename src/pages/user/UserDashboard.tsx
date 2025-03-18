@@ -1,10 +1,12 @@
 import { useAuthStore } from '../../store/useAuthStore';
+import Ani from '../../components/common/ani/Ani';
 const UserDashboard = () => {
   const { userInfo } = useAuthStore();
 
   return (
     <div>
       메인
+      <Ani />
       <div>유저 정보</div>
       <div>
         <div>이름: {userInfo?.name}</div>

@@ -34,6 +34,7 @@ export const ImgContainer = styled.div<ImgContainerProps>`
   display: flex;
   align-items: center;
   justify-content: center;
+  display: inline-block;
 `;
 
 export const Img = styled.img`

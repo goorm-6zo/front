@@ -9,7 +9,7 @@ type ImgProps = {
 const Img: React.FC<ImgProps> = ({ size, imageUrl }) => {
   return (
     <S.ImgContainer size={size}>
-      {imageUrl && <S.Img src={imageUrl} alt="프로필 이미지" />}
+      {imageUrl && <S.Img src={imageUrl} alt="이미지 컴포넌트" />}
     </S.ImgContainer>
   );
 };
