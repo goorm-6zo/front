@@ -1,34 +1,12 @@
 import styled from 'styled-components';
 
 type ImgContainerProps = {
-  size: 'xs' | 's' | 'm' | 'l' | 'xl';
-};
-
-const getSize = (size: ImgContainerProps['size']) => {
-  switch (size) {
-    case 'xs':
-      return { width: '68px', height: '68px' };
-    case 's':
-      return { width: '100px', height: '100px' };
-    case 'm':
-      return { width: '140px', height: '140px' };
-    case 'l':
-      return { width: '335px', height: '140px' };
-    case 'xl':
-      return { width: '294px', height: '294px' };
-    default:
-      return { width: '68px', height: '68px' };
-  }
+  size: 294 | 168 | 140 | 128 | 100 | 80 | 68;
 };
 
 export const ImgContainer = styled.div<ImgContainerProps>`
-  ${({ size }) => {
-    const { width, height } = getSize(size);
-    return `
-      width: ${width};
-      height: ${height};
-    `;
-  }}
+  width: ${({ size }) => size};
+  aspect-ratio: 1/1;
   background-color: var(--blue-100);
   overflow: hidden;
   display: flex;
