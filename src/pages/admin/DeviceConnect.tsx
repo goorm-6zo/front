@@ -1,6 +1,5 @@
 import { useState } from 'react';
-import { getQRCode } from '../../api/qrcode/qrcode';
-
+import { getQRCode } from '../../api/admin/qrcode/qrcode';
 const DeviceConnect = () => {
   const [qrCode, setQrCode] = useState<string | null>(null);
 

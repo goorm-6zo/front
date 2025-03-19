@@ -1,4 +1,4 @@
-import API from '../axiosIntance';
+import API from '../../axiosIntance';
 
 export const getQRCode = async () => {
   try {
