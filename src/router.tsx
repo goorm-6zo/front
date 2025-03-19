@@ -5,7 +5,7 @@ import Reservation from './pages/reserve/Reservation';
 import ReservationComplete from './pages/reserve/ReservationComplete';
 import SignUp from './pages/login/Signup';
 import UserDashboard from './pages/user/UserDashboard';
-import AdminDashboard from './pages/admin/AdminDashboard';
+import AdminDashboard from './pages/admin/adminDashboard/AdminDashboard';
 import ConferenceEdit from './pages/admin/ConferenceEdit';
 import DeviceConnect from './pages/admin/DeviceConnect';
 import Visitors from './pages/admin/Visitors';
