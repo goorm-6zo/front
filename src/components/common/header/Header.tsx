@@ -1,21 +1,11 @@
-import React from 'react';
 import * as S from './Header.style.ts';
+import Icon from '../icon/Icon.tsx';
 
-interface HeaderProps {
-  titlePosition?: 'center' | 'left';
-  title?: string;
-  leftButton?: React.ReactNode;
-  rightButton?: React.ReactNode;
-}
-
-const Header: React.FC<HeaderProps> = ({ titlePosition = 'center', title, leftButton, rightButton }) => {
+export const Header = () => {
   return (
     <S.HeaderContainer>
-      {titlePosition === 'center' && <S.ButtonWrapper>{leftButton}</S.ButtonWrapper>}
-
-      <S.TitleBox $titlePosition={titlePosition}>{title}</S.TitleBox>
-
-      {rightButton && <S.ButtonWrapper>{rightButton}</S.ButtonWrapper>}
+      <Icon name="hamburger" />
+      <Icon name="hamburger" />
     </S.HeaderContainer>
   );
 };

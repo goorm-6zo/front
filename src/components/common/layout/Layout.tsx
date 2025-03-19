@@ -7,10 +7,6 @@ interface LayoutProps {
   children: ReactNode;
   hasHeader?: boolean;
   hasFooter?: boolean;
-  titlePosition?: 'center' | 'left';
-  title?: string;
-  leftButton?: React.ReactNode;
-  rightButton?: React.ReactNode;
   footerContent?: React.ReactNode;
 }
 
@@ -18,17 +14,13 @@ const Layout: React.FC<LayoutProps> = ({
   children,
   hasHeader = false,
   hasFooter = false,
-  titlePosition,
-  title,
-  leftButton,
-  rightButton,
   footerContent,
 }) => {
   return (
     <S.LayoutWrapper>
       {hasHeader && (
         <S.HeaderWrapper>
-          <Header titlePosition={titlePosition} title={title} leftButton={leftButton} rightButton={rightButton} />
+          <Header />
         </S.HeaderWrapper>
       )}
       <S.ContentBox>{children}</S.ContentBox>
