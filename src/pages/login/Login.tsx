@@ -6,7 +6,6 @@ import * as S from './Login.style.ts';
 import { getUserData, loginUser } from '../../api/login/login.ts';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuthStore } from '../../store/useAuthStore.ts';
-
 export default function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
