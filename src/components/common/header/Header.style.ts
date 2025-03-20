@@ -8,11 +8,13 @@ export const HeaderContainer = styled.header`
   justify-content: space-between;
   background-color: ${({ theme }) => theme.colors.background.white};
   position: relative;
+  margin: 0 auto;
 
   ${media.mobile} {
     padding: var(--spacing-16) var(--spacing-20);
   }
   ${media.desktop} {
-    padding: var(--spacing-16) var(--spacing-44);
+    max-width: 1120px;
+    padding: var(--spacing-16) var(--spacing-80);
   }
 `;
