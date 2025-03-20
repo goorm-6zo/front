@@ -1,4 +1,4 @@
-import { createBrowserRouter, Navigate } from 'react-router-dom';
+import { createBrowserRouter } from 'react-router-dom';
 import FaceRecognition from './pages/face-recognition/FaceRecognition';
 import Login from './pages/login/Login';
 import Reservation from './pages/reserve/Reservation';
@@ -17,9 +17,10 @@ import Profile from './pages/user/Profile';
 import FaceRegistration from './pages/user/FaceRegistration';
 import NotFound from './pages/NotFound';
 import PrivateRoute from './components/common/PrivateRoute';
+import LoginIndex from './pages/login/LoginIndex';
 
 const router = createBrowserRouter([
-  { path: '/', element: <Navigate to="/login" replace /> },
+  { path: '/', element: <LoginIndex /> },
   { path: '/login', element: <Login /> },
   { path: '/signup', element: <SignUp /> },
   { path: '/face-recognition', element: <FaceRecognition /> },
