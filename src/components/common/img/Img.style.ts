@@ -5,14 +5,14 @@ type ImgContainerProps = {
 };
 
 export const ImgContainer = styled.div<ImgContainerProps>`
-  width: ${({ size }) => size};
+  width: ${({ size }) => `${size}px`}; // px 단위 추가
+  height: ${({ size }) => `${size}px`}; // px 단위 추가
   aspect-ratio: 1/1;
   background-color: var(--blue-100);
   overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
-  display: inline-block;
 `;
 
 export const Img = styled.img`
