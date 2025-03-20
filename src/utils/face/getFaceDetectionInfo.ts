@@ -9,7 +9,6 @@ export const getFaceDetectionInfo = async (
   detection: any;
   video: HTMLVideoElement | null;
 }> => {
-  console.log('정보 시작');
   if (
     !webcamRef.current ||
     !webcamRef.current.video ||
@@ -26,15 +25,11 @@ export const getFaceDetectionInfo = async (
     .withFaceLandmarks()
     .withFaceDescriptor();
 
-  console.log('정보 중간');
-  console.log('detection:', detectionResult);
-
   if (!detectionResult) {
     return { detection: null, video };
   }
 
   const detection = detectionResult;
-  console.log('정보 끝');
   return {
     detection,
     video,

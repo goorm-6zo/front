@@ -20,7 +20,6 @@ export const isFaceInBox = (
   box: IBox,
   videoElement: HTMLVideoElement,
 ): boolean => {
-  console.log('안에 있는ㄴ지 계산중');
   const videoWidth = videoElement.videoWidth;
   const videoHeight = videoElement.videoHeight;
 
