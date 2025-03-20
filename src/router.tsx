@@ -16,16 +16,30 @@ import ConferenceInfo from './pages/user/ConferenceInfo';
 import Profile from './pages/user/Profile';
 import FaceRegistration from './pages/user/FaceRegistration';
 import NotFound from './pages/NotFound';
-import PrivateRoute from './components/common/PrivateRoute';
 import LoginIndex from './pages/login/LoginIndex';
+import PublicRoute from './components/common/router/PublicRoute';
+import PrivateRoute from './components/common/router/PrivateRoute';
 
 const router = createBrowserRouter([
-  { path: '/', element: <LoginIndex /> },
-  { path: '/login', element: <Login /> },
-  { path: '/signup', element: <SignUp /> },
   { path: '/face-recognition', element: <FaceRecognition /> },
   { path: '/reservation', element: <Reservation /> },
   { path: '/complete', element: <ReservationComplete /> },
+
+  {
+    path: '/',
+    element: <PublicRoute />, // 유저가 있으면 대시보드로 이동
+    children: [{ path: '', element: <LoginIndex /> }],
+  },
+  {
+    path: '/login',
+    element: <PublicRoute />, // 유저가 있으면 대시보드로 이동
+    children: [{ path: '', element: <Login /> }],
+  },
+  {
+    path: '/signup',
+    element: <PublicRoute />, // 유저가 있으면 대시보드로 이동
+    children: [{ path: '', element: <SignUp /> }],
+  },
 
   {
     path: '/admin',

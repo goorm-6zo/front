@@ -1,0 +1,17 @@
+import { Navigate, Outlet } from 'react-router-dom';
+import { useAuthStore } from '../../../store/useAuthStore';
+
+export default function PublicRoute() {
+  const { userInfo } = useAuthStore();
+
+  if (userInfo) {
+    return (
+      <Navigate
+        to={userInfo.role === 'ADMIN' ? '/admin/dashboard' : '/dashboard'}
+        replace
+      />
+    );
+  }
+
+  return <Outlet />;
+}
