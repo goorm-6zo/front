@@ -1,23 +1,25 @@
 import * as S from './ConferenceCard.style';
 import Img from '../../../img/Img';
+import React from 'react';
 
 type ConferenceCardProps = {
   title: string;
-  date: number;
+  date: string;
   place: string;
+  imageUrl?: string;
+  onClick?: () => void;
 };
 
 const ConferenceCard: React.FC<ConferenceCardProps> = ({
   title,
   date,
   place,
+  imageUrl,
+  onClick,
 }) => {
   return (
-    <S.CardContainer>
-      <Img
-        size={100}
-        imageUrl="https://cdn.pixabay.com/photo/2025/02/19/07/41/animal-9417081_960_720.jpg"
-      />
+    <S.CardContainer onClick={onClick}>
+      {imageUrl && <Img size={100} imageUrl={imageUrl} />}
       <S.TextContainer>
         <S.TitleWrapper>{title}</S.TitleWrapper>
         <S.InfoTextWrapper>
@@ -27,6 +29,12 @@ const ConferenceCard: React.FC<ConferenceCardProps> = ({
       </S.TextContainer>
     </S.CardContainer>
   );
+};
+
+// 기본 props 설정
+ConferenceCard.defaultProps = {
+  imageUrl: '',
+  onClick: () => {}, // 기본 빈 함수 제공
 };
 
 export default ConferenceCard;
