@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import { getMySession } from '../../api/reserve/getMySession';
 import ResponsiveLayout from '../../components/common/layout/ResponsiveLayout';
 import ConferenceCard from '../../components/common/card/user/conferenceCard/ConferenceCard';
