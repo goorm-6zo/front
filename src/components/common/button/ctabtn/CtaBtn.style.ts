@@ -13,6 +13,7 @@ export const StyledButton = styled.button<ButtonProps>`
   padding: var(--spacing-12) var(--spacing-12);
   font: var(--font-title-l);
   border-radius: var(--radius-12);
+  width: 100%;
 
   ${({ theme, $variant }) => {
     switch ($variant) {

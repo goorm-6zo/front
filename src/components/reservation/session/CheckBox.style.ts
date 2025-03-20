@@ -5,7 +5,6 @@ export const CheckBoxContainer = styled.div`
   align-items: center;
   justify-content: end;
   width: 100%;
-  background-color: #bbbbbb;
   padding: 5px;
   min-height: 60px;
   cursor: pointer;

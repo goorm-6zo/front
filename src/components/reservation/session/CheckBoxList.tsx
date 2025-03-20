@@ -1,35 +1,31 @@
 import { useState } from 'react';
 import CheckBox from './CheckBox';
 import * as S from './CheckBoxList.style';
+import ReservationCard from '../../common/card/user/reservationCard/ReservationCard';
 type CheckBoxItem = {
   id: number;
-  label: string;
-  checked: boolean;
+  summary: string;
+  location: string;
 };
 
 type CheckBoxListProps = {
-  items: CheckBoxItem[];
+  items: CheckBoxItem[] | null;
 };
 
 const CheckBoxList = ({ items }: CheckBoxListProps) => {
   const [checkList, setCheckList] = useState(items);
 
-  const handleToggle = (id: number) => {
-    setCheckList((prev) =>
-      prev.map((item) =>
-        item.id === id ? { ...item, checked: !item.checked } : item,
-      ),
-    );
-  };
+  // const handleToggle = (id: number) => {
+  //   setCheckList((prev) =>
+  //     prev.map((item) =>
+  //       item.id === id ? { ...item, checked: !item.checked } : item,
+  //     ),
+  //   );
+  // };
 
   return (
     <S.ListBox>
-      {checkList.map((item) => (
-        <CheckBox
-          checked={item.checked}
-          onChange={() => handleToggle(item.id)}
-        />
-      ))}
+      {items && items.map((item) => <ReservationCard item={item} />)}
     </S.ListBox>
   );
 };

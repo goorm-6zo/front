@@ -2,11 +2,12 @@ import styled from 'styled-components';
 export const ListBox = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 3px;
-  padding: 2px;
-  border: 1px solid #333;
-  height: 200px;
+  height: 260px;
   overflow: auto;
+  gap: var(--spacing-8);
+  padding: var(--spacing-12);
+  background-color: ${({ theme }) => theme.colors.background.secondary};
+  border-radius: var(--radius-16);
   &::-webkit-scrollbar {
     display: none;
   }

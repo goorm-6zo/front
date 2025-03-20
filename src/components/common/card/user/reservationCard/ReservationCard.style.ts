@@ -5,6 +5,7 @@ export const CardContainer = styled.div`
   gap: var(--spacing-0);
   padding: var(--spacing-12) var(--spacing-16);
   justify-content: space-between;
+  min-height: 88px;
 
   border: 1px solid ${({ theme }) => theme.colors.border.primary};
   border-radius: var(--radius-12);
