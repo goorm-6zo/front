@@ -35,31 +35,29 @@ export const useFaceDetection = (
   };
 
   const detectFace = async () => {
-    console.log('시작');
+    // console.log('시작');
 
     const { detection, video } = await getFaceDetectionInfo(
       webcamRef,
       isVideoLoaded,
       isModelLoaded,
     );
-    console.log('끝');
-    if (!detection || !video) {
-      detectFace();
-      return;
+
+    // console.log('끝');
+    if (detection && video) {
+      const faceBox = detection.detection.box;
+
+      if (isFaceInBox(faceBox, video)) {
+        // console.log('얼굴 안에 있음');
+        setIsFaceInside(true);
+        const currentDescriptor = detection.descriptor;
+        onFaceDetected(captureImage, currentDescriptor);
+        if (!onFaceDetected) return;
+      } else {
+        setIsFaceInside(false);
+      }
     }
     // console.log('얼굴 감지됨!');
-
-    const faceBox = detection.detection.box;
-
-    if (isFaceInBox(faceBox, video)) {
-      // console.log('얼굴 안에 있음');
-      setIsFaceInside(true);
-      const currentDescriptor = detection.descriptor;
-      onFaceDetected(captureImage, currentDescriptor);
-      if (!onFaceDetected) return;
-    } else {
-      setIsFaceInside(false);
-    }
 
     requestAnimationFrame(detectFace);
   };

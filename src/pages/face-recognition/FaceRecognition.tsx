@@ -50,9 +50,9 @@ const FaceRecognition = () => {
         />
         {isVideoLoaded && (
           <S.Box
-            boxWidth={230}
-            boxHeight={230}
-            isFaceInside={isFaceInside}
+            $boxWidth={230}
+            $boxHeight={230}
+            $isFaceInside={isFaceInside}
           ></S.Box>
         )}
       </S.VideoBox>
