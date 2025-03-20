@@ -16,7 +16,7 @@ const ConferenceCard: React.FC<ConferenceCardProps> = ({
     <S.CardContainer>
       <Img
         size={100}
-        imageUrl="https://pixabay.com/ko/illustrations/image-8632218/"
+        imageUrl="https://cdn.pixabay.com/photo/2025/02/19/07/41/animal-9417081_960_720.jpg"
       />
       <S.TextContainer>
         <S.TitleWrapper>{title}</S.TitleWrapper>

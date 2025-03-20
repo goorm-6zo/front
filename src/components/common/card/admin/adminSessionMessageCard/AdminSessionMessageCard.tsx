@@ -1,6 +1,5 @@
 import * as S from './AdminSessionMessageCard.style';
 import Profile from '../../profile/Profile';
-import Btn from '../../../button/btn/Btn';
 import { Tag } from '../../../tag/Tag.style';
 
 type AdminSessionMessageCardProps = {
