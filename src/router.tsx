@@ -27,17 +27,17 @@ const router = createBrowserRouter([
 
   {
     path: '/',
-    element: <PublicRoute />, // 유저가 있으면 대시보드로 이동
+    element: <PublicRoute />,
     children: [{ path: '', element: <LoginIndex /> }],
   },
   {
     path: '/login',
-    element: <PublicRoute />, // 유저가 있으면 대시보드로 이동
+    element: <PublicRoute />,
     children: [{ path: '', element: <Login /> }],
   },
   {
     path: '/signup',
-    element: <PublicRoute />, // 유저가 있으면 대시보드로 이동
+    element: <PublicRoute />,
     children: [{ path: '', element: <SignUp /> }],
   },
 
