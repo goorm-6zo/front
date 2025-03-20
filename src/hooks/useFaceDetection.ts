@@ -6,7 +6,10 @@ import Webcam from 'react-webcam';
 
 export const useFaceDetection = (
   webcamRef: React.RefObject<Webcam>,
-  onFaceDetected: (captureImage: () => void, descriptor?: Float32Array) => void,
+  onFaceDetected: (
+    captureImage: () => void,
+    descriptor?: Float32Array,
+  ) => boolean | null,
 ) => {
   const [isModelLoaded, setIsModelLoaded] = useState(false);
   const [isVideoLoaded, setIsVideoLoaded] = useState(false);
@@ -42,29 +45,29 @@ export const useFaceDetection = (
   };
 
   const detectFace = async () => {
-    // console.log('시작');
-
     const { detection, video } = await getFaceDetectionInfo(
       webcamRef,
       isVideoLoaded,
       isModelLoaded,
     );
 
-    // console.log('끝');
     if (detection && video) {
       const faceBox = detection.detection.box;
 
       if (isFaceInBox(faceBox, video)) {
-        // console.log('얼굴 안에 있음');
         setIsFaceInside(true);
         const currentDescriptor = detection.descriptor;
-        onFaceDetected(captureImage, currentDescriptor);
-        if (!onFaceDetected) return;
+
+        const shouldContinue = onFaceDetected(captureImage, currentDescriptor);
+
+        if (shouldContinue === false) {
+          console.log('촬영 완료, 감지 종료');
+          return;
+        }
       } else {
         setIsFaceInside(false);
       }
     }
-    // console.log('얼굴 감지됨!');
 
     requestAnimationFrame(detectFace);
   };

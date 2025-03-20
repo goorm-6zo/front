@@ -15,7 +15,7 @@ const FaceRecognition = () => {
   ) => {
     if (!descriptor) {
       console.log('얼굴 정보 없음, 비교 불가');
-      return;
+      return null;
     }
 
     if (capturedFaceDes.current) {
@@ -26,12 +26,13 @@ const FaceRecognition = () => {
 
       if (distance < FACE_RECOGNITION_THRESHOLD) {
         console.log('동일한 얼굴입니다. 캡처하지 않음.');
-        return;
+        return null;
       }
     }
 
     captureImage();
     capturedFaceDes.current = descriptor;
+    return true;
   };
 
   const { isLoading, isFaceInside, isVideoLoaded, capturedImage } =
