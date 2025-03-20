@@ -6,14 +6,12 @@ type AdminSessionMessageCardProps = {
   title: string;
   name: string;
   from: string;
-  state?: 'default' | 'done';
 };
 
 const AdminSessionMessageCard: React.FC<AdminSessionMessageCardProps> = ({
   title,
   name,
   from,
-  state = 'default',
 }) => {
   return (
     <S.CardContainer>

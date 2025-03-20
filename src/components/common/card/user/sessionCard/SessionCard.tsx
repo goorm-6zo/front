@@ -6,15 +6,9 @@ type SessionCardProps = {
   title: string;
   name: string;
   from: string;
-  state?: 'default' | 'done';
 };
 
-const SessionCard: React.FC<SessionCardProps> = ({
-  title,
-  name,
-  from,
-  state = 'default',
-}) => {
+const SessionCard: React.FC<SessionCardProps> = ({ title, name, from }) => {
   return (
     <S.CardContainer>
       <S.HeaderContainer>

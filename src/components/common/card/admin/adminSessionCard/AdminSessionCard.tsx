@@ -7,14 +7,12 @@ type AdminSessionCardProps = {
   title: string;
   name: string;
   from: string;
-  state?: 'default' | 'done';
 };
 
 const AdminSessionCard: React.FC<AdminSessionCardProps> = ({
   title,
   name,
   from,
-  state = 'default',
 }) => {
   return (
     <S.CardContainer>

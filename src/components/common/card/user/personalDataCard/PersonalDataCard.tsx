@@ -1,4 +1,3 @@
-import { Icon } from '../../../icon';
 import { useAuthStore } from '../../../../../store/useAuthStore';
 import * as S from './PersonalDataCard.style';
 
