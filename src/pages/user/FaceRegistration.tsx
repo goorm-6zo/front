@@ -1,12 +1,10 @@
-import FaceDetection from '../../components/face/FaceDetection';
+// import FaceDetection from '../../components/face/FaceDetection';
 
-const FaceRegistration = () => {
-  return (
-    <div>
-      FaceRegistration
-      <FaceDetection mode="register" />
-    </div>
-  );
-};
-
-export default FaceRegistration;
+export default function FaceRegistration() {
+  //   const handleFaceDetected = (captureImage: () => void) => {
+  //     console.log('등록 모드: 얼굴 감지됨!');
+  //     captureImage();
+  //   };
+  return <></>;
+  //   return <FaceDetection onFaceDetected={handleFaceDetected} />;
+}
