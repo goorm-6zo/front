@@ -20,8 +20,8 @@ export const getFaceDetectionInfo = async (
   }
 
   const video = webcamRef.current.video;
-  console.log('정보 중간1');
 
+  console.log('비디오:', video);
   const detectionResult = await faceapi
     .detectSingleFace(video, new faceapi.TinyFaceDetectorOptions())
     .withFaceLandmarks()
