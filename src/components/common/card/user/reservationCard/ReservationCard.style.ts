@@ -34,4 +34,5 @@ export const ButtonContainer = styled.div`
   justify-content: center;
   align-items: center;
   gap: var(--spacing-4);
+  flex-shrink: 0;
 `;

@@ -1,6 +1,5 @@
 import * as S from './ReservationCard.style';
-import Profile from '../../profile/Profile';
-import { Tag } from '../../../tag/Tag';
+import CheckBox from '../../../../reservation/session/CheckBox';
 
 type ReservationCardProps = {};
 
@@ -13,7 +12,9 @@ const ReservationCard: React.FC<ReservationCardProps> = ({}) => {
         </S.HeaderWrapper>
         <S.InfoWrapper>판교 카카오 캠퍼스 4층 A</S.InfoWrapper>
       </S.TextContainer>
-      <S.ButtonContainer>o</S.ButtonContainer>
+      <S.ButtonContainer>
+        <CheckBox checked={false} />
+      </S.ButtonContainer>
     </S.CardContainer>
   );
 };
