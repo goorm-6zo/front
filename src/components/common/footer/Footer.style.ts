@@ -14,7 +14,7 @@ export const FooterBox = styled.footer`
     padding: var(--spacing-16) var(--spacing-20);
   }
   ${media.desktop} {
-    max-width: 1120px;
+    max-width: 1280px;
     padding: var(--spacing-16) var(--spacing-80);
   }
 `;
