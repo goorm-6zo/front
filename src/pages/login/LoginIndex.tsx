@@ -2,8 +2,14 @@ import ResponsiveLayout from '../../components/common/layout/ResponsiveLayout';
 import * as S from './LoginIndex.style';
 import CtaBtn from '../../components/common/button/ctabtn/CtaBtn';
 import TxtBtn from '../../components/common/button/txtbtn/TxtBtn';
+import { useNavigate } from 'react-router-dom';
 
 export default function LoginIndex() {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate('/login');
+  };
   return (
     <ResponsiveLayout hasHeader={false}>
       <S.PageContainer>
@@ -12,7 +18,7 @@ export default function LoginIndex() {
         </S.LoginContainer>
         <S.ButtonContainer>
           <CtaBtn variant="kakao">카카오로 3초만에 시작하기</CtaBtn>
-          <CtaBtn>이메일로 로그인하기</CtaBtn>
+          <CtaBtn onClick={handleClick}>이메일로 로그인하기</CtaBtn>
           <S.TextContainer>
             <S.StyledLink to="/signup">
               <TxtBtn>회원가입</TxtBtn>
