@@ -1,8 +1,10 @@
 import { useEffect, useState } from 'react';
+import Webcam from 'react-webcam';
+
+//얼굴 인식 utils
 import { initWebcam, loadModels } from '../utils/face/initAndLoad';
 import { getFaceDetectionInfo } from '../utils/face/getFaceDetectionInfo';
 import { isFaceInBox } from '../utils/face/isFaceInBox';
-import Webcam from 'react-webcam';
 
 export const useFaceDetection = (
   webcamRef: React.RefObject<Webcam>,
@@ -17,6 +19,7 @@ export const useFaceDetection = (
   const [isLoading, setIsLoading] = useState(true);
   const [isFaceInside, setIsFaceInside] = useState<boolean>(false);
 
+  //모델 및 웹캠 초기화
   useEffect(() => {
     const init = async () => {
       const modelStatus = await loadModels();
@@ -35,8 +38,7 @@ export const useFaceDetection = (
     init();
   }, []);
 
-  useEffect(() => {}, []);
-
+  // 얼굴 캡쳐
   const captureImage = () => {
     if (webcamRef.current) {
       const imageSrc = webcamRef.current.getScreenshot();
@@ -44,6 +46,7 @@ export const useFaceDetection = (
     }
   };
 
+  //얼굴 인식 및 캡쳐
   const detectFace = async () => {
     const { detection, video } = await getFaceDetectionInfo(
       webcamRef,
@@ -57,13 +60,9 @@ export const useFaceDetection = (
       if (isFaceInBox(faceBox, video)) {
         setIsFaceInside(true);
         const currentDescriptor = detection.descriptor;
-
         const shouldContinue = onFaceDetected(captureImage, currentDescriptor);
-
-        if (shouldContinue === false) {
-          console.log('촬영 완료, 감지 종료');
-          return;
-        }
+        //얼굴 등록 페이지일 경우 함수 return
+        if (shouldContinue === false) return;
       } else {
         setIsFaceInside(false);
       }

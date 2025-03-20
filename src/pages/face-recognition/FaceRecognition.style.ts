@@ -21,7 +21,7 @@ export const Box = styled.div<BoxProps>`
   width: ${({ $boxWidth }) => `${$boxWidth}px`};
   height: ${({ $boxHeight }) => `${$boxHeight}px`};
   border: ${({ $isFaceInside }) =>
-    $isFaceInside ? '3px solid green' : '3px solid red'};
+    $isFaceInside ? '3px solid blue' : '3px solid red'};
   top: 50%;
   left: 50%;
   display: flex;

@@ -9,13 +9,6 @@ const BOX_WIDTH = 230;
 const BOX_HEIGHT = 230;
 const DISTANCE_THRESHOLD = 50;
 
-/**
- * 얼굴이 지정된 박스 안에 있는지 확인하는 함수
- * @param box 얼굴의 바운딩 박스
- * @param videoElement 비디오 엘리먼트
- * @returns 얼굴이 박스 안에 있는지 여부 (true/false)
- */
-
 export const isFaceInBox = (
   box: IBox,
   videoElement: HTMLVideoElement,
