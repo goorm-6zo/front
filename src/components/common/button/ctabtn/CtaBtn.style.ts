@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 interface ButtonProps {
-  $variant: 'primary' | 'secondary' | 'tertiary';
+  $variant: 'primary' | 'secondary' | 'tertiary' | 'kakao';
 }
 
 export const StyledButton = styled.button<ButtonProps>`
@@ -13,6 +13,7 @@ export const StyledButton = styled.button<ButtonProps>`
   padding: var(--spacing-12) var(--spacing-12);
   font: var(--font-title-l);
   border-radius: var(--radius-12);
+  cursor: pointer;
 
   ${({ theme, $variant }) => {
     switch ($variant) {
@@ -28,7 +29,7 @@ export const StyledButton = styled.button<ButtonProps>`
           }
 
           &:disabled {
-            pointer-events: none;  /* 클릭 이벤트 방지 */
+            pointer-events: none;
             background-color: ${theme.colors.background.secondary};
             color: ${theme.colors.typo.disabled};
           }
@@ -53,8 +54,24 @@ export const StyledButton = styled.button<ButtonProps>`
             background-color: ${theme.colors.background.secondaryPressed};
           }
         `;
+      case 'kakao':
+        return `
+          background-color: #FEE500;
+          color: #191919;
+          border: none;
+          font-weight: bold;
+
+          &:active {
+            background-color: #F9D600;
+          }
+
+          &:disabled {
+            background-color: #F1E800;
+            color: #D1D1D1;
+          }
+        `;
       default:
         return '';
     }
-  }}
+  }};
 `;
