@@ -20,12 +20,19 @@ export const useFaceDetection = (
       const webCamState = await initWebcam();
       if (modelStatus && webCamState) {
         setIsModelLoaded(true);
-        setIsVideoLoaded(true);
+      }
+      const videoElement = webcamRef.current?.video;
+      if (videoElement) {
+        videoElement.addEventListener('loadeddata', () => {
+          setIsVideoLoaded(true);
+        });
       }
     };
 
     init();
   }, []);
+
+  useEffect(() => {}, []);
 
   const captureImage = () => {
     if (webcamRef.current) {
