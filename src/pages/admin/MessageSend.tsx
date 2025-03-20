@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Checkbox } from '../../components/common/checkbox/Checkbox';
+import { Textarea } from '../../components/common/input/Input';
 
 interface CheckboxItemProps {
   key: 'all' | 'attendees' | 'nonAttendees';
@@ -16,6 +17,7 @@ const MessageSend = () => {
   const [checkedItems, setCheckedItems] = useState<CheckboxItemProps['key'][]>(
     [],
   );
+  const [message, setMessage] = useState('');
 
   const handleAllCheckbox = () => {
     setCheckedItems((prev) =>
@@ -43,9 +45,15 @@ const MessageSend = () => {
     setCheckedItems(updatedCheckedItems);
   };
 
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    // 데이터 전송
+  };
+
   return (
     <>
       <div>메시지 전송</div>
+      <form onSubmit={handleSubmit}>
         {checkboxes.map(({ key, label }) => (
           <Checkbox
             key={key}
@@ -56,6 +64,12 @@ const MessageSend = () => {
             label={label}
           />
         ))}
+        <Textarea
+          placeholder="내용을 입력하세요"
+          value={message}
+          onChange={(e) => setMessage(e.target.value)}
+        />
+      </form>
     </>
   );
 };
