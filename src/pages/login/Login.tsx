@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import TextButton from '../../components/common/button/TextButton.tsx';
 import { Input } from '../../components/common/input/Input.tsx';
-import Layout from '../../components/common/layout/Layout.tsx';
+import ResponsiveLayout from '../../components/common/layout/ResponsiveLayout.tsx';
 import * as S from './Login.style.ts';
 import { getUserData, loginUser } from '../../api/login/login.ts';
 import { Link, useNavigate } from 'react-router-dom';
@@ -24,7 +24,7 @@ export default function Login() {
   };
 
   return (
-    <Layout hasHeader={false} hasFooter={false}>
+    <ResponsiveLayout hasHeader={false}>
       <S.LoginContainer>
         <S.Logo src="/logo.png" alt="logo" />
         <S.Title>MASK PASS</S.Title>
@@ -47,6 +47,6 @@ export default function Login() {
         </S.LoginForm>
         <Link to="/signup">회원가입</Link>
       </S.LoginContainer>
-    </Layout>
+    </ResponsiveLayout>
   );
 }
