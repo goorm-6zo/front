@@ -5,8 +5,8 @@ type ImgContainerProps = {
 };
 
 export const ImgContainer = styled.div<ImgContainerProps>`
-  width: ${({ size }) => `${size}px`}; // px 단위 추가
-  height: ${({ size }) => `${size}px`}; // px 단위 추가
+  width: ${({ size }) => `${size}px`};
+  height: ${({ size }) => `${size}px`};
   aspect-ratio: 1/1;
   background-color: var(--blue-100);
   overflow: hidden;
