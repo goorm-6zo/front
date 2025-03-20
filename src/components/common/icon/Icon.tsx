@@ -6,9 +6,12 @@ import SendIcon from './SendIcon';
 import ErrorIcon from './ErrorIcon';
 import SuccessIcon from './SuccessIcon';
 import CloseIcon from './CloseIcon';
+import LogoIcon from './LogoIcon';
 
 const Icon: React.FC<IconProps> = ({ name, size = 24, color = '#000' }) => {
   switch (name) {
+    case 'logo':
+      return <LogoIcon size={size} color={color} />;
     case 'hamburger':
       return <HamburgerIcon size={size} color={color} />;
     case 'arrowdown':

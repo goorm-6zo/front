@@ -4,7 +4,7 @@ import Icon from '../icon/Icon.tsx';
 export const Header = () => {
   return (
     <S.HeaderContainer>
-      <Icon name="hamburger" />
+      <Icon name="logo" />
       <Icon name="hamburger" />
     </S.HeaderContainer>
   );

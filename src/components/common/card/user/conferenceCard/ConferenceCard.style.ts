@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const CardContainer = styled.div`
+  flex: 1;
   display: flex;
   gap: var(--spacing-16);
   padding: var(--spacing-12) var(--spacing-16);
