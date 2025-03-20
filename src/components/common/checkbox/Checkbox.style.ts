@@ -11,6 +11,7 @@ export const CheckboxContainer = styled.span`
 export const CheckboxLabel = styled.label`
   position: relative;
   user-select: none;
+  cursor: pointer;
 `;
 
 export const HiddenInput = styled.input`
