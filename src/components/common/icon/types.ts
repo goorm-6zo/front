@@ -1,4 +1,5 @@
 export type IconName =
+  | 'logo'
   | 'hamburger'
   | 'arrowdown'
   | 'send'

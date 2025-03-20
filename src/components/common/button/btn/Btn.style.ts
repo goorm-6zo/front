@@ -6,6 +6,7 @@ interface ButtonProps {
 }
 
 export const StyledButton = styled.button<ButtonProps>`
+  flex: 1;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -13,7 +14,6 @@ export const StyledButton = styled.button<ButtonProps>`
   font: var(--font-title-s);
   border-radius: var(--radius-8);
 
-  width: 90px;
   height: fit-content;
 
   ${({ theme, variant }) => {
