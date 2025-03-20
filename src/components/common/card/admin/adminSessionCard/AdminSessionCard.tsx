@@ -1,7 +1,7 @@
 import * as S from './AdminSessionCard.style';
-import Profile from '../profile/Profile';
-import Btn from '../../button/btn/Btn';
-import { Tag } from '../../tag/Tag.style';
+import Profile from '../../profile/Profile';
+import Btn from '../../../button/btn/Btn';
+import { Tag } from '../../../tag/Tag.style';
 
 type AdminSessionCardProps = {
   title: string;
