@@ -1,14 +1,15 @@
-import * as S from './Section.style';
-import Profile from '../Profile';
+import * as S from './SessionCard.style';
+import Profile from '../../profile/Profile';
+import { Tag } from '../../../tag/Tag';
 
-type SectionProps = {
+type SessionCardProps = {
   title: string;
   name: string;
   from: string;
   state?: 'default' | 'done';
 };
 
-const Section: React.FC<SectionProps> = ({
+const SessionCard: React.FC<SessionCardProps> = ({
   title,
   name,
   from,
@@ -18,14 +19,9 @@ const Section: React.FC<SectionProps> = ({
     <S.CardContainer>
       <S.HeaderContainer>
         <S.TagContainer>
-          <div
-            style={{
-              width: '45px',
-              height: '18px',
-              backgroundColor: 'var(--blue-500)',
-              borderRadius: '20px',
-            }}
-          ></div>
+          <Tag variant="tertiary">날짜</Tag>
+          <Tag variant="tertiary">시간</Tag>
+          <Tag variant="primary">장소</Tag>
         </S.TagContainer>
         <S.TitleWrapper>{title}</S.TitleWrapper>
       </S.HeaderContainer>
@@ -34,4 +30,4 @@ const Section: React.FC<SectionProps> = ({
   );
 };
 
-export default Section;
+export default SessionCard;

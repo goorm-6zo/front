@@ -22,7 +22,10 @@ export const TagContainer = styled.div`
   gap: var(--spacing-4);
 `;
 
-export const TitleWrapper = styled.h1`
+export const TitleWrapper = styled.div`
   font: var(--font-title-xl);
   color: ${({ theme }) => theme.colors.typo.primary};
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 `;
