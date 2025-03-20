@@ -1,5 +1,5 @@
 import * as S from './Reservation.style';
-import Layout from '../../components/common/layout/Layout';
+import ResponsiveLayout from '../../components/common/layout/ResponsiveLayout';
 import { useState, useEffect } from 'react';
 
 import { createReservation } from '../../api/reserve/createReservation';
@@ -70,7 +70,7 @@ const Reservation = () => {
   }, []);
 
   return (
-    <Layout hasHeader={false} hasFooter={false}>
+    <ResponsiveLayout>
       <S.Container>
         <S.ReservationTitle>
           A컨퍼런스
@@ -112,7 +112,7 @@ const Reservation = () => {
           </CtaButton>
         </S.BtnWrapper>
       </S.Container>
-    </Layout>
+    </ResponsiveLayout>
   );
 };
 
