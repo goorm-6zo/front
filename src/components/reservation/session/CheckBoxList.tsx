@@ -1,11 +1,11 @@
-import { useState } from 'react';
-import CheckBox from './CheckBox';
+import { useState, useEffect, useCallback } from 'react';
 import * as S from './CheckBoxList.style';
 import ReservationCard from '../../common/card/user/reservationCard/ReservationCard';
 type CheckBoxItem = {
   id: number;
   summary: string;
   location: string;
+  checked: boolean;
 };
 
 type CheckBoxListProps = {
@@ -13,19 +13,28 @@ type CheckBoxListProps = {
 };
 
 const CheckBoxList = ({ items }: CheckBoxListProps) => {
-  const [checkList, setCheckList] = useState(items);
+  const [checkList, setCheckList] = useState<CheckBoxItem[] | null>(items);
+  useEffect(() => {
+    if (items) setCheckList(items);
+    // console.log(checkList);
+  }, [items]);
 
-  // const handleToggle = (id: number) => {
-  //   setCheckList((prev) =>
-  //     prev.map((item) =>
-  //       item.id === id ? { ...item, checked: !item.checked } : item,
-  //     ),
-  //   );
-  // };
+  const handleToggle = useCallback((id: number) => {
+    setCheckList((prev) => {
+      if (!prev) return prev;
+      console.log('토글 실행');
+      return prev.map((item) =>
+        item.id === id ? { ...item, checked: !item.checked } : item,
+      );
+    });
+  }, []);
 
   return (
     <S.ListBox>
-      {items && items.map((item) => <ReservationCard item={item} />)}
+      {checkList &&
+        checkList.map((item) => (
+          <ReservationCard item={item} onToggle={handleToggle} />
+        ))}
     </S.ListBox>
   );
 };

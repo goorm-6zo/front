@@ -5,15 +5,17 @@ import { useState, useEffect } from 'react';
 import { createReservation } from '../../api/reserve/createReservation';
 import { getConferenceInfo } from '../../api/reserve/getConferenceInfo';
 
+import { useNavigate } from 'react-router-dom';
+
 //components
 import { Input } from '../../components/common/input/Input';
-import CtaButton from '../../components/common/button/CtaButton';
 import CheckBoxList from '../../components/reservation/session/CheckBoxList';
 import CtaBtn from '../../components/common/button/ctabtn/CtaBtn';
 type CheckBoxItem = {
   id: number;
   summary: string;
   location: string;
+  checked: boolean;
 };
 
 const Reservation = () => {
@@ -22,7 +24,7 @@ const Reservation = () => {
   const [hasSession, setHasSession] = useState(true);
   const [sessionItems, setSessionItems] = useState<CheckBoxItem[]>([]);
   const conferenceId = 1;
-
+  const navigate = useNavigate();
   const handleReservation = async () => {
     if (!name || !phone) {
       alert('이름과 전화번호를 입력해주세요.');
@@ -41,6 +43,7 @@ const Reservation = () => {
       const response = await createReservation(reserveData);
       console.log('예약 성공:', response);
       alert('예약이 완료되었습니다.');
+      navigate('/complete');
     } catch (error) {
       console.error('예약 실패:', error);
       alert('예약에 실패했습니다.');
@@ -61,11 +64,11 @@ const Reservation = () => {
               id: session.id,
               summary: session.summary,
               location: session.location,
+              checked: false,
             }),
           );
 
           setSessionItems(formattedSessions);
-          console.log('forma:', formattedSessions);
         }
       } catch (error) {
         console.error('컨퍼런스 조회 실패:', error);
@@ -80,7 +83,7 @@ const Reservation = () => {
       <S.Container>
         <S.TitleBox>
           <S.ReservationTitle>
-            A컨퍼런스
+            if KAKAO 2025
             <br /> 행사 예매하기
           </S.ReservationTitle>
         </S.TitleBox>

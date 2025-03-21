@@ -1,17 +1,21 @@
 import * as S from './ReservationCard.style';
-import CheckBox from '../../../../reservation/session/CheckBox';
 import { Checkbox } from '../../../checkbox/Checkbox';
 type ReservationCardProps = {
   item: {
     id: number;
     summary: string;
     location: string;
+    checked: boolean;
   };
+  onToggle: (id: number) => void;
 };
 
-const ReservationCard: React.FC<ReservationCardProps> = ({ item }) => {
-  console.log('렌더링 됨');
-  const { summary, location } = item;
+const ReservationCard: React.FC<ReservationCardProps> = ({
+  item,
+  onToggle,
+}) => {
+  // console.log('렌더링 됨');
+  const { summary, location, checked } = item;
   return (
     <S.CardContainer>
       <S.TextContainer>
@@ -19,7 +23,12 @@ const ReservationCard: React.FC<ReservationCardProps> = ({ item }) => {
         <S.InfoWrapper>{location}</S.InfoWrapper>
       </S.TextContainer>
       <S.ButtonContainer>
-        <Checkbox variant="primary" label="" checked={true} />
+        <Checkbox
+          variant="primary"
+          label=""
+          checked={checked}
+          onChange={() => onToggle(item.id)}
+        />
       </S.ButtonContainer>
     </S.CardContainer>
   );

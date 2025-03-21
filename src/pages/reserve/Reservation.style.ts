@@ -3,7 +3,7 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: calc(100vh);
+  height: 100dvh;
   padding: 20px 0 54px 0;
 `;
 
