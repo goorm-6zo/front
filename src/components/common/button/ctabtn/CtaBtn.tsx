@@ -8,7 +8,7 @@ type CtaBtnProps = Omit<
   React.ButtonHTMLAttributes<HTMLButtonElement>,
   'variant'
 > & {
-  variant?: 'primary' | 'secondary' | 'tertiary';
+  variant?: 'primary' | 'secondary' | 'tertiary' | 'kakao';
   icon?: IconName;
   children: React.ReactNode;
 };
@@ -22,9 +22,18 @@ const CtaBtn: React.FC<CtaBtnProps> = ({
   const theme = useTheme();
   return (
     <S.StyledButton $variant={variant} {...props}>
-      {children}
-      {icon && (
-        <Icon size={20} name={icon} color={theme.colors.typo.secondary} />
+      {variant === 'kakao' ? (
+        <>
+          <img src="/src/assets/images/kakao-logo.svg" />
+          {children}
+        </>
+      ) : (
+        <>
+          {children}
+          {icon && (
+            <Icon size={20} name={icon} color={theme.colors.typo.secondary} />
+          )}
+        </>
       )}
     </S.StyledButton>
   );

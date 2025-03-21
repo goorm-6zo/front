@@ -1,11 +1,10 @@
 import { Navigate, Outlet } from 'react-router-dom';
-import { useAuthStore } from '../../store/useAuthStore';
+import { useAuthStore } from '../store/useAuthStore';
 
-export default function PrivateRoute({ role }: { role: 'USER' | 'ADMIN' }) {
+export default function PublicRoute() {
   const { userInfo } = useAuthStore();
 
-  if (!userInfo) return <Navigate to="/" replace />;
-  if (userInfo.role !== role) {
+  if (userInfo) {
     return (
       <Navigate
         to={userInfo.role === 'ADMIN' ? '/admin/dashboard' : '/dashboard'}
