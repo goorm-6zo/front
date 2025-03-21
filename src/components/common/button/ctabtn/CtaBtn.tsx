@@ -20,7 +20,6 @@ const CtaBtn: React.FC<CtaBtnProps> = ({
   ...props
 }) => {
   const theme = useTheme();
-
   return (
     <S.StyledButton $variant={variant} {...props}>
       {children}
