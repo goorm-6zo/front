@@ -17,7 +17,7 @@ const AdminDashboard = () => {
   useEffect(() => {
     const fetchConferences = async () => {
       try {
-        const res = await getConferenceInfo();
+        const res = await getConferenceInfo(1);
         console.log('컨퍼런스 데이터:', res);
         // setConfDatas(res);
       } catch (error) {
