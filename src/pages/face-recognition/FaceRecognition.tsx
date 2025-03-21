@@ -1,8 +1,9 @@
-import { useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import * as faceapi from 'face-api.js';
 import { useFaceDetection } from '../../hooks/useFaceDetection';
 import * as S from './FaceRecognition.style';
 import Webcam from 'react-webcam';
+import { faceAuthentication } from '../../api/face/faceAuthentication';
 const FACE_RECOGNITION_THRESHOLD = 0.6;
 
 const FaceRecognition = () => {
@@ -37,6 +38,30 @@ const FaceRecognition = () => {
 
   const { isLoading, isFaceInside, isVideoLoaded, capturedImage } =
     useFaceDetection(webcamRef, handleFaceDetected);
+
+  useEffect(() => {
+    const authenticateFace = async () => {
+      if (!capturedImage) return;
+
+      console.log('이미지 캠쳐:', capturedImage);
+      // console.log('이미지 캡처됨, 얼굴 인증 시작');
+
+      try {
+        // const data = {
+        //   conferenceId: 1,
+        //   sessionId: 1,
+        //   faceImage: capturedImage,
+        // };
+
+        const result = await faceAuthentication(1, 1, capturedImage);
+        console.log('인증 결과:', result);
+      } catch (err) {
+        console.error('얼굴 인증 오류:', err);
+      }
+    };
+
+    authenticateFace();
+  }, [capturedImage]);
 
   return (
     <S.FaceDetectionContainer>
