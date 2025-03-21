@@ -1,25 +1,25 @@
-import { useEffect, useState } from 'react';
-import { getConferences } from '../../../api/admin/conference/getConferences';
+import { useEffect } from 'react';
+import { getConferenceInfo } from '../../../api/admin/conference/getConferenceInfo';
 import * as S from './AdminDashboard.style';
 
-type confType = {
-  id: number;
-  name: string;
-  description: string;
-  location: string;
-  conferenceAt: string;
-  capacity: string;
-  hasSessions: boolean;
-};
+// type confType = {
+//   id: number;
+//   name: string;
+//   description: string;
+//   location: string;
+//   conferenceAt: string;
+//   capacity: string;
+//   hasSessions: boolean;
+// };
 const AdminDashboard = () => {
-  const [confDatas, setConfDatas] = useState<confType[]>([]);
+  // const [confDatas, setConfDatas] = useState<confType[]>([]);
 
   useEffect(() => {
     const fetchConferences = async () => {
       try {
-        const res = await getConferences();
+        const res = await getConferenceInfo();
         console.log('컨퍼런스 데이터:', res);
-        setConfDatas(res);
+        // setConfDatas(res);
       } catch (error) {
         console.error('컨퍼런스 데이터 조회 실패', error);
       }
@@ -32,7 +32,7 @@ const AdminDashboard = () => {
   return (
     <S.Container>
       <S.Title>관리자 대시보드</S.Title>
-      <S.CardGrid>
+      {/* <S.CardGrid>
         {confDatas.map((conf) => (
           <S.ConferenceCard key={conf.id}>
             <S.CardTitle>{conf.name}</S.CardTitle>
@@ -47,7 +47,7 @@ const AdminDashboard = () => {
             <S.CardDescription>{conf.description}</S.CardDescription>
           </S.ConferenceCard>
         ))}
-      </S.CardGrid>
+      </S.CardGrid> */}
     </S.Container>
   );
 };
