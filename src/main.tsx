@@ -1,7 +1,7 @@
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import { RouterProvider } from 'react-router-dom';
-import router from './router.tsx';
+import router from './routes/router.tsx';
 import { ThemeProvider } from 'styled-components';
 import { lightTheme } from './styles/lightTheme.ts';
 // import { darkTheme } from './styles/darkTheme.ts';
