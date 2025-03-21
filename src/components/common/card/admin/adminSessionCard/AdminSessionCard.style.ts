@@ -9,6 +9,7 @@ export const CardContainer = styled.div`
   border: 1px solid ${({ theme }) => theme.colors.border.primary};
   border-radius: var(--radius-12);
   background-color: ${({ theme }) => theme.colors.background.white};
+  width: 100%;
 `;
 
 export const ContentsContainer = styled.div`
