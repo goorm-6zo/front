@@ -14,7 +14,6 @@ const ReservationCard: React.FC<ReservationCardProps> = ({
   item,
   onToggle,
 }) => {
-  // console.log('렌더링 됨');
   const { summary, location, checked } = item;
   return (
     <S.CardContainer>

@@ -14,7 +14,7 @@ export const CardContainer = styled.div`
 
 export const TextContainer = styled.div`
   display: flex;
-  gap: var(--spacing-12);
+  justify-content: space-around;
   flex-direction: column;
 `;
 

@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect } from 'react';
 import * as S from './CheckBoxList.style';
 import ReservationCard from '../../common/card/user/reservationCard/ReservationCard';
 type CheckBoxItem = {

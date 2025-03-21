@@ -30,7 +30,6 @@ const Reservation = () => {
       alert('이름과 전화번호를 입력해주세요.');
       return;
     }
-    console.log('session', sessionItems);
     const sessionIds = sessionItems
       .filter((session) => session.checked)
       .map((session) => session.id);
@@ -46,7 +45,7 @@ const Reservation = () => {
       alert('예약이 완료되었습니다.');
       navigate('/complete');
     } catch (error) {
-      console.error('예약 실패:', error);
+      // console.error('예약 실패:', error);
       alert('예약에 실패했습니다.');
     }
   };
