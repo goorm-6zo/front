@@ -10,30 +10,20 @@ type CheckBoxItem = {
 
 type CheckBoxListProps = {
   items: CheckBoxItem[] | null;
+  onToggle: (id: number) => void;
 };
 
-const CheckBoxList = ({ items }: CheckBoxListProps) => {
+const CheckBoxList = ({ items, onToggle }: CheckBoxListProps) => {
   const [checkList, setCheckList] = useState<CheckBoxItem[] | null>(items);
   useEffect(() => {
     if (items) setCheckList(items);
-    // console.log(checkList);
   }, [items]);
-
-  const handleToggle = useCallback((id: number) => {
-    setCheckList((prev) => {
-      if (!prev) return prev;
-      console.log('토글 실행');
-      return prev.map((item) =>
-        item.id === id ? { ...item, checked: !item.checked } : item,
-      );
-    });
-  }, []);
 
   return (
     <S.ListBox>
       {checkList &&
         checkList.map((item) => (
-          <ReservationCard item={item} onToggle={handleToggle} />
+          <ReservationCard item={item} onToggle={onToggle} />
         ))}
     </S.ListBox>
   );

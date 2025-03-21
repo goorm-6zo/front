@@ -1,6 +1,6 @@
 import * as S from './Reservation.style';
 import ResponsiveLayout from '../../components/common/layout/ResponsiveLayout';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 
 import { createReservation } from '../../api/reserve/createReservation';
 import { getConferenceInfo } from '../../api/reserve/getConferenceInfo';
@@ -30,9 +30,10 @@ const Reservation = () => {
       alert('이름과 전화번호를 입력해주세요.');
       return;
     }
-    const sessionIds = sessionItems.map(
-      (session: { id: number }) => session.id,
-    );
+    console.log('session', sessionItems);
+    const sessionIds = sessionItems
+      .filter((session) => session.checked)
+      .map((session) => session.id);
     try {
       const reserveData = {
         conferenceId,
@@ -78,6 +79,16 @@ const Reservation = () => {
     fetchConferenceInfo();
   }, []);
 
+  const handleToggle = useCallback((id: number) => {
+    setSessionItems((prev) => {
+      if (!prev) return prev;
+      console.log('토글 실행');
+      return prev.map((item) =>
+        item.id === id ? { ...item, checked: !item.checked } : item,
+      );
+    });
+  }, []);
+
   return (
     <ResponsiveLayout>
       <S.Container>
@@ -88,7 +99,9 @@ const Reservation = () => {
           </S.ReservationTitle>
         </S.TitleBox>
         <S.ReservationForm id="reservation-form">
-          {hasSession && <CheckBoxList items={sessionItems} />}
+          {hasSession && (
+            <CheckBoxList items={sessionItems} onToggle={handleToggle} />
+          )}
 
           <S.InputBox>
             <S.InputDiv>
