@@ -4,7 +4,7 @@ import { InputProps } from './Input';
 export const StyledInputContainer = styled.div<InputProps>`
   display: flex;
   flex-direction: column;
-  padding-left: var(--spacing-12);
+  padding: var(--spacing-0) var(--spacing-12);
 `;
 
 export const StyledInputTitle = styled.div`
