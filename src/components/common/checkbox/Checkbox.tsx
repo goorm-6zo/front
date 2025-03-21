@@ -4,8 +4,8 @@ import { useEffect, useState } from 'react';
 
 export interface CheckboxProps {
   variant?: 'primary' | 'secondary';
-  label: string;
-  checked?: boolean;
+  label?: string;
+  checked: boolean;
   onChange?: () => void;
 }
 

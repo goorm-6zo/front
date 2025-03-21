@@ -3,24 +3,36 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 100vh;
-  padding: 20px;
+  height: 100dvh;
+  padding: 20px 0 54px 0;
 `;
+
+export const TitleBox = styled.div`
+  padding: var(--spacing-20) 0;
+  margin-bottom: var(--spacing-24);
+`;
+
 export const ReservationTitle = styled.h1`
-  padding: 30px 0;
+  padding: var(--spacing-8);
   line-height: 30px;
   font-size: 1.2rem;
+  font-weight: 600;
 `;
+
 export const InputDiv = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 5px;
 `;
 
 export const ReservationForm = styled.form`
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: var(--spacing-36);
+`;
+export const InputBox = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-12);
 `;
 
 export const BtnWrapper = styled.div`
