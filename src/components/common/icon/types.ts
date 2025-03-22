@@ -5,7 +5,8 @@ export type IconName =
   | 'send'
   | 'error'
   | 'success'
-  | 'close';
+  | 'close'
+  | 'rightArrow';
 
 export interface BaseIconProps {
   size?: number;
