@@ -7,6 +7,7 @@ import ErrorIcon from './ErrorIcon';
 import SuccessIcon from './SuccessIcon';
 import CloseIcon from './CloseIcon';
 import LogoIcon from './LogoIcon';
+import RightArrow from './RightArrow';
 
 const Icon: React.FC<IconProps> = ({ name, size = 24, color = '#000' }) => {
   switch (name) {
@@ -24,6 +25,8 @@ const Icon: React.FC<IconProps> = ({ name, size = 24, color = '#000' }) => {
       return <SuccessIcon size={size} color={color} />;
     case 'close':
       return <CloseIcon size={size} color={color} />;
+    case 'rightArrow':
+      return <RightArrow size={size} color={color} />;
     default:
       return null;
   }
