@@ -9,21 +9,23 @@ import * as S from './UserDashboard.style';
 // 컨퍼런스 정보를 위한 인터페이스
 interface ConferenceInfo {
   conferenceId: number;
-  conferenceName: string;
-  conferenceAt: string;
   conferenceImageUrl: string;
   conferenceLocation: string;
+  conferenceName: string;
+  startTime: string;
+  endTime: string;
 }
 
 // 세션 정보를 위한 인터페이스
 interface SessionInfo {
-  sessionId: number;
-  time: string;
+  id: number;
   location: string;
   name: string;
   speakerImage: string | null;
   speakerName: string;
   speakerOrganization: string;
+  startTime: string;
+  endTime: string;
 }
 
 const UserDashboard = () => {
@@ -72,7 +74,7 @@ const UserDashboard = () => {
             <S.ConferenceListContainer>
               <ConferenceCard
                 title={myConference.conferenceName}
-                date={myConference.conferenceAt}
+                date={myConference.startTime}
                 place={myConference.conferenceLocation}
                 imageUrl={myConference.conferenceImageUrl}
               />
@@ -84,8 +86,9 @@ const UserDashboard = () => {
             <h3>예매한 세션</h3>
             {mySessionList?.map((elem) => (
               <SessionCard
-                key={elem.sessionId}
-                time={elem.time}
+                key={elem.id}
+                startTime={elem.startTime}
+                endTime={elem.endTime}
                 location={elem.location}
                 title={elem.name}
                 // speakerImage={session.speakerImage}
