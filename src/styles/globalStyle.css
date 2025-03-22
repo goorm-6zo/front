@@ -86,11 +86,13 @@ body * {
   --font-title-xl: 600 20px / 1.2 'Pretendard', sans-serif;
   --font-title-xl-2: 600 22px / 1.2 'Pretendard', sans-serif;
   --font-title-xxl: 500 24px / 1.2 'Pretendard', sans-serif;
+  --font-title-xxl-2: 600 28px / 1.2 'Pretendard', sans-serif;
 
   /* body */
   --font-body-s: 400 12px / 1.2 'Pretendard', sans-serif;
   --font-body-m: 400 14px / 1.2 'Pretendard', sans-serif;
   --font-body-l: 400 16px / 1.2 'Pretendard', sans-serif;
+  --font-body-xl: 400 18px / 1.2 'Pretendard', sans-serif;
 
   /* caption */
   --font-caption-s: 400 12px / 1.2 'Pretendard', sans-serif;
