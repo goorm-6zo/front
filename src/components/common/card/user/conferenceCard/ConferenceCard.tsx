@@ -31,10 +31,4 @@ const ConferenceCard: React.FC<ConferenceCardProps> = ({
   );
 };
 
-// 기본 props 설정
-ConferenceCard.defaultProps = {
-  imageUrl: '',
-  onClick: () => {}, // 기본 빈 함수 제공
-};
-
 export default ConferenceCard;
