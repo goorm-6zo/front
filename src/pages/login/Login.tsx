@@ -6,20 +6,17 @@ import { getUserData, loginUser } from '../../api/login/login.ts';
 import { useNavigate } from 'react-router-dom';
 import { useAuthStore } from '../../store/useAuthStore.ts';
 import CtaBtn from '../../components/common/button/ctabtn/CtaBtn.tsx';
+import TxtBtn from '../../components/common/button/txtbtn/TxtBtn.tsx';
 export default function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
   const { setUserInfo } = useAuthStore();
   const [errorMsg, setErrorMsg] = useState('');
+  const [inputError, setInputError] = useState(false);
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
-
-    if (!email.trim() || !password.trim()) {
-      setErrorMsg('이메일 또는 비밀번호를 입력하세요.');
-      return;
-    }
 
     const response = await loginUser({ email, password });
     if (response) {
@@ -29,8 +26,11 @@ export default function Login() {
       navigate(response.role === 'USER' ? '/dashboard' : '/admin/dashboard');
     } else {
       setErrorMsg('이메일 또는 비밀번호를 확인하세요.');
+      setInputError(true);
     }
   };
+
+  const isDisabled = !email.trim() || !password.trim();
 
   return (
     <ResponsiveLayout hasHeader={false}>
@@ -39,14 +39,14 @@ export default function Login() {
         <S.LoginContainer>
           <S.LoginForm onSubmit={handleLogin}>
             <Input
-              state="default"
+              state={inputError ? 'error' : 'default'}
               // type="email"
               placeholder="이메일"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
             <Input
-              state="default"
+              state={inputError ? 'error' : 'default'}
               type="password"
               placeholder="비밀번호"
               value={password}
@@ -56,9 +56,21 @@ export default function Login() {
               {errorMsg && <S.ErrorMsg>{errorMsg}</S.ErrorMsg>}
             </S.ErrorMsgWrapper>
             <S.ButtonContainer>
-              <CtaBtn type="submit">로그인</CtaBtn>
+              <CtaBtn
+                type="submit"
+                variant={isDisabled ? 'tertiary' : 'primary'}
+                disabled={isDisabled}
+              >
+                로그인
+              </CtaBtn>
             </S.ButtonContainer>
           </S.LoginForm>
+          <S.TextContainer>
+            <S.TxtLabel>아직 마스크패스 계정이 없으신가요?</S.TxtLabel>
+            <S.StyledLink to="/signup">
+              <TxtBtn>회원가입하기</TxtBtn>
+            </S.StyledLink>
+          </S.TextContainer>
         </S.LoginContainer>
       </S.PageContainer>
     </ResponsiveLayout>
