@@ -17,7 +17,7 @@ export const TextContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: var(--spacing-16) var(--spacing-8) var(--spacing-16) var(--spacing-2);
+  padding: var(--spacing-16) var(--spacing-2);
   border-bottom: 1px solid ${({ theme }) => theme.colors.divider.primary};
 `;
 
