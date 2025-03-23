@@ -38,20 +38,16 @@ const AdminDashboard = () => {
   //임시 디자인
   return (
     <ResponsiveLayout>
-      <S.Container>
-        <S.TitleBox>
-          <S.Title>행사 목록</S.Title>
-          <S.SubTitle>
-            얼굴 인증으로 입출입을 관리하는 행사 목록이에요
-          </S.SubTitle>
-        </S.TitleBox>
-        <S.DataBox>
-          {confDatas &&
-            confDatas.map(() => (
-              <AdminSessionCard title="제목" name="이름" from="from" />
-            ))}
-        </S.DataBox>
-      </S.Container>
+      <S.TitleBox>
+        <S.Title>행사 목록</S.Title>
+        <S.SubTitle>얼굴 인증으로 입출입을 관리하는 행사 목록이에요</S.SubTitle>
+      </S.TitleBox>
+      <S.DataBox>
+        {confDatas &&
+          confDatas.map(() => (
+            <AdminSessionCard title="제목" name="이름" from="from" />
+          ))}
+      </S.DataBox>
     </ResponsiveLayout>
   );
 };
