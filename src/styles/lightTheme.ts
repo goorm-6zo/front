@@ -1,5 +1,3 @@
-import { media } from './breakpoints';
-
 export const lightTheme = {
   colors: {
     background: {
@@ -48,5 +46,4 @@ export const lightTheme = {
       error: 'var(--red-500)',
     },
   },
-  media,
 };
