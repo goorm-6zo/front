@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { media } from '../../styles/breakpoints';
 
 export const TitleContainer = styled.div`
   display: flex;
@@ -9,31 +10,31 @@ export const TitleContainer = styled.div`
 `;
 
 export const Title = styled.h1`
-  ${({ theme }) => theme.media.mobile} {
+  ${media.mobile} {
     font: var(--font-title-xl-2);
   }
 
-  ${({ theme }) => theme.media.desktop} {
+  ${media.desktop} {
     font: var(--font-title-xxl-2);
   }
 
-  ${({ theme }) => theme.media.expanded} {
+  ${media.expanded} {
     font: var(--font-title-xxl-2);
   }
 `;
 
 export const Description = styled.h2`
-  ${({ theme }) => theme.media.mobile} {
+  ${media.mobile} {
     font: var(--font-body-m);
     color: ${({ theme }) => theme.colors.typo.tertiary};
   }
 
-  ${({ theme }) => theme.media.desktop} {
+  ${media.desktop} {
     font: var(--font-body-xl);
     color: ${({ theme }) => theme.colors.typo.tertiary};
   }
 
-  ${({ theme }) => theme.media.expanded} {
+  ${media.expanded} {
     font: var(--font-body-xl);
     color: ${({ theme }) => theme.colors.typo.tertiary};
   }

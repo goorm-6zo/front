@@ -5,17 +5,17 @@ export const CardContainer = styled.div`
   display: grid;
   gap: var(--spacing-4);
 
-  ${media.mobileLayout} {
+  ${media.mobile} {
     grid-template-columns: repeat(2, 1fr);
     gap: var(--spacing-12);
   }
 
-  ${media.desktopLayout} {
+  ${media.desktop} {
     grid-template-columns: repeat(3, 1fr);
     gap: var(--spacing-28);
   }
 
-  ${media.expandedLayout} {
+  ${media.expanded} {
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   }
 `;
@@ -30,15 +30,15 @@ export const Card = styled.div`
   padding: var(--spacing-12) var(--spacing-16);
   gap: var(--spacing-4);
 
-  ${({ theme }) => theme.media.mobile} {
+  ${media.mobile} {
     height: 122px;
   }
 
-  ${({ theme }) => theme.media.desktop} {
+  ${media.desktop} {
     height: 132px;
   }
 
-  ${({ theme }) => theme.media.expanded} {
+  ${media.expanded} {
     height: 132px;
   }
 `;
@@ -50,15 +50,15 @@ export const CardHeader = styled.div`
 `;
 
 export const TotalCount = styled.div`
-  ${({ theme }) => theme.media.mobile} {
+  ${media.mobile} {
     font: var(--font-title-xs);
   }
 
-  ${({ theme }) => theme.media.desktop} {
+  ${media.desktop} {
     font: var(--font-body-l);
   }
 
-  ${({ theme }) => theme.media.expanded} {
+  ${media.expanded} {
     font: var(--font-body-l);
   }
 `;
@@ -70,15 +70,15 @@ export const EntryCount = styled.div`
   justify-content: center;
   align-items: center;
 
-  ${({ theme }) => theme.media.mobile} {
+  ${media.mobile} {
     font: var(--font-title-l);
   }
 
-  ${({ theme }) => theme.media.desktop} {
+  ${media.desktop} {
     font: var(--font-title-xl-2);
   }
 
-  ${({ theme }) => theme.media.expanded} {
+  ${media.expanded} {
     font: var(--font-title-xl-2);
   }
 `;
