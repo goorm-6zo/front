@@ -1,5 +1,5 @@
-import { Icon } from '../icon';
-import { IconName } from '../icon'; // IconName 타입을 import 해야 합니다
+import Icon from '../icon/Icon';
+import { IconName } from '../icon/types';
 import * as S from './Notify.style';
 
 interface NotifyProps {

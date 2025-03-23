@@ -1,11 +1,21 @@
 export type IconName =
+  | 'filldelete'
+  | 'filledit'
+  | 'fillsend'
+  | 'fillsuccess'
+  | 'fillwarning'
   | 'logo'
-  | 'hamburger'
-  | 'arrowdown'
-  | 'send'
-  | 'error'
-  | 'success'
-  | 'close';
+  | 'strokebottom'
+  | 'strokecheck'
+  | 'strokeclose'
+  | 'strokeedit'
+  | 'strokeface'
+  | 'strokeleft'
+  | 'strokemenu'
+  | 'strokeplus'
+  | 'strokeright'
+  | 'stroketop'
+  | 'strokewarning';
 
 export interface BaseIconProps {
   size?: number;

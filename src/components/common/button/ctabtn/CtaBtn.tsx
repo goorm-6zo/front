@@ -1,7 +1,7 @@
 import React from 'react';
 import * as S from './CtaBtn.style';
 import Icon from '../../icon/Icon';
-import { IconName } from '../../icon';
+import { IconName } from '../../icon/types';
 import { useTheme } from 'styled-components';
 
 type CtaBtnProps = Omit<

@@ -1,4 +1,4 @@
-import { Icon } from '../../../icon';
+import Icon from '../../../icon/Icon';
 import Img from '../../../img/Img';
 import * as S from './FaceDataCard.style';
 
@@ -9,7 +9,7 @@ const FaceDataCard: React.FC<FaceDataCardProps> = () => {
     <S.CardContainer>
       <S.TextContainer>
         <S.TextWrapper>내 얼굴 정보 관리하기</S.TextWrapper>
-        <Icon name="hamburger" />
+        <Icon name="strokemenu" />
       </S.TextContainer>
 
       <S.ContentsContainer>
