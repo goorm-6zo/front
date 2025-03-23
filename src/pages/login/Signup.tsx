@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import { signup } from '../../api/login/signup';
-import { Input } from '../../components/common/input/Input';
 import ResponsiveLayout from '../../components/common/layout/ResponsiveLayout';
 import * as S from './Signup.style';
 import CtaBtn from '../../components/common/button/ctabtn/CtaBtn';
