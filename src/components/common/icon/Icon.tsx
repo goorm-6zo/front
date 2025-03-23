@@ -41,7 +41,7 @@ const ICON_COMPONENTS = {
   strokewarning: IcnStrokeWarning,
 };
 
-const Icon: React.FC<IconProps> = ({ name, size, color }) => {
+const Icon: React.FC<IconProps> = ({ name, size, color, backgroundColor }) => {
   const IconComponent = ICON_COMPONENTS[name];
 
   if (!IconComponent) {
@@ -49,7 +49,13 @@ const Icon: React.FC<IconProps> = ({ name, size, color }) => {
     return null;
   }
 
-  return <IconComponent size={size} color={color} />;
+  return (
+    <IconComponent
+      size={size}
+      color={color}
+      backgroundColor={backgroundColor}
+    />
+  );
 };
 
 export default Icon;

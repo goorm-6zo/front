@@ -1,6 +1,6 @@
 import React from 'react';
 import * as S from './FloatingBtn.style';
-import { Icon } from '../../icon';
+import Icon from '../../icon/Icon';
 import { useTheme } from 'styled-components';
 
 type FloatingBtnProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
@@ -12,7 +12,7 @@ const FloatingBtn: React.FC<FloatingBtnProps> = ({ children, ...props }) => {
 
   return (
     <S.StyledButton {...props}>
-      <Icon name="send" color={theme.colors.icon.white} />
+      <Icon name="fillsend" color={theme.colors.icon.white} />
       {children}
     </S.StyledButton>
   );

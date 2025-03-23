@@ -20,6 +20,7 @@ export type IconName =
 export interface BaseIconProps {
   size?: number;
   color?: string;
+  backgroundColor?: string;
 }
 
 export interface IconProps extends BaseIconProps {

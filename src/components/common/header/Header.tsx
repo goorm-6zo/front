@@ -21,7 +21,7 @@ export const Header = () => {
     <S.HeaderContainer>
       <Icon name="logo" />
       <IcnBtn onClick={openSheet}>
-        <Icon name="hamburger" />
+        <Icon name="strokemenu" />
       </IcnBtn>
       <Sheet isOpen={isSheetOpen} onClose={closeSheet} />
     </S.HeaderContainer>

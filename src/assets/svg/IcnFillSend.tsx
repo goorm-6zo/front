@@ -3,7 +3,7 @@ import { BaseIconProps } from '../../components/common/icon/types';
 
 const IcnFillSend: React.FC<BaseIconProps> = ({
   size = 24,
-  color = '#414244',
+  color = '#ffffff',
 }) => {
   return (
     <svg
@@ -23,7 +23,7 @@ const IcnFillSend: React.FC<BaseIconProps> = ({
       </g>
       <defs>
         <clipPath id="clip0_938_1378">
-          <rect width="24" height="24" fill="transparent" />
+          <rect width="24" height="24" fill="white" />
         </clipPath>
       </defs>
     </svg>

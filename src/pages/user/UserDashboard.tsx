@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useTheme } from 'styled-components';
 import ResponsiveLayout from '../../components/common/layout/ResponsiveLayout';
 import { useAuthStore } from '../../store/useAuthStore';
 import { getMyConference } from '../../api/reserve/getMyConference';
@@ -21,6 +22,7 @@ interface ConferenceItem {
 const UserDashboard = () => {
   const navigate = useNavigate();
   const { userInfo } = useAuthStore();
+  const theme = useTheme();
 
   // Popup창을 관리하는 상태값
   const [isPopupOpen, setisPopupOpen] = useState<boolean>(false);
@@ -75,7 +77,12 @@ const UserDashboard = () => {
       <S.PageContainer>
         <S.TopContainer>
           <S.PageTitleWrapper>홈</S.PageTitleWrapper>
-          <Notify icon="error" color="var(--blue-300)" onClick={onClickPopup} />
+          <Notify
+            icon="fillwarning"
+            color={theme.colors.icon.white}
+            backgroundColor={theme.colors.icon.notice}
+            onClick={onClickPopup}
+          />
         </S.TopContainer>
 
         <S.ContentsContainer>
@@ -116,7 +123,7 @@ const UserDashboard = () => {
           {myConferenceList && myConferenceList.length > 0 ? (
             <CtaBtn
               variant="secondary"
-              icon="arrowdown"
+              icon="strokebottom"
               onClick={() => console.log('지난 행사를 더 보여주겠음')}
             >
               더보기

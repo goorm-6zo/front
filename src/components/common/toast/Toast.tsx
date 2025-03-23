@@ -1,6 +1,7 @@
 import React from 'react';
 import * as S from './Toast.style';
-import { Icon } from '../icon';
+import Icon from '../icon/Icon';
+import { useTheme } from 'styled-components';
 
 export interface ToastProps {
   state?: 'default' | 'error';
@@ -8,16 +9,28 @@ export interface ToastProps {
 }
 
 export const Toast = ({ state = 'default', children }: ToastProps) => {
+  const theme = useTheme();
+
   return (
     <>
       {state === 'error' ? (
         <S.Toast state={state}>
-          <Icon name="error" size={20} color="white" />
+          <Icon
+            name="fillwarning"
+            size={20}
+            color={theme.colors.icon.error}
+            backgroundColor={theme.colors.icon.white}
+          />
           {children}
         </S.Toast>
       ) : (
         <S.Toast state={state}>
-          <Icon name="success" size={20} color="white" />
+          <Icon
+            name="fillsuccess"
+            size={20}
+            color={theme.colors.icon.primary}
+            backgroundColor={theme.colors.icon.white}
+          />
           {children}
         </S.Toast>
       )}
