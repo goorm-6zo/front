@@ -16,8 +16,8 @@ const IcnStrokePlus: React.FC<BaseIconProps> = ({
       <path
         d="M4.28784 12H19.7122M12 4.28784V19.7122"
         stroke={color}
-        stroke-width="2"
-        stroke-linecap="round"
+        strokeWidth="2"
+        strokeLinecap="round"
         stroke-linejoin="round"
       />
     </svg>

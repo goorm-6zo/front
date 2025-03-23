@@ -16,20 +16,20 @@ const IcnStrokeMenu: React.FC<BaseIconProps> = ({
       <path
         d="M1.5 1L20.5 0.999998"
         stroke={color}
-        stroke-width="1.4"
-        stroke-linecap="round"
+        strokeWidth="1.4"
+        strokeLinecap="round"
       />
       <path
         d="M1.5 9L20.5 9"
         stroke={color}
-        stroke-width="1.4"
-        stroke-linecap="round"
+        strokeWidth="1.4"
+        strokeLinecap="round"
       />
       <path
         d="M1.5 17L20.5 17"
         stroke={color}
-        stroke-width="1.4"
-        stroke-linecap="round"
+        strokeWidth="1.4"
+        strokeLinecap="round"
       />
     </svg>
   );
