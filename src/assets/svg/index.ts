@@ -3,6 +3,7 @@ export { default as IcnFillEdit } from './IcnFillEdit';
 export { default as IcnFillSend } from './IcnFillSend';
 export { default as IcnFillSuccess } from './IcnFillSuccess';
 export { default as IcnFillWarning } from './IcnFillWarning';
+export { default as IcnLogo } from './IcnLogo';
 export { default as IcnStrokeBottom } from './IcnStrokeBottom';
 export { default as IcnStrokeCheck } from './IcnStrokeCheck';
 export { default as IcnStrokeClose } from './IcnStrokeClose';
