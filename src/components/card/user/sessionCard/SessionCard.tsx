@@ -1,6 +1,6 @@
 import * as S from './SessionCard.style';
 import Profile from '../../profile/Profile';
-import { Tag } from '../../../tag/Tag';
+import { Tag } from '../../../common/tag/Tag';
 
 type SessionCardProps = {
   title: string;

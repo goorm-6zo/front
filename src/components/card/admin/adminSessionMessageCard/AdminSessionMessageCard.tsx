@@ -1,15 +1,14 @@
-import * as S from './AdminSessionCard.style';
+import * as S from './AdminSessionMessageCard.style';
 import Profile from '../../profile/Profile';
-import Btn from '../../../button/btn/Btn';
-import { Tag } from '../../../tag/Tag.style';
+import { Tag } from '../../../common/tag/Tag';
 
-type AdminSessionCardProps = {
+type AdminSessionMessageCardProps = {
   title: string;
   name: string;
   from: string;
 };
 
-const AdminSessionCard: React.FC<AdminSessionCardProps> = ({
+const AdminSessionMessageCard: React.FC<AdminSessionMessageCardProps> = ({
   title,
   name,
   from,
@@ -27,17 +26,8 @@ const AdminSessionCard: React.FC<AdminSessionCardProps> = ({
         </S.HeaderContainer>
         <Profile name={name} from={from} />
       </S.ContentsContainer>
-
-      <S.BtnContainer>
-        <Btn variant="secondary" state="default">
-          비활성화
-        </Btn>
-        <Btn variant="primary" state="default">
-          기기연결
-        </Btn>
-      </S.BtnContainer>
     </S.CardContainer>
   );
 };
 
-export default AdminSessionCard;
+export default AdminSessionMessageCard;

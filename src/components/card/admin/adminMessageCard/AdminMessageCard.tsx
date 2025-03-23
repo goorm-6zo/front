@@ -1,14 +1,14 @@
-import * as S from './AdminSessionMessageCard.style';
+import * as S from './AdminMessageCard.style';
 import Profile from '../../profile/Profile';
-import { Tag } from '../../../tag/Tag.style';
+import { Tag } from '../../../common/tag/Tag';
 
-type AdminSessionMessageCardProps = {
+type AdminMessageCardProps = {
   title: string;
   name: string;
   from: string;
 };
 
-const AdminSessionMessageCard: React.FC<AdminSessionMessageCardProps> = ({
+const AdminMessageCard: React.FC<AdminMessageCardProps> = ({
   title,
   name,
   from,
@@ -30,4 +30,4 @@ const AdminSessionMessageCard: React.FC<AdminSessionMessageCardProps> = ({
   );
 };
 
-export default AdminSessionMessageCard;
+export default AdminMessageCard;
