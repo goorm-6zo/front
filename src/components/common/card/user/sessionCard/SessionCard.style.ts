@@ -20,6 +20,7 @@ export const HeaderContainer = styled.div`
 export const TagContainer = styled.div`
   display: flex;
   gap: var(--spacing-4);
+  overflow-x: auto;
 `;
 
 export const TitleWrapper = styled.div`

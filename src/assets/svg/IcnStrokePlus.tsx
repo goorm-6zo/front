@@ -1,9 +1,9 @@
 import React from 'react';
-import { BaseIconProps } from './types';
+import { BaseIconProps } from '../../components/common/icon/types';
 
-const HamburgerIcon: React.FC<BaseIconProps> = ({
+const IcnStrokePlus: React.FC<BaseIconProps> = ({
   size = 24,
-  color = '#000',
+  color = '#414244',
 }) => {
   return (
     <svg
@@ -11,17 +11,17 @@ const HamburgerIcon: React.FC<BaseIconProps> = ({
       width={size}
       height={size}
       viewBox="0 0 24 24"
-      color={color}
+      fill="none"
     >
       <path
-        d="M5 17H19M5 12H19M5 7H19"
+        d="M4.28784 12H19.7122M12 4.28784V19.7122"
         stroke={color}
         strokeWidth="2"
         strokeLinecap="round"
-        strokeLinejoin="round"
+        stroke-linejoin="round"
       />
     </svg>
   );
 };
 
-export default HamburgerIcon;
+export default IcnStrokePlus;

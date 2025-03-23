@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const AlertContainer = styled.div`
+export const NotifyContainer = styled.div`
   display: flex;
   padding: var(--spacing-8);
   gap: var(--spacing-8);

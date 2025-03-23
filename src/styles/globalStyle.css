@@ -12,8 +12,13 @@ body * {
   font-family: 'Pretendard-Regular';
   box-sizing: border-box;
   overflow: hidden;
+  scroll-behavior: smooth;
 }
 
+/* 터치 디바이스에서 스크롤 관성 유지 */
+.scroll-container {
+  -webkit-overflow-scrolling: touch;
+}
 .verticalwrap::-webkit-scrollbar {
   display: none;
 }

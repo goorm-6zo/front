@@ -1,5 +1,5 @@
 import * as S from './Checkbox.style';
-import { Icon } from '../icon';
+import Icon from '../icon/Icon';
 import { useEffect, useState } from 'react';
 
 export interface CheckboxProps {
@@ -42,9 +42,9 @@ export const Checkbox = ({
       <S.CheckboxLabel>
         <S.HiddenInput type="checkbox" checked={checked} onChange={onChange} />
         {checked ? (
-          <Icon name="success" color="#1466FF" size={iconSize} />
+          <Icon name="fillsuccess" color="#1466FF" size={iconSize} />
         ) : (
-          <Icon name="success" color="#DDDDDF" size={iconSize} />
+          <Icon name="fillsuccess" color="#DDDDDF" size={iconSize} />
         )}
       </S.CheckboxLabel>
       <S.CheckboxText>{label}</S.CheckboxText>

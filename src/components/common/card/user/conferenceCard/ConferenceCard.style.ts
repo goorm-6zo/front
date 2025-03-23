@@ -15,6 +15,7 @@ export const TextContainer = styled.div`
   display: flex;
   justify-content: space-between;
   flex-direction: column;
+  flex-shrink: 1;
 `;
 
 export const TitleWrapper = styled.h1`

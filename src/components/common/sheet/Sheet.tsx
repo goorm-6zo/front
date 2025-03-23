@@ -1,6 +1,7 @@
 import React from 'react';
 import IconButton from '../button/IconButton';
 import * as S from './Sheet.style';
+import Icon from '../icon/Icon';
 
 interface SheetProps {
   isOpen: boolean;
@@ -12,12 +13,17 @@ const Sheet: React.FC<SheetProps> = ({ isOpen, onClose }) => {
 
   return (
     <S.SideSheetOverlay $isOpen={isOpen}>
-      <S.SideSheetContainer onClick={(e) => e.stopPropagation()} $isOpen={isOpen}>
+      <S.SideSheetContainer
+        onClick={(e) => e.stopPropagation()}
+        $isOpen={isOpen}
+      >
         <S.CloseButtonWrapper>
-          <IconButton onClick={onClose}>X</IconButton>
+          <IconButton onClick={onClose}>
+            <Icon name="strokeclose" />
+          </IconButton>
         </S.CloseButtonWrapper>
-        <S.MenuItem>행사 일정(홈)</S.MenuItem>
-        <S.MenuItem>입장 현황</S.MenuItem>
+        <S.MenuItem>HOME</S.MenuItem>
+        <S.MenuItem>MY</S.MenuItem>
       </S.SideSheetContainer>
     </S.SideSheetOverlay>
   );

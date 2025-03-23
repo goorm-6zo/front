@@ -14,87 +14,44 @@ export const PopupOverlay = styled.div`
 `;
 
 export const PopupContent = styled.div`
-  background: white;
-  padding: 20px;
-  border-radius: 10px;
+  background: ${({ theme }) => theme.colors.background.white};
+  padding: var(--spacing-36) var(--spacing-20) var(--spacing-24)
+    var(--spacing-20);
+  border-radius: var(--radius-16);
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 300px;
+  gap: var(--spacing-24);
+  width: 282px;
 `;
 
-export const CloseButtonWrapper = styled.div`
-  position: absolute;
-  top: 10px;
-  right: 10px;
-`;
-
-export const UploadContainer = styled.div`
+export const ContentWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: var(--spacing-16);
+  justify-content: center;
   align-items: center;
-  padding: 16px;
-  background-color: #f9f9f9;
-  border-radius: 8px;
-  width: 250px;
-  border: 1px solid #ddd;
 `;
 
-export const OptionButton = styled.button`
+export const TextContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-8);
+  justify-content: center;
+  align-items: center;
+`;
+
+export const TitleWrapper = styled.div`
+  font: var(--font-body-l);
+  color: ${({ theme }) => theme.colors.typo.primary};
+`;
+export const SubtitleWrapper = styled.div`
+  font: var(--font-body-s);
+  color: ${({ theme }) => theme.colors.typo.tertiary};
+`;
+
+export const ButtonWrapper = styled.div`
   width: 100%;
-  padding: 12px;
-  border: none;
-  border-radius: 6px;
-  background-color: #007bff;
-  color: white;
-  font-size: 14px;
-  font-weight: bold;
-  cursor: pointer;
-  transition:
-    background 0.2s ease,
-    transform 0.1s ease;
-
-  &:hover {
-    background-color: #0056b3;
-  }
-
-  &:active {
-    transform: scale(0.98);
-  }
-`;
-
-export const UploadButton = styled.button`
-  margin-top: 10px;
-  padding: 10px 15px;
-  border: none;
-  background: #28a745;
-  color: white;
-  font-size: 16px;
-  cursor: pointer;
-  border-radius: 5px;
-
-  &:hover {
-    background: #218838;
-  }
-`;
-
-export const HiddenInput = styled.input`
-  display: none;
-`;
-
-export const Label = styled.label`
-  font-size: 14px;
-  color: #333;
-  margin-bottom: 8px;
-  font-weight: 500;
-`;
-
-export const PreviewImage = styled.img`
-  width: 100%;
-  max-height: 150px;
-  object-fit: cover;
-  border-radius: 6px;
-  margin-top: 10px;
-  border: 1px solid #ccc;
+  display: flex;
+  gap: var(--spacing-12);
 `;

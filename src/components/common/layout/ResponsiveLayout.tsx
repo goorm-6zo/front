@@ -1,8 +1,6 @@
 import React, { ReactNode } from 'react';
-import * as S from './ResponsiveLayout.style';
-
 import Header from '../header/Header';
-import Footer from '../footer/Footer';
+import * as S from './ResponsiveLayout.style';
 
 interface ResponsiveLayoutProps {
   hasHeader?: boolean;
@@ -21,15 +19,13 @@ const ResponsiveLayout: React.FC<ResponsiveLayoutProps> = ({
 }) => {
   return (
     <S.LayoutWrapper>
-      <S.HeaderWrapper>{hasHeader && <Header />}</S.HeaderWrapper>
-
-      <S.MainContentWrapper>
-        <S.Container>{children}</S.Container>
-      </S.MainContentWrapper>
-
-      <S.FooterWrapper>
-        <Footer />
-      </S.FooterWrapper>
+      {hasHeader && (
+        <S.HeaderWrapper>
+          <Header />
+        </S.HeaderWrapper>
+      )}
+      {hasHeader && <S.MarginTop></S.MarginTop>}
+      <S.MainContainer>{children}</S.MainContainer>
     </S.LayoutWrapper>
   );
 };

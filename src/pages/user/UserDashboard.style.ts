@@ -30,3 +30,5 @@ export const ConferenceListContainer = styled.div`
   gap: var(--spacing-12);
   font: var(--font-title-l);
 `;
+
+export const EmptyContainer = styled.div``;
