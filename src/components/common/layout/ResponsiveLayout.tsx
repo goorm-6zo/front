@@ -24,7 +24,7 @@ const ResponsiveLayout: React.FC<ResponsiveLayoutProps> = ({
           <Header />
         </S.HeaderWrapper>
       )}
-
+      {hasHeader && <S.MarginTop></S.MarginTop>}
       <S.MainContainer>{children}</S.MainContainer>
     </S.LayoutWrapper>
   );

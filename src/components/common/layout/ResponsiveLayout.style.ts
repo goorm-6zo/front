@@ -17,6 +17,10 @@ export const HeaderWrapper = styled.header`
   width: 100%;
 `;
 
+export const MarginTop = styled.header`
+  margin-top: 56px;
+`;
+
 // 반응형 컨테이너 - 요구사항에 맞는 마진과 너비를 가짐
 export const MainContainer = styled.div`
   width: 100%;
