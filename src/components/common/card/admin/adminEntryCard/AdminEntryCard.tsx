@@ -52,7 +52,7 @@ export default function AdminEntryCard() {
               <S.TotalCount>총 500명</S.TotalCount>
               <S.CornerBox>
                 <Icon
-                  name="rightArrow"
+                  name="strokeright"
                   color="#909298"
                   size={isMobile ? 20 : 24}
                 />
@@ -70,7 +70,7 @@ export default function AdminEntryCard() {
                 <S.TotalCount>총 0명</S.TotalCount>
                 <S.CornerBox>
                   <Icon
-                    name="rightArrow"
+                    name="strokeright"
                     color="#909298"
                     size={isMobile ? 20 : 24}
                   />

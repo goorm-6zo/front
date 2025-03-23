@@ -1,7 +1,6 @@
 import { useTheme } from 'styled-components';
 import Icon from '../../../icon/Icon';
 import * as S from './FaceDataCard.style';
-import { Toast } from '../../../toast/Toast';
 
 type FaceDataCardProps = {};
 
