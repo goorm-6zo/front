@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const PageContainer = styled.div`
@@ -37,4 +38,21 @@ export const ErrorMsg = styled.div`
 export const ButtonContainer = styled.div`
   display: flex;
   margin-top: var(--spacing-8);
+`;
+
+export const TextContainer = styled.span`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  padding-top: var(--spacing-4);
+`;
+
+export const TxtLabel = styled.label`
+  font: var(--font-body-s);
+  color: ${({ theme }) => theme.colors.typo.tertiary};
+`;
+
+export const StyledLink = styled(Link)`
+  text-decoration: none;
 `;
