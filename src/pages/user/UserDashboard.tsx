@@ -5,7 +5,7 @@ import ResponsiveLayout from '../../components/common/layout/ResponsiveLayout';
 import { useAuthStore } from '../../store/useAuthStore';
 import { getMyConference } from '../../api/reserve/getMyConference';
 import * as S from './UserDashboard.style';
-import ConferenceCard from '../../components/common/card/user/conferenceCard/ConferenceCard';
+import ConferenceCard from '../../components/card/user/conferenceCard/ConferenceCard';
 import Notify from '../../components/common/notify/Notify';
 import CtaBtn from '../../components/common/button/ctabtn/CtaBtn';
 import Popup from '../../components/common/popup/Popup';

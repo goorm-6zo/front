@@ -1,5 +1,5 @@
-import FaceDataCard from '../../components/common/card/user/faceDataCard/FaceDataCard';
-import PersonalDataCard from '../../components/common/card/user/personalDataCard/PersonalDataCard';
+import FaceDataCard from '../../components/card/user/faceDataCard/FaceDataCard';
+import PersonalDataCard from '../../components/card/user/personalDataCard/PersonalDataCard';
 import ResponsiveLayout from '../../components/common/layout/ResponsiveLayout';
 import * as S from './Profile.style';
 
