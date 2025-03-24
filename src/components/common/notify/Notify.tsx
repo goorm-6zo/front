@@ -1,3 +1,4 @@
+import { useTheme } from 'styled-components';
 import Icon from '../icon/Icon';
 import { IconName } from '../icon/types';
 import * as S from './Notify.style';
@@ -15,6 +16,8 @@ const Notify: React.FC<NotifyProps> = ({
   backgroundColor,
   onClick,
 }) => {
+  const theme = useTheme();
+
   return (
     <S.NotifyContainer onClick={onClick}>
       <S.TextWrapper>
@@ -26,7 +29,7 @@ const Notify: React.FC<NotifyProps> = ({
         />
         아직 얼굴 데이터가 등록되지 않았어요!
       </S.TextWrapper>
-      <Icon name="strokeright" size={16} />
+      <Icon name="strokeright" size={16} color={theme.colors.icon.secondary} />
     </S.NotifyContainer>
   );
 };
