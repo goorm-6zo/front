@@ -43,13 +43,13 @@ const Sheet: React.FC<SheetProps> = ({ isOpen, onClose }) => {
               onClick={() => navigate('/dashboard')}
               state={currentPath === '/profile' ? 'off' : 'on'}
             >
-              HOME
+              홈
             </SheetBtn>
             <SheetBtn
               state={currentPath === '/profile' ? 'on' : 'off'}
               onClick={() => navigate('/profile')}
             >
-              MY
+              나의 정보
             </SheetBtn>
           </S.ButtonWrapper>
 

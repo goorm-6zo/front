@@ -60,7 +60,7 @@ const UserDashboard = () => {
   };
 
   return (
-    <ResponsiveLayout>
+    <ResponsiveLayout hasHeaderIcon={true}>
       {isPopupOpen && (
         <Popup type="register" onContinue={onContinue} onClose={onClickPopup} />
       )}
