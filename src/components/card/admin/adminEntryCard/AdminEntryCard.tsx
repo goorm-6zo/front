@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
-import { getConferenceInfo } from '../../../../../api/reserve/getConferenceInfo';
+import { getConferenceInfo } from '../../../../api/reserve/getConferenceInfo.ts';
 import * as S from './AdminEntryCard.style.ts';
-import { Tag } from '../../../tag/Tag.tsx';
-import Icon from '../../../icon/Icon.tsx';
+import { Tag } from '../../../common/tag/Tag.tsx';
+import Icon from '../../../common/icon/Icon.tsx';
 
 interface ConferenceInfo {
   id: number;

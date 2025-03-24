@@ -1,5 +1,5 @@
 import * as S from './ReservationCard.style';
-import { Checkbox } from '../../../checkbox/Checkbox';
+import { Checkbox } from '../../../common/checkbox/Checkbox';
 type ReservationCardProps = {
   item: {
     id: number;

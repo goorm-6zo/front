@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { getConferenceInfo } from '../../../api/admin/conference/getConferenceInfo';
 import * as S from './AdminDashboard.style';
-import AdminSessionCard from '../../../components/common/card/admin/adminSessionCard/AdminSessionCard';
+import AdminSessionCard from '../../../components/card/admin/adminSessionCard/AdminSessionCard';
 import ResponsiveLayout from '../../../components/common/layout/ResponsiveLayout';
 type sessionType = {
   id: number;

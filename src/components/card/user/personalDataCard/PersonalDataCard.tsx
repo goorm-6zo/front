@@ -1,4 +1,4 @@
-import { useAuthStore } from '../../../../../store/useAuthStore';
+import { useAuthStore } from '../../../../store/useAuthStore';
 import * as S from './PersonalDataCard.style';
 
 type PersonalDataCardProps = {};
