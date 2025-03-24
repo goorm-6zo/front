@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTheme } from 'styled-components';
 import ResponsiveLayout from '../../components/common/layout/ResponsiveLayout';
-import { useAuthStore } from '../../store/useAuthStore';
 import { getMyConference } from '../../api/reserve/getMyConference';
 import * as S from './UserDashboard.style';
 import ConferenceCard from '../../components/card/user/conferenceCard/ConferenceCard';
@@ -21,7 +20,6 @@ interface ConferenceItem {
 
 const UserDashboard = () => {
   const navigate = useNavigate();
-  const { userInfo } = useAuthStore();
   const theme = useTheme();
 
   // Popup창을 관리하는 상태값
