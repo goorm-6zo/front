@@ -24,7 +24,7 @@ export default function AdminEntryCard() {
     const fetchConference = async () => {
       const response = await getConferenceInfo(1);
       if (response) {
-        setConferInfo(response);
+        setConferInfo(response.data);
       }
     };
     fetchConference();
@@ -41,7 +41,7 @@ export default function AdminEntryCard() {
     };
   }, []);
 
-  const sortedSessions = conferInfo?.sessions.sort((a, b) => a.id - b.id);
+  const sortedSessions = conferInfo?.sessions?.sort((a, b) => a.id - b.id);
 
   return (
     <>
