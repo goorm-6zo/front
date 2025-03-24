@@ -1,34 +1,22 @@
 import { useEffect, useState } from 'react';
-import { getConferenceInfo } from '../../../../../api/reserve/getConferenceInfo';
 import * as S from './AdminEntryCard.style.ts';
 import { Tag } from '../../../tag/Tag.tsx';
 import Icon from '../../../icon/Icon.tsx';
+import { ConferenceInfo } from '../../../../../pages/admin/Visitors.tsx';
+import useSSE from '../../../../../hooks/useSSE.tsx';
 
-interface ConferenceInfo {
-  id: number;
-  name: string;
-  startTime: string;
-  attend: number;
-  sessions: {
-    id: number;
-    name: string;
-    startTime: string;
-  }[];
+interface AdminEntryCardProps {
+  conferInfo: ConferenceInfo | null;
 }
 
-export default function AdminEntryCard() {
-  const [conferInfo, setConferInfo] = useState<ConferenceInfo | null>(null);
+export default function AdminEntryCard({ conferInfo }: AdminEntryCardProps) {
   const [isMobile, setIsMobile] = useState<boolean>(false);
+  const entryCounts = useSSE(
+    conferInfo?.id ?? 0,
+    conferInfo?.sessions.map((session) => session.id) ?? [],
+  );
 
   useEffect(() => {
-    const fetchConference = async () => {
-      const response = await getConferenceInfo(1);
-      if (response) {
-        setConferInfo(response.data);
-      }
-    };
-    fetchConference();
-
     const checkMobile = () => {
       setIsMobile(window.innerWidth <= 768);
     };
@@ -41,7 +29,7 @@ export default function AdminEntryCard() {
     };
   }, []);
 
-  const sortedSessions = conferInfo?.sessions?.sort((a, b) => a.id - b.id);
+  const sortedSessions = conferInfo?.sessions.sort((a, b) => a.id - b.id);
 
   return (
     <>
@@ -49,7 +37,7 @@ export default function AdminEntryCard() {
         <S.CardContainer>
           <S.Card>
             <S.CardHeader>
-              <S.TotalCount>총 500명</S.TotalCount>
+              <S.TotalCount>총 {conferInfo.capacity}명</S.TotalCount>
               <S.CornerBox>
                 <Icon
                   name="strokeright"
@@ -58,16 +46,14 @@ export default function AdminEntryCard() {
                 />
               </S.CornerBox>
             </S.CardHeader>
-            <S.EntryCount>
-              {conferInfo.attend ? conferInfo.attend : 0}명 입장
-            </S.EntryCount>
+            <S.EntryCount>{entryCounts.conferenceAttend}명 입장</S.EntryCount>
             <Tag isEntryStatus={true}>{conferInfo.name}</Tag>
           </S.Card>
 
           {sortedSessions?.map((session) => (
             <S.Card key={session.id}>
               <S.CardHeader>
-                <S.TotalCount>총 0명</S.TotalCount>
+                <S.TotalCount>총 {session.capacity}명</S.TotalCount>
                 <S.CornerBox>
                   <Icon
                     name="strokeright"
@@ -76,13 +62,15 @@ export default function AdminEntryCard() {
                   />
                 </S.CornerBox>
               </S.CardHeader>
-              <S.EntryCount>0명 입장</S.EntryCount>
+              <S.EntryCount>
+                {entryCounts.sessions[session.id]}명 입장
+              </S.EntryCount>
               <Tag isEntryStatus={true}>{session.name}</Tag>
             </S.Card>
           ))}
         </S.CardContainer>
       ) : (
-        <div>없음</div>
+        <div>컨퍼런스가 없음!</div>
       )}
     </>
   );
