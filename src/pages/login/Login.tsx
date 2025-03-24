@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Input } from '../../components/common/input/Input.tsx';
 import ResponsiveLayout from '../../components/common/layout/ResponsiveLayout.tsx';
 import * as S from './Login.style.ts';
-import { getUserData, loginUser } from '../../api/login/login.ts';
+import { loginUser } from '../../api/login/login.ts';
 import { useNavigate } from 'react-router-dom';
 import { useAuthStore } from '../../store/useAuthStore.ts';
 import CtaBtn from '../../components/common/button/ctabtn/CtaBtn.tsx';
