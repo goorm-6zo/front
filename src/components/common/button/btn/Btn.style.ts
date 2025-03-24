@@ -1,11 +1,11 @@
 import styled from 'styled-components';
 
-interface ButtonProps {
-  variant: 'primary' | 'secondary' | 'tertiary';
+interface StyledButtonProps {
+  variant: 'primary' | 'secondary' | 'tertiary' | 'quaternary';
   state: 'default' | 'disabled';
 }
 
-export const StyledButton = styled.button<ButtonProps>`
+export const StyledButton = styled.button<StyledButtonProps>`
   flex: 1;
   display: flex;
   align-items: center;
@@ -15,6 +15,7 @@ export const StyledButton = styled.button<ButtonProps>`
   border-radius: var(--radius-8);
 
   height: fit-content;
+  width: 89px;
 
   ${({ theme, variant }) => {
     switch (variant) {
@@ -47,12 +48,21 @@ export const StyledButton = styled.button<ButtonProps>`
         `;
       case 'tertiary':
         return `
+          color: ${theme.colors.typo.true};
+          background-color: ${theme.colors.background.white};
+          border: 1px solid ${theme.colors.border.tertiary};
+
+          &:active {
+            background-color: ${theme.colors.background.weak};
+          }
+        `;
+      case 'quaternary':
+        return `
           font: var(--font-body-s);
           color: ${theme.colors.typo.tertiary};
           width: 132px;
           padding: var(--spacing-16) var(--spacing-0);
           background-color: transparent;
-          color: ${theme.colors.typo.tertiary};
           border-radius: 0px;
           border: none;
 
@@ -63,5 +73,5 @@ export const StyledButton = styled.button<ButtonProps>`
       default:
         return '';
     }
-  }}
+  }};
 `;
