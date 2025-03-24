@@ -1,5 +1,5 @@
 import * as S from './ConferenceCard.style';
-import Img from '../../../img/Img';
+import Img from '../../../common/img/Img';
 import React from 'react';
 
 type ConferenceCardProps = {
