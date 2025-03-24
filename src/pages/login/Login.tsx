@@ -20,8 +20,7 @@ export default function Login() {
 
     const response = await loginUser({ email, password });
     if (response) {
-      const userData = await getUserData();
-      setUserInfo(userData);
+      setUserInfo(response);
       console.log('로그인 성공');
       navigate(response.role === 'USER' ? '/dashboard' : '/admin/dashboard');
     } else {
