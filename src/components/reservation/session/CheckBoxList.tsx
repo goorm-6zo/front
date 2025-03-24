@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import * as S from './CheckBoxList.style';
-import ReservationCard from '../../common/card/user/reservationCard/ReservationCard';
+import ReservationCard from '../../card/user/reservationCard/ReservationCard';
 type CheckBoxItem = {
   id: number;
   summary: string;
