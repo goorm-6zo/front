@@ -2,7 +2,7 @@ import React from 'react';
 import * as S from './Btn.style';
 
 type BtnProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
-  variant?: 'primary' | 'secondary' | 'tertiary';
+  variant?: 'primary' | 'secondary' | 'tertiary' | 'quaternary';
   state?: 'default' | 'disabled';
   children: React.ReactNode;
 };
