@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { media } from '../../../../../styles/breakpoints';
+import { media } from '../../../../styles/breakpoints';
 
 export const CardContainer = styled.div`
   display: grid;

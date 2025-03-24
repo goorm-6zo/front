@@ -17,13 +17,16 @@ const Notify: React.FC<NotifyProps> = ({
 }) => {
   return (
     <S.NotifyContainer onClick={onClick}>
-      <Icon
-        size={24}
-        name={icon}
-        color={color}
-        backgroundColor={backgroundColor}
-      />
-      <S.TextWrapper>아직 얼굴 데이터가 등록되지 않았어요!</S.TextWrapper>
+      <S.TextWrapper>
+        <Icon
+          size={24}
+          name={icon}
+          color={color}
+          backgroundColor={backgroundColor}
+        />
+        아직 얼굴 데이터가 등록되지 않았어요!
+      </S.TextWrapper>
+      <Icon name="strokeright" size={16} />
     </S.NotifyContainer>
   );
 };

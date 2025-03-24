@@ -2,8 +2,8 @@ import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { getMySession } from '../../api/reserve/getMySession';
 import ResponsiveLayout from '../../components/common/layout/ResponsiveLayout';
-import ConferenceCard from '../../components/common/card/user/conferenceCard/ConferenceCard';
-import SessionCard from '../../components/common/card/user/sessionCard/SessionCard';
+import ConferenceCard from '../../components/card/user/conferenceCard/ConferenceCard';
+import SessionCard from '../../components/card/user/sessionCard/SessionCard';
 import * as S from './UserDashboard.style';
 
 // 컨퍼런스 정보를 위한 인터페이스

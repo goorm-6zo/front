@@ -11,7 +11,7 @@ const FaceDataCard: React.FC<FaceDataCardProps> = () => {
     <S.CardContainer>
       <S.TextContainer>
         <S.TextWrapper>내 얼굴 정보 관리하기</S.TextWrapper>
-        <Icon name="strokeright" size={20} color={theme.colors.icon.primary} />
+        <Icon name="strokeplus" size={20} color={theme.colors.icon.primary} />
       </S.TextContainer>
 
       <S.ContentsContainer>
