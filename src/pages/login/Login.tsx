@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Input } from '../../components/common/input/Input.tsx';
 import ResponsiveLayout from '../../components/common/layout/ResponsiveLayout.tsx';
 import * as S from './Login.style.ts';
-import { getUserData, loginUser } from '../../api/login/login.ts';
+import { loginUser } from '../../api/login/login.ts';
 import { useNavigate } from 'react-router-dom';
 import { useAuthStore } from '../../store/useAuthStore.ts';
 import CtaBtn from '../../components/common/button/ctabtn/CtaBtn.tsx';
@@ -20,8 +20,7 @@ export default function Login() {
 
     const response = await loginUser({ email, password });
     if (response) {
-      const userData = await getUserData();
-      setUserInfo(userData);
+      setUserInfo(response);
       console.log('로그인 성공');
       navigate(response.role === 'USER' ? '/dashboard' : '/admin/dashboard');
     } else {
