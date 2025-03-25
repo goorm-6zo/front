@@ -31,4 +31,12 @@ export const ConferenceListContainer = styled.div`
   font: var(--font-title-l);
 `;
 
-export const EmptyContainer = styled.div``;
+export const EmptyContainer = styled.div`
+  width: 100%;
+  height: 124px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font: var(--font-body-m);
+  color: ${({ theme }) => theme.colors.typo.disabled};
+`;
