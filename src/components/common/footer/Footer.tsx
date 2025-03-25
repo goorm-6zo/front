@@ -6,7 +6,11 @@ interface FooterProps {
 }
 
 const Footer: React.FC<FooterProps> = ({ children }) => {
-  return <S.FooterContainer>{children}</S.FooterContainer>;
+  return (
+    <S.FooterContainer>
+      <S.FooterWrapper>{children}</S.FooterWrapper>
+    </S.FooterContainer>
+  );
 };
 
 export default Footer;

@@ -21,3 +21,16 @@ export const FooterContainer = styled.footer`
     padding: var(--spacing-16) var(--spacing-80) 52px var(--spacing-80);
   }
 `;
+
+export const FooterWrapper = styled.footer`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  ${media.mobile} {
+  }
+  ${media.desktop} {
+    max-width: 616px;
+  }
+`;
