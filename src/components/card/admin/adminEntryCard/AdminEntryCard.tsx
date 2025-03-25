@@ -19,7 +19,6 @@ export default function AdminEntryCard({ conferInfo }: AdminEntryCardProps) {
   const navigate = useNavigate();
 
   const handleNavigate = () => {
-    console.log('Navigating to /admin/visitor-status');
     navigate('/admin/visitor-status');
   };
 
