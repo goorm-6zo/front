@@ -1,14 +1,29 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import * as faceapi from 'face-api.js';
 import { useFaceDetection } from '../../hooks/useFaceDetection';
 import * as S from './FaceRecognition.style';
 import Webcam from 'react-webcam';
 import { faceAuthentication } from '../../api/face/faceAuthentication';
+import { Toast } from '../../components/common/toast/Toast';
 const FACE_RECOGNITION_THRESHOLD = 0.6;
+
+const faceMsg: Record<ToastState, { msg: string }> = {
+  default: {
+    msg: '정면을 바라봐 주세요.',
+  },
+  success: {
+    msg: '인증되었습니다.',
+  },
+  error: {
+    msg: '얼굴인식을 실패 했습니다.',
+  },
+};
+type ToastState = 'default' | 'success' | 'error';
 
 const FaceRecognition = () => {
   const capturedFaceDes = useRef<Float32Array | null>(null);
   const webcamRef = useRef<Webcam | null>(null);
+  const [faceState, setFaceState] = useState<ToastState>('default');
   // const [videoConstraints, _setVideoConstraints] = useState({
   //   width: window.innerWidth,
   //   height: window.innerHeight,
@@ -52,14 +67,21 @@ const FaceRecognition = () => {
 
       try {
         const result = await faceAuthentication(1, 1, capturedImage);
-        console.log('인증 결과:', result);
+        console.log('인증 결과:', result.status);
+        if (result.status) {
+          setFaceState('success');
+        }
       } catch (err) {
         console.error('얼굴 인증 오류:', err);
+        setFaceState('error');
       }
     };
 
     authenticateFace();
   }, [capturedImage]);
+  useEffect(() => {
+    if (!isFaceInside) setFaceState('default');
+  }, [isFaceInside]);
 
   return (
     <S.FaceDetectionContainer>
@@ -76,12 +98,18 @@ const FaceRecognition = () => {
             objectFit: 'cover',
           }}
         />
+
         {isVideoLoaded && (
           <S.Box
             $boxWidth={230}
             $boxHeight={230}
             $isFaceInside={isFaceInside}
           ></S.Box>
+        )}
+        {isVideoLoaded && (
+          <S.ToastBox>
+            <Toast state={faceState}>{faceMsg[faceState].msg}</Toast>
+          </S.ToastBox>
         )}
       </S.VideoBox>
       <h2 style={{ color: isFaceInside ? 'green' : 'red' }}>
