@@ -29,6 +29,7 @@ export const Card = styled.div`
   border-radius: var(--spacing-12);
   padding: var(--spacing-12) var(--spacing-16);
   gap: var(--spacing-4);
+  user-select: none;
 
   ${media.mobile} {
     height: 122px;
