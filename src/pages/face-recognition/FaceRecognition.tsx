@@ -9,6 +9,11 @@ const FACE_RECOGNITION_THRESHOLD = 0.6;
 const FaceRecognition = () => {
   const capturedFaceDes = useRef<Float32Array | null>(null);
   const webcamRef = useRef<Webcam | null>(null);
+  // const [videoConstraints, _setVideoConstraints] = useState({
+  //   width: window.innerWidth,
+  //   height: window.innerHeight,
+  //   facingMode: 'user',
+  // });
 
   const handleFaceDetected = (
     captureImage: () => void,
@@ -44,15 +49,8 @@ const FaceRecognition = () => {
       if (!capturedImage) return;
 
       console.log('이미지 캠쳐:', capturedImage);
-      // console.log('이미지 캡처됨, 얼굴 인증 시작');
 
       try {
-        // const data = {
-        //   conferenceId: 1,
-        //   sessionId: 1,
-        //   faceImage: capturedImage,
-        // };
-
         const result = await faceAuthentication(1, 1, capturedImage);
         console.log('인증 결과:', result);
       } catch (err) {
@@ -68,11 +66,15 @@ const FaceRecognition = () => {
       {isLoading && <div>Loading...</div>}
       <S.VideoBox>
         <Webcam
-          audio={false}
           ref={webcamRef}
+          audio={false}
+          mirrored
           screenshotFormat="image/jpeg"
-          mirrored={true}
-          style={{ width: '100vw', height: '100vh', objectFit: 'cover' }}
+          style={{
+            width: '100vw',
+            height: '100vh',
+            objectFit: 'cover',
+          }}
         />
         {isVideoLoaded && (
           <S.Box
