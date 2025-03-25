@@ -38,4 +38,5 @@ export const InputBox = styled.div`
 export const BtnWrapper = styled.div`
   margin-top: auto;
   padding-bottom: 20px;
+  display: flex;
 `;
