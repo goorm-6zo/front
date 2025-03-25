@@ -3,7 +3,6 @@ import ResponsiveLayout from '../../components/common/layout/ResponsiveLayout';
 import { useState, useEffect, useCallback } from 'react';
 
 import { createReservation } from '../../api/reserve/createReservation';
-import { getConferenceInfo } from '../../api/reserve/getConferenceInfo';
 
 import { useNavigate } from 'react-router-dom';
 
@@ -11,6 +10,7 @@ import { useNavigate } from 'react-router-dom';
 import { Input } from '../../components/common/input/Input';
 import CheckBoxList from '../../components/reservation/session/CheckBoxList';
 import CtaBtn from '../../components/common/button/ctabtn/CtaBtn';
+import { getConferenceInfo } from '../../api/admin/conference/getConferenceInfo';
 type CheckBoxItem = {
   id: number;
   summary: string;

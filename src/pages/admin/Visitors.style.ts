@@ -39,3 +39,10 @@ export const Description = styled.h2`
     color: ${({ theme }) => theme.colors.typo.tertiary};
   }
 `;
+
+export const FloatingBtnContainer = styled.div`
+  position: fixed;
+  right: var(--spacing-20);
+  bottom: var(--spacing-44);
+  z-index: 1000;
+`;
