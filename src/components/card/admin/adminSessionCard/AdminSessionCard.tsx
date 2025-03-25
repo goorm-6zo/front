@@ -2,27 +2,39 @@ import * as S from './AdminSessionCard.style';
 import Profile from '../../profile/Profile';
 import Btn from '../../../common/button/btn/Btn';
 import { Tag } from '../../../common/tag/Tag';
-
+import Icon from '../../../common/icon/Icon';
+import { useNavigate } from 'react-router-dom';
 type AdminSessionCardProps = {
   title: string;
   name: string;
   from: string;
+  id: number;
 };
 
 const AdminSessionCard: React.FC<AdminSessionCardProps> = ({
   title,
   name,
   from,
+  id,
 }) => {
+  const navigate = useNavigate();
   return (
     <S.CardContainer>
       <S.ContentsContainer>
         <S.HeaderContainer>
-          <S.TagContainer>
-            <Tag variant="primary">구역 A</Tag>
-            <Tag variant="secondary">시간</Tag>
-            <Tag variant="secondary">장소</Tag>
-          </S.TagContainer>
+          <S.TopContainer>
+            <S.TagContainer>
+              <Tag variant="secondary">시간</Tag>
+              <Tag variant="secondary">장소</Tag>
+            </S.TagContainer>
+            <S.DetailBtn
+              onClick={() => {
+                navigate(`/admin/conference-info/${id}`);
+              }}
+            >
+              <Icon name="strokeright" color="#909298" size={20} />
+            </S.DetailBtn>
+          </S.TopContainer>
           <S.TitleWrapper>{title}</S.TitleWrapper>
         </S.HeaderContainer>
         <Profile name={name} from={from} />
