@@ -4,6 +4,7 @@ import * as S from './ResponsiveLayout.style';
 
 interface ResponsiveLayoutProps {
   hasHeader?: boolean;
+  hasHeaderIcon?: boolean;
   children: ReactNode;
 }
 
@@ -15,13 +16,14 @@ interface ResponsiveLayoutProps {
  */
 const ResponsiveLayout: React.FC<ResponsiveLayoutProps> = ({
   hasHeader = true,
+  hasHeaderIcon = false,
   children,
 }) => {
   return (
     <S.LayoutWrapper>
       {hasHeader && (
         <S.HeaderWrapper>
-          <Header />
+          {hasHeaderIcon ? <Header icon={true} /> : <Header />}
         </S.HeaderWrapper>
       )}
       {hasHeader && <S.MarginTop></S.MarginTop>}

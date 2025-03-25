@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 import * as S from './AdminEntryCard.style.ts';
-import { Tag } from '../../../tag/Tag.tsx';
-import Icon from '../../../icon/Icon.tsx';
-import useSSE from '../../../../../hooks/useSSE.ts';
-import { ConferenceInfo } from '../../../../../hooks/useConferenceData.ts';
+import { Tag } from '../../../common/tag/Tag.tsx';
+import Icon from '../../../common/icon/Icon.tsx';
+import { ConferenceInfo } from '../../../../hooks/useConferenceData.ts';
+import useSSE from '../../../../hooks/useSSE.ts';
 
 interface AdminEntryCardProps {
   conferInfo: ConferenceInfo | null;

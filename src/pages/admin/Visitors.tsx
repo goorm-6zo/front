@@ -1,4 +1,4 @@
-import AdminEntryCard from '../../components/common/card/admin/adminEntryCard/AdminEntryCard';
+import AdminEntryCard from '../../components/card/admin/adminEntryCard/AdminEntryCard.tsx';
 import ResponsiveLayout from '../../components/common/layout/ResponsiveLayout';
 import * as S from './Visitors.style.ts';
 import useConferenceData from '../../hooks/useConferenceData.ts';

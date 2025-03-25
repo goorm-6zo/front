@@ -6,7 +6,7 @@ export const SideSheetOverlay = styled.div<{ $isOpen: boolean }>`
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: rgba(0, 0, 0, 0.5);
+  background: ${({ theme }) => theme.colors.background.opacityBlack};
   display: ${({ $isOpen }) => ($isOpen ? 'block' : 'none')};
   z-index: 1;
 `;
@@ -15,20 +15,35 @@ export const SideSheetContainer = styled.div<{ $isOpen: boolean }>`
   position: fixed;
   top: 0;
   right: ${({ $isOpen }) => ($isOpen ? '0' : '-250px')};
-  width: 250px;
+  width: 264px;
   height: 100vh;
   background: white;
   transition: right 0.3s ease;
-  padding: 20px;
   display: flex;
+  align-items: flex-end;
+  gap: 125px;
   flex-direction: column;
   z-index: 2;
+  height: 100%;
 `;
 
 export const CloseButtonWrapper = styled.div`
-  position: absolute;
-  top: 10px;
-  right: 10px;
+  padding: var(--spacing-16);
+  position: relative;
+`;
+
+export const ContentsWrapper = styled.div`
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  height: 70%;
+  position: relative;
+  justify-content: space-between;
+`;
+
+export const ButtonWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
 `;
 
 export const MenuItem = styled.div`
@@ -42,4 +57,8 @@ export const MenuItem = styled.div`
   &:hover {
     color: #007bff;
   }
+`;
+
+export const BottomButtonWrapper = styled.div`
+  display: flex;
 `;
