@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { media } from '../../../../styles/breakpoints';
 
 export const StyledButton = styled.button`
   display: inline-flex;
@@ -13,9 +14,20 @@ export const StyledButton = styled.button`
   border-radius: var(--radius-9999);
   width: fit-content;
   height: fit-content;
+  cursor: pointer;
 
   &:active {
     background-color: ${({ theme }) => theme.colors.background.primaryPressed};
     color: ${({ theme }) => theme.colors.typo.weak};
+  }
+
+  ${media.mobile} {
+    padding: var(--spacing-16) var(--spacing-24);
+  }
+  ${media.desktop} {
+    padding: var(--spacing-20) var(--spacing-28);
+  }
+  ${media.expanded} {
+    padding: var(--spacing-20) var(--spacing-28);
   }
 `;
