@@ -2,8 +2,8 @@ import { useEffect, useState } from 'react';
 import * as S from './AdminEntryCard.style.ts';
 import { Tag } from '../../../tag/Tag.tsx';
 import Icon from '../../../icon/Icon.tsx';
-import { ConferenceInfo } from '../../../../../pages/admin/Visitors.tsx';
-import useSSE from '../../../../../hooks/useSSE.tsx';
+import useSSE from '../../../../../hooks/useSSE.ts';
+import { ConferenceInfo } from '../../../../../hooks/useConferenceData.ts';
 
 interface AdminEntryCardProps {
   conferInfo: ConferenceInfo | null;
@@ -63,7 +63,7 @@ export default function AdminEntryCard({ conferInfo }: AdminEntryCardProps) {
                 </S.CornerBox>
               </S.CardHeader>
               <S.EntryCount>
-                {entryCounts.sessions[session.id]}명 입장
+                {entryCounts.sessions[session.id] ?? 0}명 입장
               </S.EntryCount>
               <Tag isEntryStatus={true}>{session.name}</Tag>
             </S.Card>
