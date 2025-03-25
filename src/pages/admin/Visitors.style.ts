@@ -45,4 +45,12 @@ export const FloatingBtnContainer = styled.div`
   right: var(--spacing-20);
   bottom: var(--spacing-44);
   z-index: 1000;
+
+  ${media.desktop} {
+    right: var(--spacing-80);
+  }
+
+  ${media.expanded} {
+    right: calc(var(--spacing-80) * 2);
+  }
 `;
