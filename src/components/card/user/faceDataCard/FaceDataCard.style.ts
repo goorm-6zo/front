@@ -1,5 +1,9 @@
 import styled from 'styled-components';
 
+type FaceDataCardProps = {
+  isFaceExist: boolean;
+};
+
 export const CardContainer = styled.button`
   width: 100%;
   display: flex;
@@ -33,13 +37,27 @@ export const ContentsContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: var(--spacing-12);
+  gap: var(--spacing-20);
   height: 168px;
 `;
 
-export const ContentsTextWrapper = styled.div`
+export const MainContentsContainer = styled.div`
   display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: var(--spacing-12);
+`;
 
+export const ContentsTextWrapper = styled.div<FaceDataCardProps>`
+  display: flex;
+  font: var(--font-body-l);
+  color: ${({ isFaceExist, theme }) =>
+    isFaceExist ? theme.colors.typo.primary : theme.colors.typo.tertiary};
+`;
+
+export const TxtBtnWrapper = styled.div`
+  display: flex;
   font: var(--font-body-l);
   color: ${({ theme }) => theme.colors.typo.tertiary};
 `;
