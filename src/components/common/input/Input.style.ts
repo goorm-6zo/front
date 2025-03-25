@@ -7,9 +7,13 @@ export const StyledInputContainer = styled.div<InputProps>`
   padding: var(--spacing-0) var(--spacing-12);
 `;
 
-export const StyledInputTitle = styled.div`
+export const StyledInputTitle = styled.div<InputProps>`
   font: var(--font-title-l);
   margin-bottom: var(--spacing-2);
+  color: ${({ state, theme }) =>
+    state === 'disabled'
+      ? theme.colors.typo.secondary
+      : theme.colors.typo.primary};
 `;
 
 export const StyledInput = styled.input<InputProps>`
@@ -17,6 +21,7 @@ export const StyledInput = styled.input<InputProps>`
   border: none;
   outline: none;
   padding: var(--spacing-16) var(--spacing-4);
+  background-color: transparent;
   &:focus {
     border-bottom: 1px solid
       ${({ theme }) => theme.colors.border.primaryPressed};
