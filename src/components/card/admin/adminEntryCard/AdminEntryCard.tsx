@@ -18,8 +18,13 @@ export default function AdminEntryCard({ conferInfo }: AdminEntryCardProps) {
   );
   const navigate = useNavigate();
 
-  const handleNavigate = () => {
-    navigate('/admin/visitor-status');
+  const handleNavigate = (conferenceId: number, sessionId?: number) => {
+    navigate('/admin/visitor-status', {
+      state: {
+        conferenceId,
+        sessionId,
+      },
+    });
   };
 
   useEffect(() => {
@@ -44,7 +49,7 @@ export default function AdminEntryCard({ conferInfo }: AdminEntryCardProps) {
           <S.Card>
             <S.CardHeader>
               <S.TotalCount>총 {conferInfo.capacity}명</S.TotalCount>
-              <S.CornerBox onClick={handleNavigate}>
+              <S.CornerBox onClick={() => handleNavigate(conferInfo.id)}>
                 <Icon
                   name="strokeright"
                   color="#909298"
@@ -60,7 +65,9 @@ export default function AdminEntryCard({ conferInfo }: AdminEntryCardProps) {
             <S.Card key={session.id}>
               <S.CardHeader>
                 <S.TotalCount>총 {session.capacity}명</S.TotalCount>
-                <S.CornerBox onClick={handleNavigate}>
+                <S.CornerBox
+                  onClick={() => handleNavigate(conferInfo.id, session.id)}
+                >
                   <Icon
                     name="strokeright"
                     color="#909298"
