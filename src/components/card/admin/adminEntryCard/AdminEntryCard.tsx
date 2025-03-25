@@ -4,6 +4,7 @@ import { Tag } from '../../../common/tag/Tag.tsx';
 import Icon from '../../../common/icon/Icon.tsx';
 import { ConferenceInfo } from '../../../../hooks/useConferenceData.ts';
 import useSSE from '../../../../hooks/useSSE.ts';
+import { useNavigate } from 'react-router-dom';
 
 interface AdminEntryCardProps {
   conferInfo: ConferenceInfo | null;
@@ -15,6 +16,12 @@ export default function AdminEntryCard({ conferInfo }: AdminEntryCardProps) {
     conferInfo?.id ?? 0,
     conferInfo?.sessions.map((session) => session.id) ?? [],
   );
+  const navigate = useNavigate();
+
+  const handleNavigate = () => {
+    console.log('Navigating to /admin/visitor-status');
+    navigate('/admin/visitor-status');
+  };
 
   useEffect(() => {
     const checkMobile = () => {
@@ -38,7 +45,7 @@ export default function AdminEntryCard({ conferInfo }: AdminEntryCardProps) {
           <S.Card>
             <S.CardHeader>
               <S.TotalCount>총 {conferInfo.capacity}명</S.TotalCount>
-              <S.CornerBox>
+              <S.CornerBox onClick={handleNavigate}>
                 <Icon
                   name="strokeright"
                   color="#909298"
@@ -54,7 +61,7 @@ export default function AdminEntryCard({ conferInfo }: AdminEntryCardProps) {
             <S.Card key={session.id}>
               <S.CardHeader>
                 <S.TotalCount>총 {session.capacity}명</S.TotalCount>
-                <S.CornerBox>
+                <S.CornerBox onClick={handleNavigate}>
                   <Icon
                     name="strokeright"
                     color="#909298"
