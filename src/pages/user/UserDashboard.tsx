@@ -63,7 +63,9 @@ const UserDashboard = () => {
 
   return (
     <ResponsiveLayout>
-      {isPopupOpen && <Popup onContinue={onContinue} onClose={onClickPopup} />}
+      {isPopupOpen && (
+        <Popup type="register" onContinue={onContinue} onClose={onClickPopup} />
+      )}
       <div>
         메인
         <div>유저 정보</div>
