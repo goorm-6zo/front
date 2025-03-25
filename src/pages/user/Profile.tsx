@@ -5,7 +5,7 @@ import * as S from './Profile.style';
 
 const Profile = () => {
   return (
-    <ResponsiveLayout>
+    <ResponsiveLayout hasHeaderIcon={true}>
       <S.PageContainer>
         <S.TopContainer>
           <S.PageTitleWrapper>나의 정보</S.PageTitleWrapper>
