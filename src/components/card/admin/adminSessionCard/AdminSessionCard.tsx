@@ -6,9 +6,11 @@ import Icon from '../../../common/icon/Icon';
 import { useNavigate } from 'react-router-dom';
 type AdminSessionCardProps = {
   title: string;
-  name: string;
-  from: string;
+  name: string | null;
+  from: string | null;
   id: number;
+  date: string;
+  location: string;
 };
 
 const AdminSessionCard: React.FC<AdminSessionCardProps> = ({
@@ -16,6 +18,8 @@ const AdminSessionCard: React.FC<AdminSessionCardProps> = ({
   name,
   from,
   id,
+  location,
+  date,
 }) => {
   const navigate = useNavigate();
   return (
@@ -24,8 +28,8 @@ const AdminSessionCard: React.FC<AdminSessionCardProps> = ({
         <S.HeaderContainer>
           <S.TopContainer>
             <S.TagContainer>
-              <Tag variant="secondary">시간</Tag>
-              <Tag variant="secondary">장소</Tag>
+              <Tag variant="tertiary">{date}</Tag>
+              <Tag variant="tertiary">{location}</Tag>
             </S.TagContainer>
             <S.DetailBtn
               onClick={() => {

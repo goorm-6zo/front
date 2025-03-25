@@ -1,8 +1,8 @@
 import * as S from './Profile.style';
 
 type ProfileProps = {
-  name: string;
-  from: string;
+  name: string | null;
+  from: string | null;
 };
 
 const Profile: React.FC<ProfileProps> = ({ name, from }) => {

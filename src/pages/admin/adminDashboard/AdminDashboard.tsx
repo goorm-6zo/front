@@ -3,7 +3,7 @@ import { getConferenceInfo } from '../../../api/admin/conference/getConferenceIn
 import * as S from './AdminDashboard.style';
 import AdminSessionCard from '../../../components/card/admin/adminSessionCard/AdminSessionCard';
 import ResponsiveLayout from '../../../components/common/layout/ResponsiveLayout';
-
+import { formatTimeRange } from '../../../utils/time/timeFormat';
 type sessionType = {
   id: number;
   name: string;
@@ -13,6 +13,7 @@ type sessionType = {
   capacity: number;
   hasSessions: boolean;
   endTime: string;
+  startTime: string;
   conferenceId: number;
   speakerImage: string | null;
   speakerName: string | null;
@@ -44,14 +45,27 @@ const AdminDashboard = () => {
       </S.TitleBox>
       <S.DataBox>
         {confDatas &&
-          confDatas.map((data) => (
-            <AdminSessionCard
-              title="제목"
-              name="이름"
-              from="from"
-              id={data.id}
-            />
-          ))}
+          confDatas.map((data) => {
+            const {
+              id,
+              name,
+              endTime,
+              startTime,
+              speakerName,
+              speakerOrganization,
+              location,
+            } = data;
+            return (
+              <AdminSessionCard
+                title={name}
+                date={formatTimeRange(startTime, endTime)}
+                name={speakerName}
+                from={speakerOrganization}
+                id={id}
+                location={location}
+              />
+            );
+          })}
       </S.DataBox>
     </ResponsiveLayout>
   );
