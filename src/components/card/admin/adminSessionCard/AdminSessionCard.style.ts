@@ -24,9 +24,21 @@ export const HeaderContainer = styled.div`
   gap: var(--spacing-8);
 `;
 
+export const TopContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
 export const TagContainer = styled.div`
   display: flex;
   gap: var(--spacing-4);
+`;
+export const DetailBtn = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background-color: transparent;
+  padding: 0;
 `;
 
 export const TitleWrapper = styled.div`

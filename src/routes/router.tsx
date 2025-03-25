@@ -6,7 +6,7 @@ import ReservationComplete from '../pages/reserve/ReservationComplete';
 import SignUp from '../pages/login/Signup';
 import UserDashboard from '../pages/user/UserDashboard';
 import AdminDashboard from '../pages/admin/adminDashboard/AdminDashboard';
-import ConferenceEdit from '../pages/admin/ConferenceEdit';
+import AdminConferenceInfo from '../pages/admin/AdminConferenceInfo';
 import DeviceConnect from '../pages/admin/DeviceConnect';
 import Visitors from '../pages/admin/Visitors';
 import VisitorStatus from '../pages/admin/VisitorStatus';
@@ -46,7 +46,7 @@ const router = createBrowserRouter([
     element: <PrivateRoute role="ADMIN" />,
     children: [
       { path: 'dashboard', element: <AdminDashboard /> },
-      { path: 'conference-edit', element: <ConferenceEdit /> },
+      { path: 'conference-info/:id', element: <AdminConferenceInfo /> },
       { path: 'device-connect', element: <DeviceConnect /> },
       { path: 'visitors', element: <Visitors /> },
       { path: 'visitor-status', element: <VisitorStatus /> },
