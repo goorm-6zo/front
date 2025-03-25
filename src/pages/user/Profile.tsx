@@ -11,7 +11,7 @@ const Profile = () => {
           <S.PageTitleWrapper>나의 정보</S.PageTitleWrapper>
         </S.TopContainer>
         <PersonalDataCard />
-        <FaceDataCard />
+        <FaceDataCard isFaceExist={true} />
       </S.PageContainer>
     </ResponsiveLayout>
   );
