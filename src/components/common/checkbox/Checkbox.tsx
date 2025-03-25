@@ -1,5 +1,6 @@
 import * as S from './Checkbox.style';
 import Icon from '../icon/Icon';
+import { useTheme } from 'styled-components';
 import { useEffect, useState } from 'react';
 
 export interface CheckboxProps {
@@ -16,6 +17,7 @@ export const Checkbox = ({
   onChange,
 }: CheckboxProps) => {
   const [viewportWidth, setViewportWidth] = useState(window.innerWidth);
+  const theme = useTheme();
 
   useEffect(() => {
     const handleResize = () => {
@@ -31,21 +33,30 @@ export const Checkbox = ({
   const iconSize =
     viewportWidth <= 768
       ? variant === 'primary'
-        ? 24
-        : 20
+        ? 16
+        : 12
       : variant === 'primary'
-        ? 28
-        : 24;
+        ? 20
+        : 16;
 
   return (
     <S.CheckboxContainer>
       <S.CheckboxLabel>
-        <S.HiddenInput type="checkbox" checked={checked} onChange={onChange} />
-        {checked ? (
-          <Icon name="fillsuccess" color="#1466FF" size={iconSize} />
-        ) : (
-          <Icon name="fillsuccess" color="#DDDDDF" size={iconSize} />
-        )}
+        <S.CircleInput
+          variant={variant}
+          type="checkbox"
+          onChange={onChange}
+          checked={checked}
+        />
+        <S.IconWrapper>
+          <Icon
+            name="strokecheck"
+            size={iconSize}
+            color={
+              checked ? theme.colors.icon.white : theme.colors.icon.secondary
+            }
+          />
+        </S.IconWrapper>
       </S.CheckboxLabel>
       <S.CheckboxText>{label}</S.CheckboxText>
     </S.CheckboxContainer>
