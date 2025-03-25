@@ -51,3 +51,14 @@ export const FooterContainer = styled.div`
   flex-direction: column;
   gap: var(--spacing-28);
 `;
+
+export const ErrorMsgWrapper = styled.div`
+  display: block;
+`;
+
+export const ErrorMsg = styled.div`
+  color: ${({ theme }) => theme.colors.typo.error};
+  padding-bottom: var(--spacing-8) 0;
+  font: var(--font-caption-s);
+  text-align: end;
+`;

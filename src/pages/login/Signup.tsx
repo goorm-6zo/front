@@ -1,35 +1,31 @@
 import { useEffect, useState } from 'react';
-import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
-import { signup } from '../../api/login/signup';
 import ResponsiveLayout from '../../components/common/layout/ResponsiveLayout';
 import * as S from './Signup.style';
 import CtaBtn from '../../components/common/button/ctabtn/CtaBtn';
 import { Checkbox } from '../../components/common/checkbox/Checkbox';
 import Footer from '../../components/common/footer/Footer';
+import { Input } from '../../components/common/input/Input';
+import { signup } from '../../api/login/signup';
 
 const SignUp = () => {
-  const { register, handleSubmit } = useForm();
   const navigate = useNavigate();
 
-  const onSubmit = async (data: any) => {
-    try {
-      const result = await signup(data);
-      console.log('회원가입 성공:', result);
-      alert('회원가입 완료!');
-      navigate('/login');
-    } catch (error) {
-      alert('회원가입 실패. 다시 시도해주세요.');
-    }
-  };
+  // Input states
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
 
+  // Error handling
+  const [passwordError, setPasswordError] = useState(false);
+  const [errorMsg, setErrorMsg] = useState('');
+
+  // Agreement states
   const [allAgree, setAllAgree] = useState(false);
   const [firstAgree, setFirstAgree] = useState(false);
   const [secondAgree, setSecondAgree] = useState(false);
-
-  const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
-  const [passwordError, setPasswordError] = useState(false);
 
   // 비밀번호 일치 여부 확인
   useEffect(() => {
@@ -53,41 +49,68 @@ const SignUp = () => {
     setSecondAgree(newValue);
   };
 
+  const handleSignup = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    if (passwordError || !allAgree) {
+      setErrorMsg('비밀번호 확인 또는 약관 동의를 확인해주세요.');
+      return;
+    }
+
+    try {
+      const result = await signup({ name, email, phone, password });
+      console.log('회원가입 성공:', result);
+      alert('회원가입 완료!');
+      navigate('/login');
+    } catch (error) {
+      setErrorMsg('회원가입 실패. 다시 시도해주세요.');
+    }
+  };
+
   return (
     <ResponsiveLayout hasHeader={false}>
       <S.PageContainer>
         <S.PageTitleWrapper>회원가입</S.PageTitleWrapper>
-        <S.FormContainer onSubmit={handleSubmit(onSubmit)}>
-          <input {...register('name')} placeholder="이름" required />
-          <input
-            {...register('email')}
+        <S.FormContainer onSubmit={handleSignup}>
+          <Input
+            state="default"
+            placeholder="이름"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          />
+          <Input
+            state="default"
             type="text"
             placeholder="이메일"
-            required
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
           />
-          <input
-            {...register('phone')}
+          <Input
+            state="default"
             type="tel"
             placeholder="전화번호"
-            required
+            value={phone}
+            onChange={(e) => setPhone(e.target.value)}
           />
-
-          <input
-            {...register('password')}
+          <Input
+            state="default"
             type="password"
             placeholder="비밀번호"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            required
           />
-          <input
+          <Input
+            state="default"
             type="password"
             placeholder="비밀번호 확인"
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
-            required
           />
-          {passwordError && <div>비밀번호가 일치하지 않습니다.</div>}
+          {passwordError && (
+            <S.ErrorMsgWrapper>
+              <S.ErrorMsg>비밀번호가 일치하지 않습니다.</S.ErrorMsg>
+            </S.ErrorMsgWrapper>
+          )}
 
           <S.AgreeCardContainer>
             <S.AgreeAllContainer>
@@ -116,6 +139,10 @@ const SignUp = () => {
               />
             </S.AgreePortionWrapper>
           </S.AgreeCardContainer>
+
+          <S.ErrorMsgWrapper>
+            {errorMsg && <S.ErrorMsg>{errorMsg}</S.ErrorMsg>}
+          </S.ErrorMsgWrapper>
 
           <Footer>
             <CtaBtn disabled={passwordError || !allAgree} type="submit">
