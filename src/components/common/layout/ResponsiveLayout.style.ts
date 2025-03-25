@@ -1,14 +1,12 @@
 import styled from 'styled-components';
 import { media } from '../../../styles/breakpoints';
 
-// 전체 레이아웃 감싸는 컨테이너
 export const LayoutWrapper = styled.div`
   display: flex;
   flex-direction: column;
   min-height: 100vh;
 `;
 
-// 헤더 영역
 export const HeaderWrapper = styled.header`
   display: flex;
   position: fixed;
@@ -21,7 +19,6 @@ export const MarginTop = styled.header`
   margin-top: 56px;
 `;
 
-// 반응형 컨테이너 - 요구사항에 맞는 마진과 너비를 가짐
 export const MainContainer = styled.div`
   width: 100%;
   margin: 0 auto;
