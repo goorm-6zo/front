@@ -23,7 +23,7 @@ const AdminSessionMessageCard: React.FC<AdminSessionMessageCardProps> = ({
   selected,
   onClick,
 }) => {
-  // 임시 (삭제 예정정)
+  // 임시 (삭제 예정)
   const startDate = date.split('T')[0];
   const endDate = date.split('T')[0];
 
