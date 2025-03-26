@@ -10,6 +10,7 @@ type AdminSessionMessageCardProps = {
   date: string;
   location: string;
   selected: boolean;
+  onClick?: () => void;
 };
 
 const AdminSessionMessageCard: React.FC<AdminSessionMessageCardProps> = ({
@@ -20,14 +21,22 @@ const AdminSessionMessageCard: React.FC<AdminSessionMessageCardProps> = ({
   location,
   date,
   selected,
+  onClick,
 }) => {
+  // 임시 (삭제 예정)
+  const startDate = date.split('T')[0];
+  const endDate = date.split('T')[0];
+
   return (
-    <S.CardContainer key={id} $selected={selected}>
+    <S.CardContainer key={id} $selected={selected} onClick={onClick}>
       <S.ContentsContainer>
         <S.HeaderContainer>
           <S.TopContainer>
             <S.TagContainer>
-              <Tag variant={selected ? 'tertiary' : 'secondary'}>{date}</Tag>
+              <Tag
+                variant={selected ? 'tertiary' : 'secondary'}
+              >{`${startDate} - ${endDate}`}</Tag>
+              {/* <Tag variant={selected ? 'tertiary' : 'secondary'}>{date}</Tag> */}
               <Tag variant={selected ? 'tertiary' : 'secondary'}>
                 {location}
               </Tag>

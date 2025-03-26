@@ -8,7 +8,6 @@ export const ImgContainer = styled.div<ImgContainerProps>`
   width: ${({ size }) => `${size}px`};
   height: ${({ size }) => `${size}px`};
   aspect-ratio: 1/1;
-  background-color: var(--blue-100);
   overflow: hidden;
   display: flex;
   align-items: center;

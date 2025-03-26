@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { media } from '../../../styles/breakpoints';
 
 export const NotifyContainer = styled.div`
   display: flex;
@@ -15,4 +16,8 @@ export const TextWrapper = styled.div`
   justify-content: center;
   align-items: center;
   font: var(--font-body-s);
+
+  ${media.desktop} {
+    font: var(--font-body-l);
+  }
 `;
