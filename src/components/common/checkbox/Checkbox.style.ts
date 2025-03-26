@@ -39,7 +39,6 @@ export const CheckboxContainer = styled.span`
 export const CheckboxLabel = styled.label`
   position: relative;
   user-select: none;
-  cursor: pointer;
 `;
 
 export const CircleInput = styled.input<StyledCircleProps>`
@@ -47,6 +46,7 @@ export const CircleInput = styled.input<StyledCircleProps>`
   border-radius: 50%;
   border: ${({ theme }) => `1px solid ${theme.colors.border.primary}`};
   background-color: ${({ theme }) => theme.colors.background.white};
+  cursor: pointer;
 
   &:active {
     background-color: ${({ theme }) =>
