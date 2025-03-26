@@ -3,13 +3,11 @@ import styled from 'styled-components';
 export const PageContainer = styled.div`
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-20);
+  gap: var(--spacing-4);
 `;
 
 export const TopContainer = styled.div`
   display: flex;
-  flex-direction: column;
-  gap: var(--spacing-4);
 `;
 
 export const PageTitleWrapper = styled.div`
@@ -21,10 +19,10 @@ export const PageTitleWrapper = styled.div`
 export const ContentsContainer = styled.div`
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-20);
+  gap: var(--spacing-36);
 `;
 
-export const ConferenceListContainer = styled.div`
+export const SessionListContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: var(--spacing-12);

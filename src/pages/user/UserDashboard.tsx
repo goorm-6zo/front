@@ -14,8 +14,8 @@ interface ConferenceItem {
   conferenceImageUrl: string;
   conferenceLocation: string;
   conferenceName: string;
-  startTime: string;
   endTime: string;
+  startTime: string;
 }
 
 const UserDashboard = () => {
@@ -25,18 +25,36 @@ const UserDashboard = () => {
   // Popup창을 관리하는 상태값
   const [isPopupOpen, setisPopupOpen] = useState<boolean>(false);
 
-  // 참여할 행사를 담는 상태값
+  // 다가오는 행사를 담는 상태값
   const [myConferenceList, setMyConferenceList] = useState<
     ConferenceItem[] | null
   >(null);
 
-  // 컨퍼런스 목록을 모두 불러와 시간에 따라 참여할 행사 / 참여한 행사를 구분
+  // 지난 행사를 담는 상태값
+  const [myVisitedConferenceList, setMyVisitedConferenceList] = useState<
+    ConferenceItem[] | null
+  >(null);
+
+  // useEffect로 컨퍼런스 목록을 모두 불러와 시간에 따라 참여할 행사 / 참여한 행사를 구분
   useEffect(() => {
     const getConference = async () => {
       try {
         const result = await getMyConference();
-        console.log(result);
-        setMyConferenceList(result);
+
+        const now = new Date();
+
+        const upcoming = result.filter(
+          (item: ConferenceItem) => new Date(item.endTime) >= now,
+        );
+
+        const visited = result.filter(
+          (item: ConferenceItem) => new Date(item.endTime) < now,
+        );
+
+        // console.log(result);
+
+        setMyConferenceList(upcoming);
+        setMyVisitedConferenceList(visited);
       } catch (error) {
         alert('나의 컨퍼런스 목록 불러오기 실패. 다시 시도해주세요.');
       }
@@ -45,16 +63,19 @@ const UserDashboard = () => {
     getConference();
   }, []);
 
+  // 컨퍼런스 카드 클릭 시 전달할 콜백함수
   const onClickConference = (conferenceId: number) => {
     navigate('/conference-info', {
       state: { conferenceId },
     });
   };
 
+  // 팝업을 열고 긍정 CTA를 클릭 시 전달할 콜백함수
   const onContinue = () => {
     navigate('/face-registration');
   };
 
+  // 팝업을 여닫는 콜백함수 (부정 CTA)
   const onClickPopup = () => {
     setisPopupOpen((prev) => !prev);
   };
@@ -64,7 +85,6 @@ const UserDashboard = () => {
       {isPopupOpen && (
         <Popup type="register" onContinue={onContinue} onClose={onClickPopup} />
       )}
-      {/* ------------------------------------------위의 코드를 지워주세요 */}
       <S.PageContainer>
         <S.TopContainer>
           <S.PageTitleWrapper>홈</S.PageTitleWrapper>
@@ -84,7 +104,8 @@ const UserDashboard = () => {
                 <ConferenceCard
                   key={elem.conferenceId}
                   title={elem.conferenceName}
-                  date={elem.startTime}
+                  startTime={elem.startTime}
+                  endTime={elem.endTime}
                   place={elem.conferenceLocation}
                   imageUrl={elem.conferenceImageUrl}
                   onClick={() => onClickConference(elem.conferenceId)}
@@ -96,12 +117,13 @@ const UserDashboard = () => {
           </S.ConferenceListContainer>
           <S.ConferenceListContainer>
             지난 행사
-            {myConferenceList && myConferenceList.length > 0 ? (
-              myConferenceList.map((elem) => (
+            {myVisitedConferenceList && myVisitedConferenceList.length > 0 ? (
+              myVisitedConferenceList.map((elem) => (
                 <ConferenceCard
                   key={elem.conferenceId}
                   title={elem.conferenceName}
-                  date={elem.startTime}
+                  startTime={elem.startTime}
+                  endTime={elem.endTime}
                   place={elem.conferenceLocation}
                   imageUrl={elem.conferenceImageUrl}
                   onClick={() => onClickConference(elem.conferenceId)}
@@ -111,7 +133,7 @@ const UserDashboard = () => {
               <S.EmptyContainer>참여한 행사가 없습니다</S.EmptyContainer>
             )}
           </S.ConferenceListContainer>
-          {myConferenceList && myConferenceList.length > 0 ? (
+          {myVisitedConferenceList && myVisitedConferenceList.length >= 3 ? (
             <CtaBtn
               variant="secondary"
               icon="strokebottom"

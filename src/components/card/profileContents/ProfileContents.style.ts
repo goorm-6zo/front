@@ -1,8 +1,9 @@
 import styled from 'styled-components';
 
-export const ProfileContainer = styled.div`
+export const ProfileContainer = styled.div<{ $isActive: boolean }>`
   display: flex;
   gap: var(--spacing-4);
+  opacity: ${({ $isActive }) => ($isActive ? 0.4 : 1)};
 `;
 
 export const ProfileTextContainer = styled.div`
