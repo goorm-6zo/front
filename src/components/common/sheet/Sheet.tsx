@@ -5,6 +5,7 @@ import Btn from '../button/btn/Btn';
 import IcnBtn from '../button/icnbtn/IcnBtn';
 import SheetBtn from './SheetBtn';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { logoutUser } from '../../../api/login/logout';
 
 interface SheetProps {
   isOpen: boolean;
@@ -17,7 +18,16 @@ const Sheet: React.FC<SheetProps> = ({ isOpen, onClose }) => {
 
   const currentPath = location.pathname;
 
-  const handleLogout = async () => {};
+  const handleLogout = async () => {
+    const response = await logoutUser();
+    if (response) {
+      console.log('로그아웃 성공');
+      window.location.reload();
+      navigate('/');
+    } else {
+      console.log('로그아웃 실패');
+    }
+  };
 
   return (
     <S.SideSheetOverlay onClick={onClose} $isOpen={isOpen}>
