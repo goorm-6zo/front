@@ -2,7 +2,7 @@ import React from 'react';
 import * as S from './Profile.style';
 
 type ProfileProps = {
-  size?: 'M' | 'S';
+  size?: 'L' | 'M' | 'S';
   imageUrl?: string;
 };
 
