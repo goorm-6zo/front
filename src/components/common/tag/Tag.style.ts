@@ -21,13 +21,13 @@ export const Tag = styled.span<TagProps>`
         `;
       case 'secondary':
         return `
-          background-color: ${theme.colors.background.tertiary};
-          color: ${theme.colors.typo.white};
+          background-color: ${theme.colors.background.secondary};
+          color: ${theme.colors.typo.primary};
         `;
       case 'tertiary':
         return `
-          background-color: ${theme.colors.background.secondary};
-          color: ${theme.colors.typo.primary};
+          background-color: ${theme.colors.background.tertiary};
+          color: ${theme.colors.typo.white};
         `;
     }
   }};
