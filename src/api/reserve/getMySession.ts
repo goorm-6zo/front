@@ -8,7 +8,7 @@ export const getMySession = async (id: number) => {
       },
     });
 
-    return response.data;
+    return response.data.data;
   } catch (error) {
     console.log('세션 불러오기 실패', error);
   }
