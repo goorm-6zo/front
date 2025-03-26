@@ -28,7 +28,6 @@ const AdminDashboard = () => {
     const fetchConferences = async () => {
       try {
         const res = await getConferenceInfo(1);
-        console.log('컨퍼런스 데이터:', res);
         setConfDatas(res.sessions);
       } catch (error) {
         console.error('컨퍼런스 데이터 조회 실패', error);

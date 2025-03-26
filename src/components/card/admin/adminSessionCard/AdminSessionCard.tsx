@@ -6,7 +6,6 @@ import Icon from '../../../common/icon/Icon';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { setActiveState } from '../../../../api/admin/active/setActiveState';
-import { useTheme } from 'styled-components';
 type AdminSessionCardProps = {
   title: string;
   name: string | null;
@@ -57,7 +56,7 @@ const AdminSessionCard: React.FC<AdminSessionCardProps> = ({
           </S.TopContainer>
           <S.TitleWrapper>{title}</S.TitleWrapper>
         </S.HeaderContainer>
-        <Profile name={name} from={from} />
+        {name && <Profile name={name} from={from} />}
       </S.ContentsContainer>
 
       <S.BtnContainer>
