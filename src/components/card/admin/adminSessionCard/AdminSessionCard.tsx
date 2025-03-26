@@ -1,5 +1,5 @@
 import * as S from './AdminSessionCard.style';
-import Profile from '../../profile/Profile';
+import ProfileContainer from '../../profileContainer/ProfileContainer';
 import Btn from '../../../common/button/btn/Btn';
 import { Tag } from '../../../common/tag/Tag';
 import Icon from '../../../common/icon/Icon';
@@ -37,7 +37,7 @@ const AdminSessionCard: React.FC<AdminSessionCardProps> = ({
           </S.TopContainer>
           <S.TitleWrapper>{title}</S.TitleWrapper>
         </S.HeaderContainer>
-        <Profile name={name} from={from} />
+        <ProfileContainer name={name} from={from} />
       </S.ContentsContainer>
 
       <S.BtnContainer>
