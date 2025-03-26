@@ -4,6 +4,7 @@ import * as S from './Img.style';
 type ImgProps = {
   size: 294 | 168 | 140 | 128 | 100 | 80 | 68;
   imageUrl?: string;
+  alt?: string;
 };
 
 const Img: React.FC<ImgProps> = ({ size, imageUrl }) => {
