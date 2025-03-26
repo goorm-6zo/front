@@ -5,11 +5,17 @@ type ProfileProps = {
   name: string;
   from: string;
   imageUrl?: string;
+  opacity?: boolean;
 };
 
-const ProfileContainer: React.FC<ProfileProps> = ({ imageUrl, name, from }) => {
+const ProfileContainer: React.FC<ProfileProps> = ({
+  imageUrl,
+  name,
+  from,
+  opacity = false,
+}) => {
   return (
-    <S.ProfileContainer>
+    <S.ProfileContainer opacity={opacity}>
       <Profile imageUrl={imageUrl} />
       <S.ProfileTextContainer>
         <S.NameItem>{name}</S.NameItem>
