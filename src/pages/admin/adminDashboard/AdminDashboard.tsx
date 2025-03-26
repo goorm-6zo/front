@@ -3,6 +3,7 @@ import { getConferenceInfo } from '../../../api/admin/conference/getConferenceIn
 import * as S from './AdminDashboard.style';
 import AdminSessionCard from '../../../components/card/admin/adminSessionCard/AdminSessionCard';
 import ResponsiveLayout from '../../../components/common/layout/ResponsiveLayout';
+
 type sessionType = {
   id: number;
   name: string;
@@ -35,7 +36,6 @@ const AdminDashboard = () => {
     fetchConferences();
   }, []);
 
-  //임시 디자인
   return (
     <ResponsiveLayout>
       <S.TitleBox>
@@ -44,8 +44,13 @@ const AdminDashboard = () => {
       </S.TitleBox>
       <S.DataBox>
         {confDatas &&
-          confDatas.map(() => (
-            <AdminSessionCard title="제목" name="이름" from="from" />
+          confDatas.map((data) => (
+            <AdminSessionCard
+              title="제목"
+              name="이름"
+              from="from"
+              id={data.id}
+            />
           ))}
       </S.DataBox>
     </ResponsiveLayout>

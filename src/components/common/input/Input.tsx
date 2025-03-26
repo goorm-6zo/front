@@ -4,6 +4,8 @@ import React from 'react';
 export interface InputProps
   extends React.InputHTMLAttributes<HTMLInputElement> {
   state?: 'default' | 'disabled' | 'error';
+  disabled?: boolean;
+  placeholder?: string;
 }
 
 export interface TextareaProps
@@ -11,11 +13,24 @@ export interface TextareaProps
   state?: 'default' | 'disabled' | 'error';
 }
 
-export const Input = ({ title, state = 'default', ...props }: InputProps) => {
+export const Input = ({
+  title,
+  state = 'default',
+  placeholder,
+  disabled,
+  ...props
+}: InputProps) => {
   return (
     <S.StyledInputContainer>
-      <S.StyledInputTitle>{title ? title : null}</S.StyledInputTitle>
-      <S.StyledInput state={state} {...props} />
+      <S.StyledInputTitle state={state}>
+        {title ? title : null}
+      </S.StyledInputTitle>
+      <S.StyledInput
+        state={state}
+        {...props}
+        disabled={disabled}
+        placeholder={placeholder}
+      />
     </S.StyledInputContainer>
   );
 };

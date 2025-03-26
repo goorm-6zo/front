@@ -4,7 +4,7 @@ import Icon from '../icon/Icon';
 import { useTheme } from 'styled-components';
 
 export interface ToastProps {
-  state?: 'default' | 'error';
+  state?: 'default' | 'error' | 'success';
   children: React.ReactNode;
 }
 

@@ -54,3 +54,18 @@ export const FloatingBtnContainer = styled.div`
     right: calc(var(--spacing-80) * 2);
   }
 `;
+
+export const TextContainer = styled.span`
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  text-decoration: none;
+  color: ${({ theme }) => theme.colors.typo.secondary};
+`;
+
+export const Line = styled.div`
+  height: 10px;
+  border-right: 1px solid #eeeff0;
+  margin-left: 4px;
+  margin-right: 4px;
+`;
