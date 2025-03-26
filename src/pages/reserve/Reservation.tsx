@@ -45,7 +45,6 @@ const Reservation = () => {
       alert('예약이 완료되었습니다.');
       navigate('/complete');
     } catch (error) {
-      // console.error('예약 실패:', error);
       alert('예약에 실패했습니다.');
     }
   };

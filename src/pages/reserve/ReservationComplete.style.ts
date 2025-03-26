@@ -14,6 +14,7 @@ export const Box = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: var(--spacing-12);
 `;
 
 export const Cont = styled.h1``;
