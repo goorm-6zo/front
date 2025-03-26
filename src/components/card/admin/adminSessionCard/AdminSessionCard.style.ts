@@ -1,4 +1,7 @@
 import styled from 'styled-components';
+interface CardContainerProps {
+  $isActive: boolean;
+}
 
 export const CardContainer = styled.div`
   display: flex;
@@ -12,10 +15,11 @@ export const CardContainer = styled.div`
   width: 100%;
 `;
 
-export const ContentsContainer = styled.div`
+export const ContentsContainer = styled.div<CardContainerProps>`
   display: flex;
   flex-direction: column;
   gap: var(--spacing-8);
+  opacity: ${({ $isActive }) => ($isActive ? 1 : 0.4)};
 `;
 
 export const HeaderContainer = styled.div`

@@ -1,8 +1,9 @@
 import styled from 'styled-components';
 
 interface StyledButtonProps {
-  variant: 'primary' | 'secondary' | 'tertiary' | 'quaternary';
+  variant: 'primary' | 'secondary' | 'tertiary' | 'quaternary' | 'blue';
   state: 'default' | 'disabled';
+  isBlue?: boolean;
 }
 
 export const StyledButton = styled.button<StyledButtonProps>`
@@ -13,15 +14,18 @@ export const StyledButton = styled.button<StyledButtonProps>`
   padding: var(--spacing-8) var(--spacing-0);
   font: var(--font-title-s);
   border-radius: var(--radius-8);
-
   height: fit-content;
   width: 89px;
 
-  ${({ theme, variant }) => {
+  ${({ theme, variant, isBlue }) => {
     switch (variant) {
       case 'primary':
         return `
-          background-color: ${theme.colors.background.tertiary};
+              background-color: ${
+                isBlue
+                  ? theme.colors.background.primary
+                  : theme.colors.background.tertiary
+              };
           color: ${theme.colors.typo.white};
           border: none;
 
@@ -70,6 +74,7 @@ export const StyledButton = styled.button<StyledButtonProps>`
             color: ${theme.colors.typo.primary};
           }
         `;
+
       default:
         return '';
     }

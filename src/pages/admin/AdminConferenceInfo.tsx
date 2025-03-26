@@ -9,6 +9,7 @@ import { Input } from '../../components/common/input/Input';
 
 //utils
 import { formatTimeRange } from '../../utils/time/timeFormat';
+import Profile from '../../components/common/profile/Profile';
 type SessionData = {
   id: number;
   conferenceId: number;
@@ -21,23 +22,25 @@ type SessionData = {
   speakerName: string;
   speakerOrganization: string;
   speakerImage: string;
+  speakerStatus: boolean;
   active: boolean;
 };
 const AdminConferenceInfo = () => {
   const { id } = useParams<{ id: string }>();
   const [sessionData, setSessionData] = useState<SessionData>();
   const [time, setTime] = useState<string>('');
+  const conferenceId = 2;
   useEffect(() => {
     const getInfo = async () => {
       const sessionId = Number(id);
       try {
-        const res = await getSessionInfo(sessionId);
+        const res = await getSessionInfo(conferenceId, sessionId);
 
         if (res) {
           setSessionData(res);
           setTime(formatTimeRange(res.startTime, res.endTime));
         }
-        console.log('resL:', res);
+        console.log('세션 정보:', res);
       } catch (error) {
         console.log('error:', error);
       }
@@ -61,6 +64,23 @@ const AdminConferenceInfo = () => {
           placeholder={sessionData?.location}
         />
         <Input title="시간" state="disabled" placeholder={time} />
+        {sessionData?.speakerStatus && (
+          <>
+            <Input
+              title="강연자 소속"
+              state="disabled"
+              placeholder={sessionData?.speakerOrganization}
+            />
+            <S.ProfileBox>
+              <Input
+                title="강연자 이름"
+                state="disabled"
+                placeholder={sessionData?.speakerName}
+              />
+              <Profile size="L" />
+            </S.ProfileBox>
+          </>
+        )}
       </S.ContContainer>
     </ResponsiveLayout>
   );

@@ -1,5 +1,5 @@
 import * as S from './SessionCard.style';
-import Profile from '../../profile/Profile';
+import ProfileContents from '../../profileContents/ProfileContents';
 import { Tag } from '../../../common/tag/Tag';
 
 type SessionCardProps = {
@@ -31,7 +31,7 @@ const SessionCard: React.FC<SessionCardProps> = ({
         </S.TagContainer>
         <S.TitleWrapper>{title}</S.TitleWrapper>
       </S.HeaderContainer>
-      <Profile
+      <ProfileContents
         name={speakerName}
         from={speakerOrganization}
         // imageUrl={speakerImage}

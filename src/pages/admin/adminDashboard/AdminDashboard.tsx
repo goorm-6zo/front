@@ -3,7 +3,7 @@ import { getConferenceInfo } from '../../../api/admin/conference/getConferenceIn
 import * as S from './AdminDashboard.style';
 import AdminSessionCard from '../../../components/card/admin/adminSessionCard/AdminSessionCard';
 import ResponsiveLayout from '../../../components/common/layout/ResponsiveLayout';
-
+import { formatTimeRange } from '../../../utils/time/timeFormat';
 type sessionType = {
   id: number;
   name: string;
@@ -13,20 +13,21 @@ type sessionType = {
   capacity: number;
   hasSessions: boolean;
   endTime: string;
+  startTime: string;
   conferenceId: number;
   speakerImage: string | null;
   speakerName: string | null;
   speakerOrganization: string | null;
+  active: boolean;
 };
 
 const AdminDashboard = () => {
   const [confDatas, setConfDatas] = useState<sessionType[]>([]);
-
+  const conferenceId = 2;
   useEffect(() => {
     const fetchConferences = async () => {
       try {
-        const res = await getConferenceInfo(1);
-        console.log('컨퍼런스 데이터:', res);
+        const res = await getConferenceInfo(conferenceId);
         setConfDatas(res.sessions);
       } catch (error) {
         console.error('컨퍼런스 데이터 조회 실패', error);
@@ -44,14 +45,29 @@ const AdminDashboard = () => {
       </S.TitleBox>
       <S.DataBox>
         {confDatas &&
-          confDatas.map((data) => (
-            <AdminSessionCard
-              title="제목"
-              name="이름"
-              from="from"
-              id={data.id}
-            />
-          ))}
+          confDatas.map((data) => {
+            const {
+              id,
+              name,
+              endTime,
+              startTime,
+              speakerName,
+              speakerOrganization,
+              location,
+              active,
+            } = data;
+            return (
+              <AdminSessionCard
+                title={name}
+                date={formatTimeRange(startTime, endTime)}
+                name={speakerName}
+                from={speakerOrganization}
+                id={id}
+                location={location}
+                isActive={active}
+              />
+            );
+          })}
       </S.DataBox>
     </ResponsiveLayout>
   );
