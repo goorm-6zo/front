@@ -1,5 +1,5 @@
 import * as S from './AdminSessionMessageCard.style';
-import Profile from '../../profile/Profile';
+import ProfileContents from '../../profileContents/ProfileContents';
 import { Tag } from '../../../common/tag/Tag';
 
 type AdminSessionMessageCardProps = {
@@ -24,7 +24,7 @@ const AdminSessionMessageCard: React.FC<AdminSessionMessageCardProps> = ({
           </S.TagContainer>
           <S.TitleWrapper>{title}</S.TitleWrapper>
         </S.HeaderContainer>
-        <Profile name={name} from={from} />
+        <ProfileContents name={name} from={from} />
       </S.ContentsContainer>
     </S.CardContainer>
   );
