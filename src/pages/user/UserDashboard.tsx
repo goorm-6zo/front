@@ -1,14 +1,16 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTheme } from 'styled-components';
-import ResponsiveLayout from '../../components/common/layout/ResponsiveLayout';
+import { useAuthStore } from '../../store/useAuthStore';
+
 import { getMyConference } from '../../api/reserve/getMyConference';
-import * as S from './UserDashboard.style';
+
+import ResponsiveLayout from '../../components/common/layout/ResponsiveLayout';
 import ConferenceCard from '../../components/card/user/conferenceCard/ConferenceCard';
 import Notify from '../../components/common/notify/Notify';
 import CtaBtn from '../../components/common/button/ctabtn/CtaBtn';
 import Popup from '../../components/common/popup/Popup';
-import { useAuthStore } from '../../store/useAuthStore';
+import * as S from './UserDashboard.style';
 
 interface ConferenceItem {
   conferenceId: number;
@@ -20,73 +22,55 @@ interface ConferenceItem {
 }
 
 const UserDashboard = () => {
-  const navigate = useNavigate();
   const theme = useTheme();
+  const navigate = useNavigate();
   const { userInfo } = useAuthStore();
 
-  // Popup창을 관리하는 상태값
-  const [isPopupOpen, setisPopupOpen] = useState<boolean>(false);
-
-  // 다가오는 행사를 담는 상태값
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [myConferenceList, setMyConferenceList] = useState<
     ConferenceItem[] | null
   >(null);
-
-  // 지난 행사를 담는 상태값
   const [myVisitedConferenceList, setMyVisitedConferenceList] = useState<
     ConferenceItem[] | null
   >(null);
+  const [showAllVisited, setShowAllVisited] = useState(false);
 
-  // useEffect로 컨퍼런스 목록을 모두 불러와 시간에 따라 참여할 행사 / 참여한 행사를 구분
+  const togglePopup = () => setIsPopupOpen((prev) => !prev);
+  const handleMoreClick = () => setShowAllVisited(true);
+  const onContinue = () => navigate('/face-registration');
+
+  const onClickConference = (conferenceId: number) => {
+    navigate('/conference-info', { state: { conferenceId } });
+  };
+
   useEffect(() => {
-    const getConference = async () => {
+    const fetchConferences = async () => {
       try {
         const result = await getMyConference();
-
         const now = new Date();
 
-        const upcoming = result.filter(
-          (item: ConferenceItem) => new Date(item.endTime) >= now,
+        setMyConferenceList(
+          result.filter(
+            (item: ConferenceItem) => new Date(item.endTime) >= now,
+          ),
         );
-
-        const visited = result.filter(
-          (item: ConferenceItem) => new Date(item.endTime) < now,
+        setMyVisitedConferenceList(
+          result.filter((item: ConferenceItem) => new Date(item.endTime) < now),
         );
-
-        // console.log(result);
-
-        setMyConferenceList(upcoming);
-        setMyVisitedConferenceList(visited);
       } catch (error) {
         alert('나의 컨퍼런스 목록 불러오기 실패. 다시 시도해주세요.');
       }
     };
 
-    getConference();
+    fetchConferences();
   }, []);
 
-  // 컨퍼런스 카드 클릭 시 전달할 콜백함수
-  const onClickConference = (conferenceId: number) => {
-    navigate('/conference-info', {
-      state: { conferenceId },
-    });
-  };
-
-  // 팝업을 열고 긍정 CTA를 클릭 시 전달할 콜백함수
-  const onContinue = () => {
-    navigate('/face-registration');
-  };
-
-  // 팝업을 여닫는 콜백함수 (부정 CTA)
-  const onClickPopup = () => {
-    setisPopupOpen((prev) => !prev);
-  };
-
   return (
-    <ResponsiveLayout hasHeaderIcon={true}>
+    <ResponsiveLayout hasHeaderIcon>
       {isPopupOpen && (
-        <Popup type="register" onContinue={onContinue} onClose={onClickPopup} />
+        <Popup type="register" onContinue={onContinue} onClose={togglePopup} />
       )}
+
       <S.PageContainer>
         <S.TopContainer>
           <S.PageTitleWrapper>홈</S.PageTitleWrapper>
@@ -95,57 +79,67 @@ const UserDashboard = () => {
               icon="fillwarning"
               color={theme.colors.icon.white}
               backgroundColor={theme.colors.icon.notice}
-              onClick={onClickPopup}
+              onClick={togglePopup}
             />
           )}
         </S.TopContainer>
 
         <S.ContentsContainer>
+          {/* 다가오는 행사 */}
           <S.ConferenceListContainer>
             다가오는 행사
             {myConferenceList && myConferenceList.length > 0 ? (
-              myConferenceList.map((elem) => (
+              myConferenceList.map((item) => (
                 <ConferenceCard
-                  key={elem.conferenceId}
-                  title={elem.conferenceName}
-                  startTime={elem.startTime}
-                  endTime={elem.endTime}
-                  place={elem.conferenceLocation}
-                  imageUrl={elem.conferenceImageUrl}
-                  onClick={() => onClickConference(elem.conferenceId)}
+                  key={item.conferenceId}
+                  title={item.conferenceName}
+                  startTime={item.startTime}
+                  endTime={item.endTime}
+                  place={item.conferenceLocation}
+                  imageUrl={item.conferenceImageUrl}
+                  onClick={() => onClickConference(item.conferenceId)}
                 />
               ))
             ) : (
               <S.EmptyContainer>다가오는 행사가 없습니다</S.EmptyContainer>
             )}
           </S.ConferenceListContainer>
+
+          {/* 지난 행사 */}
           <S.ConferenceListContainer>
             지난 행사
             {myVisitedConferenceList && myVisitedConferenceList.length > 0 ? (
-              myVisitedConferenceList.map((elem) => (
+              (showAllVisited
+                ? myVisitedConferenceList
+                : myVisitedConferenceList.slice(0, 2)
+              ).map((item) => (
                 <ConferenceCard
-                  key={elem.conferenceId}
-                  title={elem.conferenceName}
-                  startTime={elem.startTime}
-                  endTime={elem.endTime}
-                  place={elem.conferenceLocation}
-                  imageUrl={elem.conferenceImageUrl}
-                  onClick={() => onClickConference(elem.conferenceId)}
+                  key={item.conferenceId}
+                  title={item.conferenceName}
+                  startTime={item.startTime}
+                  endTime={item.endTime}
+                  place={item.conferenceLocation}
+                  imageUrl={item.conferenceImageUrl}
+                  onClick={() => onClickConference(item.conferenceId)}
                 />
               ))
             ) : (
               <S.EmptyContainer>참여한 행사가 없습니다</S.EmptyContainer>
             )}
           </S.ConferenceListContainer>
-          {myVisitedConferenceList && myVisitedConferenceList.length >= 3 ? (
-            <CtaBtn
-              variant="secondary"
-              icon="strokebottom"
-              onClick={() => console.log('지난 행사를 더 보여주겠음')}
-            >
-              더보기
-            </CtaBtn>
-          ) : null}
+
+          {/* 더보기 버튼 */}
+          {myVisitedConferenceList &&
+            myVisitedConferenceList.length > 2 &&
+            !showAllVisited && (
+              <CtaBtn
+                variant="secondary"
+                icon="strokebottom"
+                onClick={handleMoreClick}
+              >
+                더보기
+              </CtaBtn>
+            )}
         </S.ContentsContainer>
       </S.PageContainer>
     </ResponsiveLayout>
