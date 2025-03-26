@@ -23,11 +23,11 @@ type sessionType = {
 
 const AdminDashboard = () => {
   const [confDatas, setConfDatas] = useState<sessionType[]>([]);
-
+  const conferenceId = 2;
   useEffect(() => {
     const fetchConferences = async () => {
       try {
-        const res = await getConferenceInfo(1);
+        const res = await getConferenceInfo(conferenceId);
         setConfDatas(res.sessions);
       } catch (error) {
         console.error('컨퍼런스 데이터 조회 실패', error);
