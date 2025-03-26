@@ -8,12 +8,12 @@ import * as S from './UserDashboard.style';
 
 // 컨퍼런스 정보를 위한 인터페이스
 interface ConferenceInfo {
-  conferenceId: number;
-  conferenceImageUrl: string;
-  conferenceLocation: string;
-  conferenceName: string;
+  name: string;
+  location: string;
   startTime: string;
   endTime: string;
+  id: number;
+  imageUrl: string;
 }
 
 // 세션 정보를 위한 인터페이스
@@ -21,11 +21,12 @@ interface SessionInfo {
   id: number;
   location: string;
   name: string;
-  speakerImage: string | null;
+  speakerImageKey: string;
   speakerName: string;
   speakerOrganization: string;
   startTime: string;
   endTime: string;
+  attend: boolean;
 }
 
 const UserDashboard = () => {
@@ -73,10 +74,11 @@ const UserDashboard = () => {
           {myConference && (
             <S.ConferenceListContainer>
               <ConferenceCard
-                title={myConference.conferenceName}
-                date={myConference.startTime}
-                place={myConference.conferenceLocation}
-                imageUrl={myConference.conferenceImageUrl}
+                title={myConference.name}
+                startTime={myConference.startTime}
+                endTime={myConference.endTime}
+                place={myConference.location}
+                imageUrl={myConference.imageUrl}
               />
             </S.ConferenceListContainer>
           )}
@@ -87,13 +89,14 @@ const UserDashboard = () => {
             {mySessionList?.map((elem) => (
               <SessionCard
                 key={elem.id}
+                title={elem.name}
                 startTime={elem.startTime}
                 endTime={elem.endTime}
                 location={elem.location}
-                title={elem.name}
-                // speakerImage={session.speakerImage}
                 speakerName={elem.speakerName}
                 speakerOrganization={elem.speakerOrganization}
+                speakerImageKey={elem.speakerImageKey}
+                isActive={elem.attend}
               />
             ))}
           </S.ConferenceListContainer>
