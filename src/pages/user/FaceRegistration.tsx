@@ -1,8 +1,8 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useFaceDetection } from '../../hooks/useFaceDetection';
 import * as S from './FaceRegistration.style';
 import Webcam from 'react-webcam';
-
+import { faceRegister } from '../../api/face/faceRegister';
 const FaceRegistration = () => {
   const webcamRef = useRef<Webcam | null>(null);
   const [hasCaptured, setHasCaptured] = useState(false);
@@ -14,6 +14,11 @@ const FaceRegistration = () => {
     }
     return false;
   };
+  useEffect(() => {
+    if (hasCaptured && capturedImage) {
+      faceRegister(capturedImage);
+    }
+  }, [hasCaptured]);
 
   const { isLoading, isFaceInside, isVideoLoaded, capturedImage } =
     useFaceDetection(webcamRef, handleFaceDetected);

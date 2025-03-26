@@ -23,6 +23,7 @@ const Reservation = () => {
   const [phone, setPhone] = useState('');
   const [hasSession, setHasSession] = useState(true);
   const [sessionItems, setSessionItems] = useState<CheckBoxItem[]>([]);
+  //컨퍼런스 아이디 수정
   const conferenceId = 1;
   const navigate = useNavigate();
   const handleReservation = async () => {
