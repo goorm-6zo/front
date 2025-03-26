@@ -1,5 +1,5 @@
 import * as S from './AdminSessionMessageCard.style';
-import Profile from '../../profile/Profile';
+import ProfileContents from '../../profileContents/ProfileContents';
 import { Tag } from '../../../common/tag/Tag';
 
 type AdminSessionMessageCardProps = {

@@ -20,3 +20,8 @@ export const ContContainer = styled.div`
   flex-direction: column;
   gap: var(--spacing-24);
 `;
+export const ProfileBox = styled.span`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+`;

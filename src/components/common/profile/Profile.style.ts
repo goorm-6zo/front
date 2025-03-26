@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
-export const ProfileContainer = styled.div<{ size: 'M' | 'S' }>`
-  width: ${({ size }) => (size === 'M' ? 52 : 48)}px;
+export const ProfileContainer = styled.div<{ size: 'L' | 'M' | 'S' }>`
+  width: ${({ size }) => (size === 'L' ? 84 : size === 'M' ? 52 : 48)}px;
   aspect-ratio: 1/1;
   border-radius: 50%;
   background-color: var(--blue-200);
@@ -13,7 +13,7 @@ export const ProfileContainer = styled.div<{ size: 'M' | 'S' }>`
   display: inline-block;
 
   @media (max-width: 768px) {
-    width: ${({ size }) => (size === 'M' ? 40 : 36)}px;
+    width: ${({ size }) => (size === 'L' ? 64 : size === 'M' ? 40 : 36)}px;
   }
 `;
 
