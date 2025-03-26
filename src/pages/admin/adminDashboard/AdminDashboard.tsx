@@ -18,16 +18,18 @@ type sessionType = {
   speakerImage: string | null;
   speakerName: string | null;
   speakerOrganization: string | null;
-  active: boolean;
+  isActive: boolean;
 };
 
 const AdminDashboard = () => {
   const [confDatas, setConfDatas] = useState<sessionType[]>([]);
-  const conferenceId = 2;
+  //컨퍼런스 아이디 수정
+  const conferenceId = 1;
   useEffect(() => {
     const fetchConferences = async () => {
       try {
         const res = await getConferenceInfo(conferenceId);
+        console.log('세션 정보:', res.sessions);
         setConfDatas(res.sessions);
       } catch (error) {
         console.error('컨퍼런스 데이터 조회 실패', error);
@@ -54,7 +56,7 @@ const AdminDashboard = () => {
               speakerName,
               speakerOrganization,
               location,
-              active,
+              isActive,
             } = data;
             return (
               <AdminSessionCard
@@ -64,7 +66,7 @@ const AdminDashboard = () => {
                 from={speakerOrganization}
                 id={id}
                 location={location}
-                isActive={active}
+                isActive={isActive}
               />
             );
           })}

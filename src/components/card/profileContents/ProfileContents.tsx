@@ -1,21 +1,22 @@
 import * as S from './ProfileContents.style';
+import Profile from '../../common/profile/Profile';
 
 type ProfileProps = {
-  name: string | null;
-  from: string | null;
+  name?: string | null;
+  from?: string | null;
+  imageUrl?: string;
+  isActive?: boolean;
 };
 
-const ProfileContents: React.FC<ProfileProps> = ({ name, from }) => {
+const ProfileContents: React.FC<ProfileProps> = ({
+  imageUrl,
+  name,
+  from,
+  isActive = false,
+}) => {
   return (
-    <S.ProfileContainer>
-      <div
-        style={{
-          width: '40px',
-          height: '40px',
-          backgroundColor: 'var(--blue-200)',
-          borderRadius: '20px',
-        }}
-      ></div>
+    <S.ProfileContainer $isActive={isActive}>
+      <Profile imageUrl={imageUrl} />
       <S.ProfileTextContainer>
         <S.NameItem>{name}</S.NameItem>
         <S.InfoItem>{from}</S.InfoItem>

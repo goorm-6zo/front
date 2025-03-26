@@ -5,20 +5,8 @@ import * as S from './FaceRecognition.style';
 import Webcam from 'react-webcam';
 import { faceAuthentication } from '../../api/face/faceAuthentication';
 import { Toast } from '../../components/common/toast/Toast';
+import { faceMsg, ToastState } from '../../constant/faceMsg';
 const FACE_RECOGNITION_THRESHOLD = 0.6;
-
-const faceMsg: Record<ToastState, { msg: string }> = {
-  default: {
-    msg: '정면을 바라봐 주세요.',
-  },
-  success: {
-    msg: '인증되었습니다.',
-  },
-  error: {
-    msg: '얼굴인식을 실패 했습니다.',
-  },
-};
-type ToastState = 'default' | 'success' | 'error';
 
 const FaceRecognition = () => {
   const capturedFaceDes = useRef<Float32Array | null>(null);
@@ -79,6 +67,7 @@ const FaceRecognition = () => {
 
     authenticateFace();
   }, [capturedImage]);
+
   useEffect(() => {
     if (!isFaceInside) setFaceState('default');
   }, [isFaceInside]);

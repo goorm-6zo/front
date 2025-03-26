@@ -11,10 +11,11 @@ export const CardContainer = styled.div`
   background-color: ${({ theme }) => theme.colors.background.white};
 `;
 
-export const HeaderContainer = styled.div`
+export const HeaderContainer = styled.div<{ $isActive: boolean }>`
   display: flex;
   flex-direction: column;
   gap: var(--spacing-8);
+  opacity: ${({ $isActive }) => ($isActive ? 0.4 : 1)};
 `;
 
 export const TagContainer = styled.div`
@@ -29,4 +30,10 @@ export const TitleWrapper = styled.div`
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+`;
+
+export const FooterContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 `;

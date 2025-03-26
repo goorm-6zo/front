@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 type FaceDataCardProps = {
-  isFaceExist: boolean;
+  $hasFace?: boolean;
 };
 
 export const CardContainer = styled.div`
@@ -52,8 +52,8 @@ export const MainContentsContainer = styled.div`
 export const ContentsTextWrapper = styled.div<FaceDataCardProps>`
   display: flex;
   font: var(--font-body-l);
-  color: ${({ isFaceExist, theme }) =>
-    isFaceExist ? theme.colors.typo.primary : theme.colors.typo.tertiary};
+  color: ${({ $hasFace, theme }) =>
+    $hasFace ? theme.colors.typo.primary : theme.colors.typo.tertiary};
 `;
 
 export const TxtBtnWrapper = styled.div`

@@ -23,6 +23,7 @@ const Reservation = () => {
   const [phone, setPhone] = useState('');
   const [hasSession, setHasSession] = useState(true);
   const [sessionItems, setSessionItems] = useState<CheckBoxItem[]>([]);
+  //컨퍼런스 아이디 수정
   const conferenceId = 1;
   const navigate = useNavigate();
   const handleReservation = async () => {
@@ -45,7 +46,6 @@ const Reservation = () => {
       alert('예약이 완료되었습니다.');
       navigate('/complete');
     } catch (error) {
-      // console.error('예약 실패:', error);
       alert('예약에 실패했습니다.');
     }
   };

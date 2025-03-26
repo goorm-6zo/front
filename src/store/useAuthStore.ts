@@ -6,6 +6,7 @@ interface User {
   email: string;
   phone: string;
   role: string;
+  hasFace: boolean;
 }
 
 interface AuthStore {

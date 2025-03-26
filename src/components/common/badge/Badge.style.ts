@@ -8,6 +8,7 @@ export const Badge = styled.div`
   border-radius: var(--radius-8);
   display: inline-block;
   font-weight: 500;
+  height: fit-content;
 
   //모바일
   @media (max-width: 768px) {
