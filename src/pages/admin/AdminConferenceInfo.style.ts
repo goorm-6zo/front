@@ -5,6 +5,7 @@ export const TitleBox = styled.div`
   flex-direction: column;
   align-items: start;
 `;
+
 export const Title = styled.h1`
   text-align: center;
   color: ${({ theme }) => theme.colors.typo.primary};
