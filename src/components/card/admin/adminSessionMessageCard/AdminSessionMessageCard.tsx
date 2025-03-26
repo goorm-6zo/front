@@ -1,6 +1,6 @@
 import * as S from './AdminSessionMessageCard.style';
-import ProfileContents from '../../profileContents/ProfileContents';
 import { Tag } from '../../../common/tag/Tag';
+import ProfileContents from '../../profileContents/ProfileContents';
 
 type AdminSessionMessageCardProps = {
   title: string;
@@ -33,7 +33,7 @@ const AdminSessionMessageCard: React.FC<AdminSessionMessageCardProps> = ({
           </S.TopContainer>
           <S.TitleWrapper>{title}</S.TitleWrapper>
         </S.HeaderContainer>
-        {name && <Profile name={name ?? null} from={from ?? null} />}
+        {name && <ProfileContents name={name ?? null} from={from ?? null} />}
       </S.ContentsContainer>
     </S.CardContainer>
   );
