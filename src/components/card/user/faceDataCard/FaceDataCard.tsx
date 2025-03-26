@@ -6,13 +6,11 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import TxtBtn from '../../../common/button/txtbtn/TxtBtn';
 import IcnBtn from '../../../common/button/icnbtn/IcnBtn';
+import { useAuthStore } from '../../../../store/useAuthStore';
 
-type FaceDataCardProps = {
-  isFaceExist: boolean;
-};
-
-const FaceDataCard: React.FC<FaceDataCardProps> = ({ isFaceExist }) => {
+const FaceDataCard = () => {
   const theme = useTheme();
+  const { userInfo } = useAuthStore();
   const navigate = useNavigate();
   const [isPopupOpen, setisPopupOpen] = useState<boolean>(false);
   const [isState, setIsState] = useState<
@@ -63,19 +61,19 @@ const FaceDataCard: React.FC<FaceDataCardProps> = ({ isFaceExist }) => {
             name="strokeface"
             size="xl"
             color={
-              isFaceExist
+              userInfo?.hasFace
                 ? theme.colors.icon.notice
                 : theme.colors.icon.secondary
             }
           />
-          <S.ContentsTextWrapper isFaceExist={isFaceExist}>
-            {isFaceExist
+          <S.ContentsTextWrapper $hasFace={userInfo?.hasFace}>
+            {userInfo?.hasFace
               ? '얼굴 등록이 완료되었습니다.'
               : '얼굴을 등록해 주세요.'}
           </S.ContentsTextWrapper>
         </S.MainContentsContainer>
 
-        {isFaceExist && (
+        {userInfo?.hasFace && (
           <S.TxtBtnWrapper>
             <TxtBtn onClick={handleDeleteFace}>삭제하기</TxtBtn>
           </S.TxtBtnWrapper>
