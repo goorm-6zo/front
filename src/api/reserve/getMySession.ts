@@ -2,7 +2,7 @@ import API from '../axiosIntance';
 
 export const getMySession = async (id: number) => {
   try {
-    const response = await API.get(`/reservation/my/conference/${id}`, {
+    const response = await API.get(`/attend`, {
       params: {
         conferenceId: id,
       },
