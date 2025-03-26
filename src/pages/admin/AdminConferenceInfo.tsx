@@ -10,6 +10,7 @@ import { Input } from '../../components/common/input/Input';
 //utils
 import { formatTimeRange } from '../../utils/time/timeFormat';
 import Profile from '../../components/common/profile/Profile';
+
 type SessionData = {
   id: number;
   conferenceId: number;
