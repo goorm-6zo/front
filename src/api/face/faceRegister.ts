@@ -10,6 +10,7 @@ export const faceRegister = async (capturedImage: string) => {
     const byteArray = new Uint8Array(
       Array.from(byteString).map((char) => char.charCodeAt(0)),
     );
+
     const blob = new Blob([byteArray], { type: 'image/jpeg' });
 
     // Blob → File

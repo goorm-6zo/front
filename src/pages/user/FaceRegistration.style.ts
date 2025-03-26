@@ -29,3 +29,9 @@ export const Box = styled.div<BoxProps>`
   align-items: center;
   transform: translate(-50%, -50%);
 `;
+export const ToastBox = styled.span`
+  position: absolute;
+  bottom: 10%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+`;
