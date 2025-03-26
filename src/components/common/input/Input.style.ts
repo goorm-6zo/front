@@ -48,13 +48,14 @@ export const StyledInput = styled.input<InputProps>`
 
 export const StyledTextarea = styled.textarea`
   display: flex;
+  width: 100%;
   padding: var(--spacing-16);
   outline: none;
   border: 1px solid ${({ theme }) => theme.colors.border.primary};
   border-radius: var(--radius-16);
   font-size: 16px;
   resize: none;
-  min-height: 100px;
+  min-height: 232px;
   font: var(--font-body-m);
   color: ${({ theme }) => theme.colors.typo.primary};
   &:focus {
