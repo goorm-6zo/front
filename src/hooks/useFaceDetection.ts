@@ -61,7 +61,7 @@ export const useFaceDetection = (
         setIsFaceInside(true);
         const currentDescriptor = detection.descriptor;
         const shouldContinue = onFaceDetected(captureImage, currentDescriptor);
-        //얼굴 등록 페이지일 경우 함수 return
+        // 얼굴 등록 페이지일 경우 함수 return
         if (shouldContinue === false) return;
       } else {
         setIsFaceInside(false);

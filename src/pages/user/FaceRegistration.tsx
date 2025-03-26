@@ -1,11 +1,18 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useFaceDetection } from '../../hooks/useFaceDetection';
 import * as S from './FaceRegistration.style';
 import Webcam from 'react-webcam';
+import { faceRegister } from '../../api/face/faceRegister';
+import { Toast } from '../../components/common/toast/Toast';
+import { useNavigate } from 'react-router-dom';
+import { faceMsg, ToastState } from '../../constant/faceMsg';
 
 const FaceRegistration = () => {
   const webcamRef = useRef<Webcam | null>(null);
   const [hasCaptured, setHasCaptured] = useState(false);
+  const [faceState, setFaceState] = useState<ToastState>('default');
+  const [isCameraVisible, setIsCameraVisible] = useState(true);
+  const navigate = useNavigate();
 
   const handleFaceDetected = (captureImage: () => void) => {
     if (!hasCaptured) {
@@ -15,13 +22,40 @@ const FaceRegistration = () => {
     return false;
   };
 
+  const handleFaceRegister = async () => {
+    if (!capturedImage) return;
+    try {
+      const result = await faceRegister(capturedImage);
+      console.log('인증 결과:', result.status);
+      if (result.status) {
+        setFaceState('success');
+        setTimeout(() => {
+          setIsCameraVisible(false);
+        }, 1000);
+      }
+    } catch (err) {
+      console.error('얼굴 인증 오류:', err);
+      setFaceState('error');
+    }
+  };
+
+  useEffect(() => {
+    if (capturedImage && hasCaptured) {
+      handleFaceRegister();
+    }
+  }, [hasCaptured]);
+
+  useEffect(() => {
+    if (!isCameraVisible) navigate('/profile');
+  }, [isCameraVisible]);
+
   const { isLoading, isFaceInside, isVideoLoaded, capturedImage } =
     useFaceDetection(webcamRef, handleFaceDetected);
 
   return (
     <S.FaceDetectionContainer>
       {isLoading && <div>Loading...</div>}
-      {!hasCaptured && (
+      {isCameraVisible && (
         <>
           <S.VideoBox>
             <Webcam
@@ -31,19 +65,19 @@ const FaceRegistration = () => {
               mirrored={true}
               style={{ width: '100vw', height: '100vh', objectFit: 'cover' }}
             />
-            {isVideoLoaded && (
+            {isCameraVisible && isVideoLoaded && (
               <S.Box
                 $boxWidth={230}
                 $boxHeight={230}
                 $isFaceInside={isFaceInside}
               ></S.Box>
             )}
+            {isCameraVisible && isVideoLoaded && (
+              <S.ToastBox>
+                <Toast state={faceState}>{faceMsg[faceState].msg}</Toast>
+              </S.ToastBox>
+            )}
           </S.VideoBox>
-          <h2 style={{ color: isFaceInside ? 'green' : 'red' }}>
-            {isFaceInside
-              ? '얼굴이 네모 안에 있습니다!'
-              : '얼굴을 네모 안에 맞춰주세요.'}
-          </h2>
         </>
       )}
 

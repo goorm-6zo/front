@@ -4,7 +4,7 @@ import Btn from '../../../common/button/btn/Btn';
 import { Tag } from '../../../common/tag/Tag';
 import Icon from '../../../common/icon/Icon';
 import { useNavigate } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { setActiveState } from '../../../../api/admin/active/setActiveState';
 type AdminSessionCardProps = {
   title: string;
@@ -27,6 +27,7 @@ const AdminSessionCard: React.FC<AdminSessionCardProps> = ({
 }) => {
   const navigate = useNavigate();
   const [active, setActive] = useState(isActive);
+
   const handleActive = async () => {
     try {
       const res = await setActiveState(id);
@@ -36,6 +37,10 @@ const AdminSessionCard: React.FC<AdminSessionCardProps> = ({
       console.log('error', error);
     }
   };
+
+  useEffect(() => {
+    setActive(isActive);
+  }, [isActive]);
   return (
     <S.CardContainer>
       <S.ContentsContainer $isActive={active}>
