@@ -1,11 +1,11 @@
-import * as S from './Profile.style';
+import * as S from './ProfileContents.style';
 
 type ProfileProps = {
   name: string | null;
   from: string | null;
 };
 
-const Profile: React.FC<ProfileProps> = ({ name, from }) => {
+const ProfileContents: React.FC<ProfileProps> = ({ name, from }) => {
   return (
     <S.ProfileContainer>
       <div
@@ -24,4 +24,4 @@ const Profile: React.FC<ProfileProps> = ({ name, from }) => {
   );
 };
 
-export default Profile;
+export default ProfileContents;
