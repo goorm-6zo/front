@@ -7,7 +7,7 @@ interface NotifyProps {
   icon: IconName;
   color?: string;
   backgroundColor?: string;
-  onClick: () => void;
+  onClick?: () => void;
 }
 
 const Notify: React.FC<NotifyProps> = ({
