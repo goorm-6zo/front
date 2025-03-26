@@ -31,7 +31,7 @@ const CtaBtn: React.FC<CtaBtnProps> = ({
         <>
           {children}
           {icon && (
-            <Icon size={20} name={icon} color={theme.colors.typo.secondary} />
+            <Icon size="mn" name={icon} color={theme.colors.typo.secondary} />
           )}
         </>
       )}

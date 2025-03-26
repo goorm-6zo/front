@@ -17,7 +17,7 @@ export const Toast = ({ state = 'default', children }: ToastProps) => {
         <S.Toast state={state}>
           <Icon
             name="fillwarning"
-            size={20}
+            size="mn"
             color={theme.colors.icon.error}
             backgroundColor={theme.colors.icon.white}
           />
@@ -27,7 +27,7 @@ export const Toast = ({ state = 'default', children }: ToastProps) => {
         <S.Toast state={state}>
           <Icon
             name="fillsuccess"
-            size={20}
+            size="mn"
             color={theme.colors.icon.primary}
             backgroundColor={theme.colors.icon.white}
           />

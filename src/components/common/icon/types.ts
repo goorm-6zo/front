@@ -18,7 +18,14 @@ export type IconName =
   | 'strokewarning';
 
 export interface BaseIconProps {
-  size?: number;
+  // size 'xs' => mob: 12, pc: 16
+  // size 's' => mob: 16, pc: 20
+  // size 'mn' => mob: 20, pc: 24 <- medium-normal
+  // size 'me' => mob: 20, pc: 32 <- medium-extraordinary
+  // size 'l' => mob: 24, pc: 32
+  // size 'xl' => mob: 56, pc: 56
+  // size 'xxl' => mob: 102, pc: 102
+  size?: 'xs' | 's' | 'mn' | 'me' | 'l' | 'xl' | 'xxl';
   color?: string;
   backgroundColor?: string;
 }

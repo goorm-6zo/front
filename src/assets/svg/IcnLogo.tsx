@@ -1,7 +1,10 @@
 import React from 'react';
 import { BaseIconProps } from '../../components/common/icon/types';
 
-const IcnLogo: React.FC<BaseIconProps> = ({ size = 24, color = '#414244' }) => {
+const IcnLogo: React.FC<BaseIconProps> = ({
+  size = '100%',
+  color = '#414244',
+}) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"

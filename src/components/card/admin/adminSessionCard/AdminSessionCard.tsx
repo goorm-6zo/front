@@ -32,7 +32,7 @@ const AdminSessionCard: React.FC<AdminSessionCardProps> = ({
                 navigate(`/admin/conference-info/${id}`);
               }}
             >
-              <Icon name="strokeright" color="#909298" size={20} />
+              <Icon name="strokeright" color="#909298" size="mn" />
             </S.DetailBtn>
           </S.TopContainer>
           <S.TitleWrapper>{title}</S.TitleWrapper>

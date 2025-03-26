@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react';
 import * as S from './AdminEntryCard.style.ts';
 import { Tag } from '../../../common/tag/Tag.tsx';
 import Icon from '../../../common/icon/Icon.tsx';
@@ -11,7 +10,6 @@ interface AdminEntryCardProps {
 }
 
 export default function AdminEntryCard({ conferInfo }: AdminEntryCardProps) {
-  const [isMobile, setIsMobile] = useState<boolean>(false);
   const entryCounts = useSSE(
     conferInfo?.id ?? 0,
     conferInfo?.sessions.map((session) => session.id) ?? [],
@@ -27,19 +25,6 @@ export default function AdminEntryCard({ conferInfo }: AdminEntryCardProps) {
     });
   };
 
-  useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth <= 768);
-    };
-
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-
-    return () => {
-      window.removeEventListener('resize', checkMobile);
-    };
-  }, []);
-
   const sortedSessions = conferInfo?.sessions.sort((a, b) => a.id - b.id);
 
   return (
@@ -50,11 +35,7 @@ export default function AdminEntryCard({ conferInfo }: AdminEntryCardProps) {
             <S.CardHeader>
               <S.TotalCount>총 {conferInfo.capacity}명</S.TotalCount>
               <S.CornerBox onClick={() => handleNavigate(conferInfo.id)}>
-                <Icon
-                  name="strokeright"
-                  color="#909298"
-                  size={isMobile ? 20 : 24}
-                />
+                <Icon name="strokeright" color="#909298" size="mn" />
               </S.CornerBox>
             </S.CardHeader>
             <S.EntryCount>{entryCounts.conferenceAttend}명 입장</S.EntryCount>
@@ -68,11 +49,7 @@ export default function AdminEntryCard({ conferInfo }: AdminEntryCardProps) {
                 <S.CornerBox
                   onClick={() => handleNavigate(conferInfo.id, session.id)}
                 >
-                  <Icon
-                    name="strokeright"
-                    color="#909298"
-                    size={isMobile ? 20 : 24}
-                  />
+                  <Icon name="strokeright" color="#909298" size="mn" />
                 </S.CornerBox>
               </S.CardHeader>
               <S.EntryCount>

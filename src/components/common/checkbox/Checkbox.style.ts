@@ -1,9 +1,32 @@
 import { media } from '../../../styles/breakpoints';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export interface StyledCircleProps {
   variant: 'primary' | 'secondary';
 }
+
+const sizeStyles = {
+  mobile: {
+    primary: css`
+      width: 24px;
+      height: 24px;
+    `,
+    secondary: css`
+      width: 20px;
+      height: 20px;
+    `,
+  },
+  desktop: {
+    primary: css`
+      width: 28px;
+      height: 28px;
+    `,
+    secondary: css`
+      width: 24px;
+      height: 24px;
+    `,
+  },
+};
 
 export const CheckboxContainer = styled.span`
   display: inline-flex;
@@ -21,8 +44,6 @@ export const CheckboxLabel = styled.label`
 
 export const CircleInput = styled.input<StyledCircleProps>`
   appearance: none;
-  width: 24px;
-  height: 24px;
   border-radius: 50%;
   border: ${({ theme }) => `1px solid ${theme.colors.border.primary}`};
   background-color: ${({ theme }) => theme.colors.background.white};
@@ -38,24 +59,20 @@ export const CircleInput = styled.input<StyledCircleProps>`
     border: ${({ theme }) => `1px solid ${theme.colors.icon.notice}`};
   }
 
-  ${media.mobile} {
-    width: 20px;
-    height: 20px;
-  }
+  ${({ variant }) => sizeStyles.mobile[variant]};
 
   ${media.desktop} {
-    width: 24px;
-    height: 24px;
+    ${({ variant }) => sizeStyles.desktop[variant]};
   }
 `;
 
 export const IconWrapper = styled.div`
   position: absolute;
-  top: 20%;
-  left: 30%;
-  width: 100%;
-  height: 100%;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   z-index: 1;
+  pointer-events: none;
 `;
 
 export const CheckboxText = styled.span`
