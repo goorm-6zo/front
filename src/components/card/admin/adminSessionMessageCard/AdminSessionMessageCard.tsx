@@ -22,13 +22,15 @@ const AdminSessionMessageCard: React.FC<AdminSessionMessageCardProps> = ({
   selected,
 }) => {
   return (
-    <S.CardContainer $selected={selected}>
+    <S.CardContainer key={id} $selected={selected}>
       <S.ContentsContainer>
         <S.HeaderContainer>
           <S.TopContainer>
             <S.TagContainer>
               <Tag variant={selected ? 'tertiary' : 'secondary'}>{date}</Tag>
-              <Tag variant={selected ? 'tertiary' : 'secondary'}>{location}</Tag>
+              <Tag variant={selected ? 'tertiary' : 'secondary'}>
+                {location}
+              </Tag>
             </S.TagContainer>
           </S.TopContainer>
           <S.TitleWrapper>{title}</S.TitleWrapper>
