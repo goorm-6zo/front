@@ -80,7 +80,9 @@ const UserDashboard = () => {
               color={theme.colors.icon.white}
               backgroundColor={theme.colors.icon.notice}
               onClick={togglePopup}
-            />
+            >
+              아직 얼굴 데이터가 등록되지 않았어요!
+            </Notify>
           )}
         </S.TopContainer>
 
