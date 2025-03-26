@@ -2,16 +2,19 @@ import { useTheme } from 'styled-components';
 import Icon from '../icon/Icon';
 import { IconName } from '../icon/types';
 import * as S from './Notify.style';
+import React from 'react';
 
 interface NotifyProps {
   icon: IconName;
+  children: React.ReactNode;
   color?: string;
   backgroundColor?: string;
-  onClick: () => void;
+  onClick?: () => void;
 }
 
 const Notify: React.FC<NotifyProps> = ({
   icon,
+  children,
   color,
   backgroundColor,
   onClick,
@@ -27,7 +30,7 @@ const Notify: React.FC<NotifyProps> = ({
           color={color}
           backgroundColor={backgroundColor}
         />
-        아직 얼굴 데이터가 등록되지 않았어요!
+        {children}
       </S.TextWrapper>
       <Icon name="strokeright" size="s" color={theme.colors.icon.secondary} />
     </S.NotifyContainer>
