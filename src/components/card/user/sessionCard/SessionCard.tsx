@@ -1,6 +1,7 @@
 import * as S from './SessionCard.style';
 import ProfileContainer from '../../profileContainer/ProfileContainer';
 import { Tag } from '../../../common/tag/Tag';
+import Badge from '../../../common/badge/Badge';
 
 const formatDate = (isoString: string) => {
   const date = new Date(isoString);
@@ -32,9 +33,10 @@ type SessionCardProps = {
   startTime: string;
   endTime: string;
   location: string;
-  speakerImage?: string;
   speakerName: string;
   speakerOrganization: string;
+  speakerImageKey: string;
+  attend: boolean;
 };
 
 const SessionCard: React.FC<SessionCardProps> = ({
@@ -44,11 +46,12 @@ const SessionCard: React.FC<SessionCardProps> = ({
   location,
   speakerName,
   speakerOrganization,
-  speakerImage,
+  speakerImageKey,
+  attend,
 }) => {
   return (
     <S.CardContainer>
-      <S.HeaderContainer>
+      <S.HeaderContainer attend={attend}>
         <S.TagContainer>
           <Tag variant="tertiary">{formatDate(startTime)}</Tag>
           <Tag variant="tertiary">{formatTime(startTime, endTime)}</Tag>
@@ -56,11 +59,15 @@ const SessionCard: React.FC<SessionCardProps> = ({
         </S.TagContainer>
         <S.TitleWrapper>{title}</S.TitleWrapper>
       </S.HeaderContainer>
-      <ProfileContainer
-        name={speakerName}
-        from={speakerOrganization}
-        imageUrl={speakerImage}
-      />
+      <S.FooterContainer>
+        <ProfileContainer
+          name={speakerName}
+          from={speakerOrganization}
+          imageUrl={speakerImageKey}
+          opacity={attend ? true : false}
+        />
+        {attend && <Badge />}
+      </S.FooterContainer>
     </S.CardContainer>
   );
 };
