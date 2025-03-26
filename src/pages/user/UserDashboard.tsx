@@ -8,6 +8,7 @@ import ConferenceCard from '../../components/card/user/conferenceCard/Conference
 import Notify from '../../components/common/notify/Notify';
 import CtaBtn from '../../components/common/button/ctabtn/CtaBtn';
 import Popup from '../../components/common/popup/Popup';
+import { useAuthStore } from '../../store/useAuthStore';
 
 interface ConferenceItem {
   conferenceId: number;
@@ -21,6 +22,7 @@ interface ConferenceItem {
 const UserDashboard = () => {
   const navigate = useNavigate();
   const theme = useTheme();
+  const { userInfo } = useAuthStore();
 
   // Popup창을 관리하는 상태값
   const [isPopupOpen, setisPopupOpen] = useState<boolean>(false);
@@ -88,12 +90,14 @@ const UserDashboard = () => {
       <S.PageContainer>
         <S.TopContainer>
           <S.PageTitleWrapper>홈</S.PageTitleWrapper>
-          <Notify
-            icon="fillwarning"
-            color={theme.colors.icon.white}
-            backgroundColor={theme.colors.icon.notice}
-            onClick={onClickPopup}
-          />
+          {!userInfo?.hasFace && (
+            <Notify
+              icon="fillwarning"
+              color={theme.colors.icon.white}
+              backgroundColor={theme.colors.icon.notice}
+              onClick={onClickPopup}
+            />
+          )}
         </S.TopContainer>
 
         <S.ContentsContainer>
