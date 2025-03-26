@@ -6,6 +6,7 @@ import Icon from '../../../common/icon/Icon';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { setActiveState } from '../../../../api/admin/active/setActiveState';
+import { useTheme } from 'styled-components';
 type AdminSessionCardProps = {
   title: string;
   name: string | null;
@@ -26,12 +27,11 @@ const AdminSessionCard: React.FC<AdminSessionCardProps> = ({
   isActive,
 }) => {
   const navigate = useNavigate();
-  const [_active, _setActive] = useState(isActive);
-
-  const setActive = async () => {
+  const [active, setActive] = useState(isActive);
+  const handleActive = async () => {
     try {
       const res = await setActiveState(id);
-
+      setActive((prev) => !prev);
       console.log('regg:', res);
     } catch (error) {
       console.log('error', error);
@@ -39,7 +39,7 @@ const AdminSessionCard: React.FC<AdminSessionCardProps> = ({
   };
   return (
     <S.CardContainer>
-      <S.ContentsContainer>
+      <S.ContentsContainer $isActive={active}>
         <S.HeaderContainer>
           <S.TopContainer>
             <S.TagContainer>
@@ -50,6 +50,7 @@ const AdminSessionCard: React.FC<AdminSessionCardProps> = ({
               onClick={() => {
                 navigate(`/admin/conference-info/${id}`);
               }}
+              disabled={!active}
             >
               <Icon name="strokeright" color="#909298" size="mn" />
             </S.DetailBtn>
@@ -60,12 +61,17 @@ const AdminSessionCard: React.FC<AdminSessionCardProps> = ({
       </S.ContentsContainer>
 
       <S.BtnContainer>
-        <Btn variant="secondary" state="default" onClick={() => setActive()}>
-          비활성화
+        <Btn
+          variant={active ? 'tertiary' : 'primary'}
+          state="default"
+          onClick={() => handleActive()}
+          isBlue={!active}
+        >
+          {active ? '비활성화' : '활성화'}
         </Btn>
         <Btn
           variant="primary"
-          state="default"
+          state={active ? 'default' : 'disabled'}
           onClick={() => {
             navigate(`/admin/device-connect?conferenceId=1&sessionId=${id}`);
           }}
