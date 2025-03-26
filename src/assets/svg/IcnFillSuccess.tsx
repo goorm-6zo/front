@@ -2,7 +2,7 @@ import React from 'react';
 import { BaseIconProps } from '../../components/common/icon/types';
 
 const IcnFillSuccess: React.FC<BaseIconProps> = ({
-  size = 24,
+  size = '100%',
   color = '#ffffff',
   backgroundColor = '#414244',
 }) => {

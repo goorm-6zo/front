@@ -2,7 +2,7 @@ import React from 'react';
 import { BaseIconProps } from '../../components/common/icon/types';
 
 const IcnFillWarning: React.FC<BaseIconProps> = ({
-  size = 24,
+  size = '100%',
   color = 'white',
   backgroundColor = '#414244',
 }) => {
