@@ -1,5 +1,6 @@
 import React from 'react';
 import { IconProps } from './types';
+import * as S from './Icon.style';
 
 // Import all icon components
 import IcnFillDelete from '../../../assets/svg/IcnFillDelete';
@@ -41,7 +42,12 @@ const ICON_COMPONENTS = {
   strokewarning: IcnStrokeWarning,
 };
 
-const Icon: React.FC<IconProps> = ({ name, size, color, backgroundColor }) => {
+const Icon: React.FC<IconProps> = ({
+  name,
+  size = 'mn',
+  color,
+  backgroundColor,
+}) => {
   const IconComponent = ICON_COMPONENTS[name];
 
   if (!IconComponent) {
@@ -50,11 +56,9 @@ const Icon: React.FC<IconProps> = ({ name, size, color, backgroundColor }) => {
   }
 
   return (
-    <IconComponent
-      size={size}
-      color={color}
-      backgroundColor={backgroundColor}
-    />
+    <S.ResponsiveIcon size={size}>
+      <IconComponent color={color} backgroundColor={backgroundColor} />
+    </S.ResponsiveIcon>
   );
 };
 

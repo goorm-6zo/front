@@ -24,7 +24,7 @@ const Popup: React.FC<PopupProps> = ({ type, onContinue, onClose }) => {
           {icon && (
             <Icon
               name="strokeface"
-              size={56}
+              size="xl"
               color={theme.colors.icon.notice}
             />
           )}

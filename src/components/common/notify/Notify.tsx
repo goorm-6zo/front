@@ -22,14 +22,14 @@ const Notify: React.FC<NotifyProps> = ({
     <S.NotifyContainer onClick={onClick}>
       <S.TextWrapper>
         <Icon
-          size={24}
+          size="l"
           name={icon}
           color={color}
           backgroundColor={backgroundColor}
         />
         아직 얼굴 데이터가 등록되지 않았어요!
       </S.TextWrapper>
-      <Icon name="strokeright" size={16} color={theme.colors.icon.secondary} />
+      <Icon name="strokeright" size="s" color={theme.colors.icon.secondary} />
     </S.NotifyContainer>
   );
 };

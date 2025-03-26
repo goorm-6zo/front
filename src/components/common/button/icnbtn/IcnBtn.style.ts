@@ -2,9 +2,9 @@ import styled from 'styled-components';
 
 export const StyledButton = styled.button`
   display: flex;
-  padding: var(—spacing-0);
+  padding: var(--spacing-0);
   border: none;
-  margin: var(—spacing-0);
+  margin: var(--spacing-0);
 
   width: fit-content;
   height: fit-content;

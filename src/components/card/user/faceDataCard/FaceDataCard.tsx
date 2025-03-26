@@ -53,7 +53,7 @@ const FaceDataCard: React.FC<FaceDataCardProps> = ({ isFaceExist }) => {
       <S.TextContainer>
         <S.TextWrapper>내 얼굴 정보 관리하기</S.TextWrapper>
         <IcnBtn onClick={handleRegisterFace}>
-          <Icon name="strokeplus" size={20} color={theme.colors.icon.primary} />
+          <Icon name="strokeplus" size="mn" color={theme.colors.icon.primary} />
         </IcnBtn>
       </S.TextContainer>
 
@@ -61,7 +61,7 @@ const FaceDataCard: React.FC<FaceDataCardProps> = ({ isFaceExist }) => {
         <S.MainContentsContainer>
           <Icon
             name="strokeface"
-            size={56}
+            size="xl"
             color={
               isFaceExist
                 ? theme.colors.icon.notice

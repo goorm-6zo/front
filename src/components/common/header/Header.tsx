@@ -23,10 +23,10 @@ export const Header: React.FC<HeaderProps> = ({ icon }) => {
 
   return (
     <S.HeaderContainer>
-      <Icon name="logo" />
+      <Icon name="logo" size="l" />
       {icon && (
         <IcnBtn onClick={openSheet}>
-          <Icon name="strokemenu" size={20} />
+          <Icon name="strokemenu" size="mn" />
         </IcnBtn>
       )}
 
