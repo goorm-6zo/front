@@ -4,6 +4,8 @@ import Btn from '../../../common/button/btn/Btn';
 import { Tag } from '../../../common/tag/Tag';
 import Icon from '../../../common/icon/Icon';
 import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
+import { setActiveState } from '../../../../api/admin/active/setActiveState';
 type AdminSessionCardProps = {
   title: string;
   name: string | null;
@@ -11,6 +13,7 @@ type AdminSessionCardProps = {
   id: number;
   date: string;
   location: string;
+  isActive: boolean;
 };
 
 const AdminSessionCard: React.FC<AdminSessionCardProps> = ({
@@ -20,8 +23,20 @@ const AdminSessionCard: React.FC<AdminSessionCardProps> = ({
   id,
   location,
   date,
+  isActive,
 }) => {
   const navigate = useNavigate();
+  const [_active, _setActive] = useState(isActive);
+
+  const setActive = async () => {
+    try {
+      const res = await setActiveState(id);
+
+      console.log('regg:', res);
+    } catch (error) {
+      console.log('error', error);
+    }
+  };
   return (
     <S.CardContainer>
       <S.ContentsContainer>
@@ -45,10 +60,16 @@ const AdminSessionCard: React.FC<AdminSessionCardProps> = ({
       </S.ContentsContainer>
 
       <S.BtnContainer>
-        <Btn variant="secondary" state="default">
+        <Btn variant="secondary" state="default" onClick={() => setActive()}>
           비활성화
         </Btn>
-        <Btn variant="primary" state="default">
+        <Btn
+          variant="primary"
+          state="default"
+          onClick={() => {
+            navigate(`/admin/device-connect?conferenceId=1&sessionId=${id}`);
+          }}
+        >
           기기연결
         </Btn>
       </S.BtnContainer>

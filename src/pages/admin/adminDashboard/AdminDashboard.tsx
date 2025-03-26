@@ -18,6 +18,7 @@ type sessionType = {
   speakerImage: string | null;
   speakerName: string | null;
   speakerOrganization: string | null;
+  active: boolean;
 };
 
 const AdminDashboard = () => {
@@ -54,6 +55,7 @@ const AdminDashboard = () => {
               speakerName,
               speakerOrganization,
               location,
+              active,
             } = data;
             return (
               <AdminSessionCard
@@ -63,6 +65,7 @@ const AdminDashboard = () => {
                 from={speakerOrganization}
                 id={id}
                 location={location}
+                isActive={active}
               />
             );
           })}
