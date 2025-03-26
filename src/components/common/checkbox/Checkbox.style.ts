@@ -66,7 +66,14 @@ export const CircleInput = styled.input<StyledCircleProps>`
   }
 `;
 
-export const IconWrapper = styled.div``;
+export const IconWrapper = styled.div`
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  pointer-events: none;
+`;
 
 export const CheckboxText = styled.span`
   font: var(--font-body-m);
