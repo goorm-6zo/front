@@ -22,6 +22,31 @@ export const Title = styled.h1`
   }
 `;
 
+export const CardContainer = styled.div`
+  box-sizing: border-box;
+  display: flex;
+  background-color: transparent;
+  outline: none;
+  border: none;
+  gap: 9px;
+  padding: var(--spacing-12) 0;
+  cursor: pointer;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  overflow-y: hidden;
+  touch-action: pan-x;
+
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  ${media.desktop} {
+    padding: var(--spacing-20) 0;
+  }
+`;
+
 export const Destination = styled.div`
   display: flex;
   align-items: center;

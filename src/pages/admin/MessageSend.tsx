@@ -9,6 +9,8 @@ import Img from '../../components/common/img/Img.tsx';
 import Icon from '../../components/common/icon/Icon.tsx';
 import CtaBtn from '../../components/common/button/ctabtn/CtaBtn.tsx';
 import Footer from '../../components/common/footer/Footer.tsx';
+import AdminSessionMessageCard from '../../components/card/admin/adminSessionMessageCard/AdminSessionMessageCard.tsx';
+import useConferenceData from '../../hooks/useConferenceData.ts';
 
 interface CheckboxItemProps {
   key: 'all' | 'attendees' | 'nonAttendees';
@@ -22,14 +24,39 @@ const checkboxes: CheckboxItemProps[] = [
 ];
 
 const MessageSend = () => {
+  const theme = useTheme();
   const [checkedItems, setCheckedItems] = useState<CheckboxItemProps['key'][]>(
     [],
   );
   const [message, setMessage] = useState('');
-  const theme = useTheme();
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [preview, setPreview] = useState<string | null>(null);
+  const [selectedConferences, setSelectedConferences] = useState<number[]>([]);
+  const [selectedSessions, setSelectedSessions] = useState<number[]>([]);
 
+  const { conferenceDataQuery } = useConferenceData();
+
+  if (conferenceDataQuery.isLoading) {
+    return <div>로딩 중...</div>;
+  }
+
+  const handleConferenceClick = (conferenceId: number) => {
+    setSelectedConferences((prev) =>
+      prev.includes(conferenceId)
+        ? prev.filter((id) => id !== conferenceId)
+        : [...prev, conferenceId],
+    );
+  };
+
+  const handleSessionClick = (sessionId: number) => {
+    setSelectedSessions((prev) =>
+      prev.includes(sessionId)
+        ? prev.filter((id) => id !== sessionId)
+        : [...prev, sessionId],
+    );
+  };
+
+  // 체크 박스 선택
   const handleAllCheckbox = () => {
     setCheckedItems((prev) =>
       prev.length === checkboxes.length ? [] : checkboxes.map(({ key }) => key),
@@ -56,6 +83,7 @@ const MessageSend = () => {
     setCheckedItems(updatedCheckedItems);
   };
 
+  // 이미지 파일 선택
   const handleClick = () => {
     if (fileInputRef.current) {
       fileInputRef.current.click();
@@ -82,7 +110,36 @@ const MessageSend = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // 데이터 전송
+
+    const filteredCheckedItems = checkedItems.includes('all')
+      ? ['all']
+      : checkedItems;
+
+    const formData = new FormData();
+
+    formData.append(
+      'noticeRequest',
+      JSON.stringify({
+        message,
+        noticeTarget: filteredCheckedItems.join(','),
+      }),
+    );
+
+    formData.append('selectedConferences', JSON.stringify(selectedConferences));
+    formData.append('selectedSessions', JSON.stringify(selectedSessions));
+
+    if (preview) {
+      const base64Data = preview.split(',')[1];
+      const byteString = atob(base64Data);
+      const byteArray = new Uint8Array(
+        Array.from(byteString).map((char) => char.charCodeAt(0)),
+      );
+
+      const blob = new Blob([byteArray], { type: 'image/jpeg' });
+      const file = new File([blob], 'image.jpg', { type: 'image/jpeg' });
+
+      formData.append('faceImage', file);
+    }
   };
 
   return (
@@ -98,6 +155,33 @@ const MessageSend = () => {
         작성하신 내용은 문자 메세지로 전송됩니다.
       </Notify>
       <form onSubmit={handleSubmit}>
+        <S.CardContainer>
+          <AdminSessionMessageCard
+            id={conferenceDataQuery.data?.id ?? 0}
+            title={conferenceDataQuery.data?.name ?? ''}
+            date={`${conferenceDataQuery.data?.startTime} - ${conferenceDataQuery.data?.endTime}`}
+            location={conferenceDataQuery.data?.location ?? ''}
+            selected={selectedConferences.includes(
+              conferenceDataQuery.data?.id ?? -1,
+            )}
+            onClick={() =>
+              handleConferenceClick(conferenceDataQuery.data?.id ?? -1)
+            }
+          />
+          {conferenceDataQuery?.data?.sessions?.map((data) => (
+            <AdminSessionMessageCard
+              key={data.id}
+              title={data.name}
+              name={data.speakerName}
+              from={data.speakerOrganization}
+              id={data.id}
+              date={`${data.startTime} - ${data.endTime}`}
+              location={data.location}
+              selected={selectedSessions.includes(data.id)}
+              onClick={() => handleSessionClick(data.id)}
+            />
+          ))}
+        </S.CardContainer>
         <S.Destination>
           <S.DestinationLabel>발송 대상</S.DestinationLabel>
           {checkboxes.map(({ key, label }) => (
@@ -121,6 +205,7 @@ const MessageSend = () => {
             <S.StyledBtn
               variant="secondary"
               state="default"
+              type="button"
               onClick={handleClick}
             >
               이미지 추가
@@ -145,7 +230,7 @@ const MessageSend = () => {
           )}
         </S.ImgContainer>
         <Footer>
-          <CtaBtn>전송하기</CtaBtn>
+          <CtaBtn type="submit">전송하기</CtaBtn>
         </Footer>
       </form>
     </ResponsiveLayout>
