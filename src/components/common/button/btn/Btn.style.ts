@@ -14,7 +14,6 @@ export const StyledButton = styled.button<StyledButtonProps>`
   padding: var(--spacing-8) var(--spacing-0);
   font: var(--font-title-s);
   border-radius: var(--radius-8);
-  height: fit-content;
   width: 89px;
 
   ${({ theme, variant, isBlue }) => {

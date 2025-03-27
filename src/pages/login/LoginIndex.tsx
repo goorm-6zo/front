@@ -3,6 +3,7 @@ import * as S from './LoginIndex.style';
 import CtaBtn from '../../components/common/button/ctabtn/CtaBtn';
 import TxtBtn from '../../components/common/button/txtbtn/TxtBtn';
 import { useNavigate } from 'react-router-dom';
+import { LogoMaskpass } from '../../assets/svg';
 
 export default function LoginIndex() {
   const navigate = useNavigate();
@@ -10,14 +11,23 @@ export default function LoginIndex() {
   const handleClick = () => {
     navigate('/login');
   };
+
+  const handleClickOauth = () => {
+    window.location.href = `https://server.maskpass.site/oauth2/authorization/kakao`;
+  };
+
   return (
     <ResponsiveLayout hasHeader={false}>
       <S.PageContainer>
         <S.LoginContainer>
-          <S.Logo src="src/assets/images/maskpass-logo.svg" alt="logo" />
+          <S.LogoWrapper>
+            <LogoMaskpass />
+          </S.LogoWrapper>
         </S.LoginContainer>
         <S.ButtonContainer>
-          <CtaBtn variant="kakao">카카오로 3초만에 시작하기</CtaBtn>
+          <CtaBtn variant="kakao" onClick={handleClickOauth}>
+            카카오로 3초만에 시작하기
+          </CtaBtn>
           <CtaBtn onClick={handleClick}>이메일로 로그인하기</CtaBtn>
           <S.TextContainer>
             <S.StyledLink to="/signup">

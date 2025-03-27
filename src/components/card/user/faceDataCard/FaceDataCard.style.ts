@@ -35,7 +35,7 @@ export const TextWrapper = styled.div`
 export const ContentsContainer = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: center;
   gap: var(--spacing-20);
   height: 168px;

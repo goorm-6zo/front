@@ -47,7 +47,11 @@ export const useFaceDetection = (
   };
 
   //얼굴 인식 및 캡쳐
+  const [isDetecting, setIsDetecting] = useState(true);
+
   const detectFace = async () => {
+    if (!isDetecting) return; // 👈 감지 중단 상태면 실행 안 함
+
     const { detection, video } = await getFaceDetectionInfo(
       webcamRef,
       isVideoLoaded,
@@ -61,7 +65,7 @@ export const useFaceDetection = (
         setIsFaceInside(true);
         const currentDescriptor = detection.descriptor;
         const shouldContinue = onFaceDetected(captureImage, currentDescriptor);
-        // 얼굴 등록 페이지일 경우 함수 return
+
         if (shouldContinue === false) return;
       } else {
         setIsFaceInside(false);
@@ -72,17 +76,17 @@ export const useFaceDetection = (
   };
 
   useEffect(() => {
-    if (isModelLoaded && isVideoLoaded) {
+    if (isModelLoaded && isVideoLoaded && isDetecting) {
       setIsLoading(false);
-      console.log('얼굴 인식 시작!');
       detectFace();
     }
-  }, [isModelLoaded, isVideoLoaded]);
+  }, [isModelLoaded, isVideoLoaded, isDetecting]);
 
   return {
     isLoading,
     isFaceInside,
     isVideoLoaded,
     capturedImage,
+    setIsDetecting,
   };
 };

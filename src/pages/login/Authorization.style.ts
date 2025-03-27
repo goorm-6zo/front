@@ -12,8 +12,42 @@ export const PageContainer = styled.div`
 
 export const PageTitleWrapper = styled.div`
   display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
   padding: var(--spacing-20) var(--spacing-0);
   font: var(--font-title-xl);
+`;
+
+export const TitleWrapper = styled.div`
+  display: flex;
+  font: var(--font-title-xl);
+`;
+
+export const subtitleWrapper = styled.div`
+  font: var(--font-body-m);
+  color: ${({ theme }) => theme.colors.typo.tertiary};
+`;
+
+export const InputContainer = styled.div`
+  display: flex;
+  gap: var(--spacing-12);
+`;
+
+export const InputWrapper = styled.div`
+  display: flex;
+  flex: 2.2;
+`;
+
+export const InputWrapper2 = styled.div`
+  display: flex;
+  flex: 4.3;
+`;
+
+export const Description = styled.div`
+  display: flex;
+  padding: var(--spacing-20) var(--spacing-0);
+  font: var(--font-title-xl);
+  color: ${({ theme }) => theme.colors.typo.tertiary};
 `;
 
 export const FormContainer = styled.form`

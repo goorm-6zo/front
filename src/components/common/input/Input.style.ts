@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { InputProps } from './Input';
 
 export const StyledInputContainer = styled.div<InputProps>`
+  flex: 1;
   display: flex;
   flex-direction: column;
   padding: var(--spacing-0) var(--spacing-12);
@@ -22,6 +23,7 @@ export const StyledInput = styled.input<InputProps>`
   outline: none;
   padding: var(--spacing-16) var(--spacing-4);
   background-color: transparent;
+  border-radius: 0px;
   &:focus {
     border-bottom: 1px solid
       ${({ theme }) => theme.colors.border.primaryPressed};

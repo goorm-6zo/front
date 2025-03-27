@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useTheme } from 'styled-components';
 import { useAuthStore } from '../../../../store/useAuthStore';
 
+import { getUserData } from '../../../../api/login/login';
 import { faceDelete } from '../../../../api/face/faceDelete';
 
 import Icon from '../../../common/icon/Icon';
@@ -21,7 +22,7 @@ const FaceDataCard = () => {
     'register' | 'reRegister' | 'deleteInfo'
   >('register');
 
-  const hasFace = userInfo?.hasFace;
+  const [hasFace, sethasFace] = useState(userInfo?.hasFace ?? false);
 
   const openPopupWithState = (state: typeof popupState) => {
     setPopupState(state);
@@ -34,9 +35,15 @@ const FaceDataCard = () => {
     navigate('/face-registration');
   };
 
-  const onDelete = () => {
-    // 수정 - 요거 잘 작동하는지 확인해봐야함
-    faceDelete();
+  const onDelete = async () => {
+    try {
+      await faceDelete();
+      const updated = await getUserData();
+      sethasFace(updated.hasFace);
+      closePopup();
+    } catch (error) {
+      alert('얼굴 정보 삭제에 실패했습니다.');
+    }
   };
 
   return (
@@ -44,8 +51,8 @@ const FaceDataCard = () => {
       {isPopupOpen && (
         <Popup
           type={popupState}
-          onContinue={onContinue}
-          onClose={popupState === 'deleteInfo' ? onDelete : closePopup}
+          onContinue={popupState === 'deleteInfo' ? onDelete : onContinue}
+          onClose={closePopup}
         />
       )}
 

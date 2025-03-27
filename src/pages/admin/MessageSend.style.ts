@@ -14,6 +14,11 @@ export const TitleContainer = styled.div`
   }
 `;
 
+export const PageContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
 export const Title = styled.h1`
   font: var(--font-title-xl-2);
 

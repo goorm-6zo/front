@@ -9,6 +9,7 @@ export const HeaderContainer = styled.header`
   background-color: ${({ theme }) => theme.colors.background.white};
   position: relative;
   margin: 0 auto;
+  border-bottom: 1px solid ${({ theme }) => theme.colors.divider.primary};
 
   ${media.mobile} {
     padding: var(--spacing-16) var(--spacing-20);

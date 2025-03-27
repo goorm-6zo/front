@@ -6,7 +6,7 @@ import Webcam from 'react-webcam';
 import { faceAuthentication } from '../../api/face/faceAuthentication';
 import { Toast } from '../../components/common/toast/Toast';
 import { faceMsg, ToastState } from '../../constant/faceMsg';
-const FACE_RECOGNITION_THRESHOLD = 0.6;
+const FACE_RECOGNITION_THRESHOLD = 0.5;
 
 const FaceRecognition = () => {
   const capturedFaceDes = useRef<Float32Array | null>(null);
@@ -34,6 +34,7 @@ const FaceRecognition = () => {
       );
 
       if (distance < FACE_RECOGNITION_THRESHOLD) {
+        console.log('특징 거리:', distance);
         console.log('동일한 얼굴입니다. 캡처하지 않음.');
         return null;
       }
@@ -44,8 +45,13 @@ const FaceRecognition = () => {
     return true;
   };
 
-  const { isLoading, isFaceInside, isVideoLoaded, capturedImage } =
-    useFaceDetection(webcamRef, handleFaceDetected);
+  const {
+    isLoading,
+    isFaceInside,
+    isVideoLoaded,
+    capturedImage,
+    setIsDetecting,
+  } = useFaceDetection(webcamRef, handleFaceDetected);
 
   useEffect(() => {
     const authenticateFace = async () => {
@@ -54,8 +60,11 @@ const FaceRecognition = () => {
       console.log('이미지 캠쳐:', capturedImage);
 
       try {
+        setIsDetecting(false);
+
         const result = await faceAuthentication(1, 1, capturedImage);
         console.log('인증 결과:', result.status);
+
         if (result.status) {
           setFaceState('success');
         }
@@ -63,14 +72,16 @@ const FaceRecognition = () => {
         console.error('얼굴 인증 오류:', err);
         setFaceState('error');
       }
+
+      setTimeout(() => {
+        // capturedFaceDes.current = null;
+        setFaceState('default');
+        setIsDetecting(true);
+      }, 2000);
     };
 
     authenticateFace();
   }, [capturedImage]);
-
-  useEffect(() => {
-    if (!isFaceInside) setFaceState('default');
-  }, [isFaceInside]);
 
   return (
     <S.FaceDetectionContainer>
@@ -92,7 +103,7 @@ const FaceRecognition = () => {
           <S.Box
             $boxWidth={230}
             $boxHeight={230}
-            $isFaceInside={isFaceInside}
+            $isFaceInside={isFaceInside || faceState === 'success'}
           ></S.Box>
         )}
         {isVideoLoaded && (

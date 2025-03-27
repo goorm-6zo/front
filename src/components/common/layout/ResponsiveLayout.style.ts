@@ -17,29 +17,39 @@ export const HeaderWrapper = styled.header`
 
 export const MarginTop = styled.header`
   margin-top: 56px;
+
+  ${media.desktop} {
+    margin-top: 64.8px;
+  }
+
+  ${media.expanded} {
+    margin-top: 64.8px;
+  }
 `;
 
-export const MainContainer = styled.div`
+export const MainContainer = styled.div<{ $hasFooter: boolean }>`
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+
   width: 100%;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  min-height: 0;
+  box-sizing: border-box;
+
+  margin-bottom: ${({ $hasFooter }) => ($hasFooter ? '111.2px' : '0')};
 
   & * {
     flex-shrink: 0;
   }
 
-  /* 모바일 (320px-768px): 좌우 마진 20px */
   padding: var(--spacing-0) var(--spacing-20);
-  box-sizing: border-box;
 
-  /* 데스크톱 (769px-1280px): 좌우 마진 80px */
   ${media.desktop} {
     padding: var(--spacing-0) var(--spacing-80);
   }
 
-  /* 무한 width에 대해 (1281px 이상): 고정 너비 1200px + 중앙 정렬 */
   ${media.expanded} {
     max-width: 1120px;
     padding: var(--spacing-0);

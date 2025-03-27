@@ -15,8 +15,10 @@ interface SheetProps {
 const Sheet: React.FC<SheetProps> = ({ isOpen, onClose }) => {
   const location = useLocation();
   const navigate = useNavigate();
-
   const currentPath = location.pathname;
+
+  // ✅ /admin 포함 여부로 구분
+  const isAdmin = currentPath.startsWith('/admin');
 
   const handleLogout = async () => {
     const response = await logoutUser();
@@ -37,20 +39,40 @@ const Sheet: React.FC<SheetProps> = ({ isOpen, onClose }) => {
             <Icon name="strokeclose" />
           </IcnBtn>
         </S.CloseButtonWrapper>
+
         <S.ContentsWrapper>
           <S.ButtonWrapper>
-            <SheetBtn
-              onClick={() => navigate('/dashboard')}
-              state={currentPath === '/profile' ? 'off' : 'on'}
-            >
-              홈
-            </SheetBtn>
-            <SheetBtn
-              state={currentPath === '/profile' ? 'on' : 'off'}
-              onClick={() => navigate('/profile')}
-            >
-              나의 정보
-            </SheetBtn>
+            {isAdmin ? (
+              <>
+                <SheetBtn
+                  onClick={() => navigate('/admin/dashboard')}
+                  state={currentPath === '/admin/dashboard' ? 'on' : 'off'}
+                >
+                  행사 목록
+                </SheetBtn>
+                <SheetBtn
+                  state={currentPath === '/admin/visitors' ? 'on' : 'off'}
+                  onClick={() => navigate('/admin/visitors')}
+                >
+                  입장 현황
+                </SheetBtn>
+              </>
+            ) : (
+              <>
+                <SheetBtn
+                  onClick={() => navigate('/dashboard')}
+                  state={currentPath === '/dashboard' ? 'on' : 'off'}
+                >
+                  홈
+                </SheetBtn>
+                <SheetBtn
+                  state={currentPath === '/profile' ? 'on' : 'off'}
+                  onClick={() => navigate('/profile')}
+                >
+                  나의 정보
+                </SheetBtn>
+              </>
+            )}
           </S.ButtonWrapper>
 
           <S.BottomButtonWrapper>

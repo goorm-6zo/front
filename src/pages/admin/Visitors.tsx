@@ -18,7 +18,7 @@ const Visitors = () => {
   }
 
   return (
-    <ResponsiveLayout>
+    <ResponsiveLayout hasHeaderIcon={true}>
       <S.TitleContainer>
         <S.Title>입장 현황</S.Title>
         <S.Description>
