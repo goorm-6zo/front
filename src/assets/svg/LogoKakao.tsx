@@ -7,7 +7,7 @@ const LogoKakao = () => {
       viewBox="0 0 19 19"
       fill="none"
     >
-      <g clip-path="url(#clip0_804_1921)">
+      <g clipPath="url(#clip0_804_1921)">
         <path
           fillRule="evenodd"
           clipRule="evenodd"
