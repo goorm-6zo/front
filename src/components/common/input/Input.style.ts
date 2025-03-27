@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { InputProps } from './Input';
 
 export const StyledInputContainer = styled.div<InputProps>`
+  flex: 1;
   display: flex;
   flex-direction: column;
   padding: var(--spacing-0) var(--spacing-12);
