@@ -13,7 +13,7 @@ const IcnFillSend: React.FC<BaseIconProps> = ({
       viewBox="0 0 24 24"
       fill="none"
     >
-      <g clip-path="url(#clip0_938_1378)">
+      <g clipPath="url(#clip0_938_1378)">
         <path
           fillRule="evenodd"
           clipRule="evenodd"

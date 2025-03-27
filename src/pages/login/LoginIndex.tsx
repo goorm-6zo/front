@@ -11,6 +11,11 @@ export default function LoginIndex() {
   const handleClick = () => {
     navigate('/login');
   };
+
+  const handleClickOauth = () => {
+    window.location.href = `https://server.maskpass.site/oauth2/authorization/kakao`;
+  };
+
   return (
     <ResponsiveLayout hasHeader={false}>
       <S.PageContainer>
@@ -20,7 +25,9 @@ export default function LoginIndex() {
           </S.LogoWrapper>
         </S.LoginContainer>
         <S.ButtonContainer>
-          <CtaBtn variant="kakao">카카오로 3초만에 시작하기</CtaBtn>
+          <CtaBtn variant="kakao" onClick={handleClickOauth}>
+            카카오로 3초만에 시작하기
+          </CtaBtn>
           <CtaBtn onClick={handleClick}>이메일로 로그인하기</CtaBtn>
           <S.TextContainer>
             <S.StyledLink to="/signup">

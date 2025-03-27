@@ -19,6 +19,7 @@ import NotFound from '../pages/NotFound';
 import LoginIndex from '../pages/login/LoginIndex';
 import PublicRoute from './PublicRoute';
 import PrivateRoute from './PrivateRoute';
+import Authorization from '../pages/login/Authorization';
 
 const router = createBrowserRouter([
   { path: '/face-recognition', element: <FaceRecognition /> },
@@ -39,6 +40,11 @@ const router = createBrowserRouter([
     path: '/signup',
     element: <PublicRoute />,
     children: [{ path: '', element: <SignUp /> }],
+  },
+  {
+    path: '/authorization',
+    element: <PublicRoute />,
+    children: [{ path: '', element: <Authorization /> }],
   },
 
   {
