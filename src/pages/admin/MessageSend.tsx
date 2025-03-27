@@ -143,96 +143,100 @@ const MessageSend = () => {
   };
 
   return (
-    <ResponsiveLayout>
-      <S.TitleContainer>
-        <S.Title>메시지 전송</S.Title>
-      </S.TitleContainer>
-      <Notify
-        icon="fillwarning"
-        color={theme.colors.icon.white}
-        backgroundColor={theme.colors.icon.notice}
-      >
-        작성하신 내용은 문자 메세지로 전송됩니다.
-      </Notify>
-      <form onSubmit={handleSubmit}>
-        <S.CardContainer>
-          <AdminSessionMessageCard
-            id={conferenceDataQuery.data?.id ?? 0}
-            title={conferenceDataQuery.data?.name ?? ''}
-            date={`${conferenceDataQuery.data?.startTime} - ${conferenceDataQuery.data?.endTime}`}
-            location={conferenceDataQuery.data?.location ?? ''}
-            selected={selectedConferences.includes(
-              conferenceDataQuery.data?.id ?? -1,
-            )}
-            onClick={() =>
-              handleConferenceClick(conferenceDataQuery.data?.id ?? -1)
-            }
-          />
-          {conferenceDataQuery?.data?.sessions?.map((data) => (
+    <ResponsiveLayout hasFooter={true}>
+      <S.PageContainer>
+        <S.TitleContainer>
+          <S.Title>메시지 전송</S.Title>
+        </S.TitleContainer>
+        <Notify
+          icon="fillwarning"
+          color={theme.colors.icon.white}
+          backgroundColor={theme.colors.icon.notice}
+        >
+          작성하신 내용은 문자 메세지로 전송됩니다.
+        </Notify>
+        <form onSubmit={handleSubmit}>
+          <S.CardContainer>
             <AdminSessionMessageCard
-              key={data.id}
-              title={data.name}
-              name={data.speakerName}
-              from={data.speakerOrganization}
-              id={data.id}
-              date={`${data.startTime} - ${data.endTime}`}
-              location={data.location}
-              selected={selectedSessions.includes(data.id)}
-              onClick={() => handleSessionClick(data.id)}
-            />
-          ))}
-        </S.CardContainer>
-        <S.Destination>
-          <S.DestinationLabel>발송 대상</S.DestinationLabel>
-          {checkboxes.map(({ key, label }) => (
-            <Checkbox
-              key={key}
-              checked={checkedItems.includes(key)}
-              onChange={() =>
-                key === 'all' ? handleAllCheckbox() : handleSingleCheckbox(key)
+              id={conferenceDataQuery.data?.id ?? 0}
+              title={conferenceDataQuery.data?.name ?? ''}
+              date={`${conferenceDataQuery.data?.startTime} - ${conferenceDataQuery.data?.endTime}`}
+              location={conferenceDataQuery.data?.location ?? ''}
+              selected={selectedConferences.includes(
+                conferenceDataQuery.data?.id ?? -1,
+              )}
+              onClick={() =>
+                handleConferenceClick(conferenceDataQuery.data?.id ?? -1)
               }
-              label={label}
             />
-          ))}
-        </S.Destination>
-        <Textarea
-          placeholder="내용을 입력하세요"
-          value={message}
-          onChange={(e) => setMessage(e.target.value)}
-        />
-        <S.ImgContainer>
-          <S.BtnBox>
-            <S.StyledBtn
-              variant="secondary"
-              state="default"
-              type="button"
-              onClick={handleClick}
-            >
-              이미지 추가
-              <input
-                type="file"
-                key={preview || 'new'}
-                ref={fileInputRef}
-                accept="image/*"
-                onChange={handleFileChange}
-                style={{ display: 'none' }}
+            {conferenceDataQuery?.data?.sessions?.map((data) => (
+              <AdminSessionMessageCard
+                key={data.id}
+                title={data.name}
+                name={data.speakerName}
+                from={data.speakerOrganization}
+                id={data.id}
+                date={`${data.startTime} - ${data.endTime}`}
+                location={data.location}
+                selected={selectedSessions.includes(data.id)}
+                onClick={() => handleSessionClick(data.id)}
               />
-            </S.StyledBtn>
-            <S.BtnDescription>최대 1개까지 가능합니다</S.BtnDescription>
-          </S.BtnBox>
-          {preview && (
-            <S.ImgBox>
-              <S.CloseBtn onClick={handleImageDelete}>
-                <Icon name="strokeclose" size="s" />
-              </S.CloseBtn>
-              <Img imageUrl={preview} size={128} />
-            </S.ImgBox>
-          )}
-        </S.ImgContainer>
-        <Footer>
-          <CtaBtn type="submit">전송하기</CtaBtn>
-        </Footer>
-      </form>
+            ))}
+          </S.CardContainer>
+          <S.Destination>
+            <S.DestinationLabel>발송 대상</S.DestinationLabel>
+            {checkboxes.map(({ key, label }) => (
+              <Checkbox
+                key={key}
+                checked={checkedItems.includes(key)}
+                onChange={() =>
+                  key === 'all'
+                    ? handleAllCheckbox()
+                    : handleSingleCheckbox(key)
+                }
+                label={label}
+              />
+            ))}
+          </S.Destination>
+          <Textarea
+            placeholder="내용을 입력하세요"
+            value={message}
+            onChange={(e) => setMessage(e.target.value)}
+          />
+          <S.ImgContainer>
+            <S.BtnBox>
+              <S.StyledBtn
+                variant="secondary"
+                state="default"
+                type="button"
+                onClick={handleClick}
+              >
+                이미지 추가
+                <input
+                  type="file"
+                  key={preview || 'new'}
+                  ref={fileInputRef}
+                  accept="image/*"
+                  onChange={handleFileChange}
+                  style={{ display: 'none' }}
+                />
+              </S.StyledBtn>
+              <S.BtnDescription>최대 1개까지 가능합니다</S.BtnDescription>
+            </S.BtnBox>
+            {preview && (
+              <S.ImgBox>
+                <S.CloseBtn onClick={handleImageDelete}>
+                  <Icon name="strokeclose" size="s" />
+                </S.CloseBtn>
+                <Img imageUrl={preview} size={128} />
+              </S.ImgBox>
+            )}
+          </S.ImgContainer>
+          <Footer>
+            <CtaBtn type="submit">전송하기</CtaBtn>
+          </Footer>
+        </form>
+      </S.PageContainer>
     </ResponsiveLayout>
   );
 };
