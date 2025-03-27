@@ -30,7 +30,7 @@ const AdminConferenceInfo = () => {
   const { id } = useParams<{ id: string }>();
   const [sessionData, setSessionData] = useState<SessionData>();
   const [time, setTime] = useState<string>('');
-  const conferenceId = 2;
+  const conferenceId = 1;
   useEffect(() => {
     const getInfo = async () => {
       const sessionId = Number(id);
