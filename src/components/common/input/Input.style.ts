@@ -22,6 +22,7 @@ export const StyledInput = styled.input<InputProps>`
   outline: none;
   padding: var(--spacing-16) var(--spacing-4);
   background-color: transparent;
+  border-radius: 0px;
   &:focus {
     border-bottom: 1px solid
       ${({ theme }) => theme.colors.border.primaryPressed};
