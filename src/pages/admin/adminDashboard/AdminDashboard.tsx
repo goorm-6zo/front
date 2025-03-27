@@ -40,7 +40,7 @@ const AdminDashboard = () => {
   }, []);
 
   return (
-    <ResponsiveLayout>
+    <ResponsiveLayout hasHeaderIcon={true}>
       <S.TitleBox>
         <S.Title>행사 목록</S.Title>
         <S.SubTitle>얼굴 인증으로 입출입을 관리하는 행사 목록이에요</S.SubTitle>
