@@ -165,15 +165,16 @@ const SignUp = () => {
             </S.ErrorMsgWrapper>
           )}
 
-          {/* ✅ 동의 영역 */}
           <S.AgreeCardContainer>
             <S.AgreeAllContainer>
-              <Checkbox
-                variant="primary"
-                label="전체동의"
-                checked={allAgree}
-                onChange={handleAllAgreeToggle}
-              />
+              <S.AgreeAllWrapper>
+                <Checkbox
+                  variant="primary"
+                  label="전체동의"
+                  checked={allAgree}
+                  onChange={handleAllAgreeToggle}
+                />
+              </S.AgreeAllWrapper>
             </S.AgreeAllContainer>
 
             <S.AgreePortionWrapper>
@@ -185,18 +186,16 @@ const SignUp = () => {
               />
               <Checkbox
                 variant="secondary"
-                label="(필수) 개인정보 수집·이용에 동의합니다."
+                label="(필수) 개인정보 수집•이용에 동의합니다."
                 checked={secondAgree}
                 onChange={() => setSecondAgree((prev) => !prev)}
               />
             </S.AgreePortionWrapper>
           </S.AgreeCardContainer>
 
-          {errorMsg && (
-            <S.ErrorMsgWrapper>
-              <S.ErrorMsg>{errorMsg}</S.ErrorMsg>
-            </S.ErrorMsgWrapper>
-          )}
+          <S.ErrorMsgWrapper>
+            {errorMsg && <S.ErrorMsg>{errorMsg}</S.ErrorMsg>}
+          </S.ErrorMsgWrapper>
 
           <Footer>
             <CtaBtn type="submit" disabled={isButtonDisabled}>
