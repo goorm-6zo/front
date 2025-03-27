@@ -17,6 +17,14 @@ export const HeaderWrapper = styled.header`
 
 export const MarginTop = styled.header`
   margin-top: 56px;
+
+  ${media.desktop} {
+    margin-top: 64.8px;
+  }
+
+  ${media.expanded} {
+    margin-top: 64.8px;
+  }
 `;
 
 export const MainContainer = styled.div<{ $hasFooter: boolean }>`
