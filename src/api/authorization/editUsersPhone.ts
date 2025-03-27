@@ -3,9 +3,7 @@ import API from '../axiosIntance';
 export const editUsersPhone = async (phone: string) => {
   try {
     const response = await API.put('/users/phone', {
-      params: {
-        phone: phone,
-      },
+      phone: phone,
     });
 
     return response.data;

@@ -3,10 +3,8 @@ import API from '../axiosIntance';
 export const isPhoneVerified = async (phone: string, code: string) => {
   try {
     const response = await API.post('/users/verify', {
-      params: {
-        phone: phone,
-        code: code,
-      },
+      phone: phone,
+      code: code,
     });
 
     return response.data;
