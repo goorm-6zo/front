@@ -15,3 +15,5 @@ export { default as IcnStrokePlus } from './IcnStrokePlus';
 export { default as IcnStrokeRight } from './IcnStrokeRight';
 export { default as IcnStrokeTop } from './IcnStrokeTop';
 export { default as IcnStrokeWarning } from './IcnStrokeWarning';
+export { default as LogoKakao } from './LogoKakao';
+export { default as LogoMaskpass } from './LogoMaskpass';

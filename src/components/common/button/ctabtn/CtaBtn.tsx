@@ -3,6 +3,7 @@ import * as S from './CtaBtn.style';
 import Icon from '../../icon/Icon';
 import { IconName } from '../../icon/types';
 import { useTheme } from 'styled-components';
+import { LogoKakao } from '../../../../assets/svg';
 
 type CtaBtnProps = Omit<
   React.ButtonHTMLAttributes<HTMLButtonElement>,
@@ -24,7 +25,7 @@ const CtaBtn: React.FC<CtaBtnProps> = ({
     <S.StyledButton $variant={variant} {...props}>
       {variant === 'kakao' ? (
         <>
-          <img src="/src/assets/images/kakao-logo.svg" />
+          <LogoKakao />
           {children}
         </>
       ) : (
