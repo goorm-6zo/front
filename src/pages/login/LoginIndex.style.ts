@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import { media } from '../../styles/breakpoints';
 
 export const PageContainer = styled.div`
   display: flex;
@@ -11,14 +12,19 @@ export const PageContainer = styled.div`
 
 export const LoginContainer = styled.div`
   display: flex;
+  justify-content: center;
+  align-items: center;
   flex: 1;
 `;
 
-export const Logo = styled.img`
-  width: 200px;
-
-  @media screen and (max-width: 768px) {
+export const LogoWrapper = styled.div`
+  ${media.mobile} {
+    height: 70px;
     width: 140px;
+  }
+  ${media.mobile} {
+    height: 100px;
+    width: 200px;
   }
 `;
 
@@ -38,7 +44,7 @@ export const TextContainer = styled.span`
 `;
 
 export const StyledLink = styled(Link)`
-  text-decoration: none; 
+  text-decoration: none;
 `;
 
 export const Line = styled.div`

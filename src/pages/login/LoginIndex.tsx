@@ -3,6 +3,7 @@ import * as S from './LoginIndex.style';
 import CtaBtn from '../../components/common/button/ctabtn/CtaBtn';
 import TxtBtn from '../../components/common/button/txtbtn/TxtBtn';
 import { useNavigate } from 'react-router-dom';
+import { LogoMaskpass } from '../../assets/svg';
 
 export default function LoginIndex() {
   const navigate = useNavigate();
@@ -14,7 +15,9 @@ export default function LoginIndex() {
     <ResponsiveLayout hasHeader={false}>
       <S.PageContainer>
         <S.LoginContainer>
-          <S.Logo src="src/assets/images/maskpass-logo.svg" alt="logo" />
+          <S.LogoWrapper>
+            <LogoMaskpass />
+          </S.LogoWrapper>
         </S.LoginContainer>
         <S.ButtonContainer>
           <CtaBtn variant="kakao">카카오로 3초만에 시작하기</CtaBtn>
