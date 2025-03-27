@@ -13,10 +13,10 @@ import Popup from '../../components/common/popup/Popup';
 import * as S from './UserDashboard.style';
 
 interface ConferenceItem {
-  conferenceId: number;
-  conferenceImageUrl: string;
-  conferenceLocation: string;
-  conferenceName: string;
+  id: number;
+  imageUrl: string;
+  location: string;
+  name: string;
   endTime: string;
   startTime: string;
 }
@@ -93,13 +93,13 @@ const UserDashboard = () => {
             {myConferenceList && myConferenceList.length > 0 ? (
               myConferenceList.map((item) => (
                 <ConferenceCard
-                  key={item.conferenceId}
-                  title={item.conferenceName}
+                  key={item.id}
+                  title={item.name}
                   startTime={item.startTime}
                   endTime={item.endTime}
-                  place={item.conferenceLocation}
-                  imageUrl={item.conferenceImageUrl}
-                  onClick={() => onClickConference(item.conferenceId)}
+                  place={item.location}
+                  imageUrl={item.imageUrl}
+                  onClick={() => onClickConference(item.id)}
                 />
               ))
             ) : (
@@ -116,13 +116,13 @@ const UserDashboard = () => {
                 : myVisitedConferenceList.slice(0, 2)
               ).map((item) => (
                 <ConferenceCard
-                  key={item.conferenceId}
-                  title={item.conferenceName}
+                  key={item.id}
+                  title={item.name}
                   startTime={item.startTime}
                   endTime={item.endTime}
-                  place={item.conferenceLocation}
-                  imageUrl={item.conferenceImageUrl}
-                  onClick={() => onClickConference(item.conferenceId)}
+                  place={item.location}
+                  imageUrl={item.imageUrl}
+                  onClick={() => onClickConference(item.id)}
                 />
               ))
             ) : (
