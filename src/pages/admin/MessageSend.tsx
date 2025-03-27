@@ -11,16 +11,18 @@ import CtaBtn from '../../components/common/button/ctabtn/CtaBtn.tsx';
 import Footer from '../../components/common/footer/Footer.tsx';
 import AdminSessionMessageCard from '../../components/card/admin/adminSessionMessageCard/AdminSessionMessageCard.tsx';
 import useConferenceData from '../../hooks/useConferenceData.ts';
+import { sendMessage } from '../../api/admin/message/message.ts';
+import { Toast } from '../../components/common/toast/Toast.tsx';
 
 interface CheckboxItemProps {
-  key: 'all' | 'attendees' | 'nonAttendees';
+  key: 'ALL' | 'ATTENDEE' | 'NON_ATTENDEE';
   label: string;
 }
 
 const checkboxes: CheckboxItemProps[] = [
-  { key: 'all', label: '전체' },
-  { key: 'attendees', label: '참석자' },
-  { key: 'nonAttendees', label: '미참석자' },
+  { key: 'ALL', label: '전체' },
+  { key: 'ATTENDEE', label: '참석자' },
+  { key: 'NON_ATTENDEE', label: '미참석자' },
 ];
 
 const MessageSend = () => {
@@ -33,11 +35,17 @@ const MessageSend = () => {
   const [preview, setPreview] = useState<string | null>(null);
   const [selectedConferences, setSelectedConferences] = useState<number[]>([]);
   const [selectedSessions, setSelectedSessions] = useState<number[]>([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [showToast, setShowToast] = useState(false);
 
   const { conferenceDataQuery } = useConferenceData();
 
-  if (conferenceDataQuery.isLoading) {
-    return <div>로딩 중...</div>;
+  if (conferenceDataQuery.isLoading || isLoading) {
+    return (
+      <S.Overlay>
+        <div>로딩 중...</div>
+      </S.Overlay>
+    );
   }
 
   const handleConferenceClick = (conferenceId: number) => {
@@ -69,14 +77,14 @@ const MessageSend = () => {
       : [...checkedItems, key];
 
     const individualKeys = checkboxes
-      .filter(({ key }) => key !== 'all')
+      .filter(({ key }) => key !== 'ALL')
       .map(({ key }) => key);
 
     if (individualKeys.every((item) => updatedCheckedItems.includes(item))) {
-      updatedCheckedItems = ['all', ...individualKeys];
+      updatedCheckedItems = ['ALL', ...individualKeys];
     } else {
       updatedCheckedItems = updatedCheckedItems.filter(
-        (item) => item !== 'all',
+        (item) => item !== 'ALL',
       );
     }
 
@@ -111,22 +119,26 @@ const MessageSend = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    const filteredCheckedItems = checkedItems.includes('all')
-      ? ['all']
+    setIsLoading(true);
+
+    const filteredCheckedItems = checkedItems.includes('ALL')
+      ? ['ALL']
       : checkedItems;
 
     const formData = new FormData();
 
     formData.append(
       'noticeRequest',
-      JSON.stringify({
-        message,
-        noticeTarget: filteredCheckedItems.join(','),
-      }),
+      new Blob(
+        [
+          JSON.stringify({
+            message,
+            noticeTarget: filteredCheckedItems.join(','),
+          }),
+        ],
+        { type: 'application/json' },
+      ),
     );
-
-    formData.append('selectedConferences', JSON.stringify(selectedConferences));
-    formData.append('selectedSessions', JSON.stringify(selectedSessions));
 
     if (preview) {
       const base64Data = preview.split(',')[1];
@@ -138,12 +150,43 @@ const MessageSend = () => {
       const blob = new Blob([byteArray], { type: 'image/jpeg' });
       const file = new File([blob], 'image.jpg', { type: 'image/jpeg' });
 
-      formData.append('faceImage', file);
+      formData.append('image', file);
+    }
+    const conferenceIdToSend = selectedConferences[0] || 1;
+
+    try {
+      for (const sessionId of selectedSessions) {
+        const response = await sendMessage({
+          conferenceId: conferenceIdToSend,
+          sessionId,
+          formData,
+        });
+        if (response?.status === 200) {
+          console.log('메시지 전송 성공', response.data);
+          setShowToast(true);
+          setTimeout(() => {
+            setShowToast(false);
+          }, 2000);
+        } else {
+          console.log('메시지 전송 실패', response);
+        }
+      }
+    } catch (error) {
+      console.error('API 호출 중 오류 발생', error);
+    } finally {
+      setIsLoading(false);
     }
   };
 
   return (
     <ResponsiveLayout>
+      {showToast && (
+        <S.Overlay>
+          <S.StyledToast>
+            <Toast state="default">전송이 완료되었습니다.</Toast>
+          </S.StyledToast>
+        </S.Overlay>
+      )}
       <S.TitleContainer>
         <S.Title>메시지 전송</S.Title>
       </S.TitleContainer>
@@ -189,7 +232,7 @@ const MessageSend = () => {
               key={key}
               checked={checkedItems.includes(key)}
               onChange={() =>
-                key === 'all' ? handleAllCheckbox() : handleSingleCheckbox(key)
+                key === 'ALL' ? handleAllCheckbox() : handleSingleCheckbox(key)
               }
               label={label}
             />
