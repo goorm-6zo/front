@@ -68,7 +68,7 @@ const SignUp = () => {
   };
 
   return (
-    <ResponsiveLayout hasHeader={false}>
+    <ResponsiveLayout hasHeader={false} hasFooter={true}>
       <S.PageContainer>
         <S.PageTitleWrapper>회원가입</S.PageTitleWrapper>
         <S.FormContainer onSubmit={handleSignup}>

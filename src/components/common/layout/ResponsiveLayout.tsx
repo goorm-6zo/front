@@ -6,6 +6,7 @@ interface ResponsiveLayoutProps {
   hasHeader?: boolean;
   hasHeaderIcon?: boolean;
   children: ReactNode;
+  hasFooter?: boolean;
 }
 
 /**
@@ -18,6 +19,7 @@ const ResponsiveLayout: React.FC<ResponsiveLayoutProps> = ({
   hasHeader = true,
   hasHeaderIcon = false,
   children,
+  hasFooter = false,
 }) => {
   return (
     <S.LayoutWrapper>
@@ -27,7 +29,7 @@ const ResponsiveLayout: React.FC<ResponsiveLayoutProps> = ({
         </S.HeaderWrapper>
       )}
       {hasHeader && <S.MarginTop></S.MarginTop>}
-      <S.MainContainer>{children}</S.MainContainer>
+      <S.MainContainer $hasFooter={hasFooter}>{children}</S.MainContainer>
     </S.LayoutWrapper>
   );
 };
