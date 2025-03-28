@@ -176,7 +176,7 @@ const MessageSend = () => {
   };
 
   return (
-    <ResponsiveLayout hasFooter={true}>
+    <ResponsiveLayout hasHeaderIcon={true} hasFooter={true}>
       <S.PageContainer>
         {showToast && (
           <S.Overlay>

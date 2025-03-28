@@ -49,7 +49,7 @@ const AdminConferenceInfo = () => {
     getInfo();
   }, []);
   return (
-    <ResponsiveLayout>
+    <ResponsiveLayout hasHeaderIcon={true}>
       <S.TitleBox>
         <S.Title>상세 정보</S.Title>
       </S.TitleBox>
