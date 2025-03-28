@@ -19,7 +19,7 @@ import NotFound from '../pages/NotFound';
 import LoginIndex from '../pages/login/LoginIndex';
 import PublicRoute from './PublicRoute';
 import PrivateRoute from './PrivateRoute';
-import Authorization from '../pages/login/Authorization';
+import Authorization from '../pages/login/authorization/Authorization';
 
 const router = createBrowserRouter([
   { path: '/face-recognition', element: <FaceRecognition /> },
