@@ -12,6 +12,7 @@ const FaceRecognition = () => {
   const capturedFaceDes = useRef<Float32Array | null>(null);
   const webcamRef = useRef<Webcam | null>(null);
   const [faceState, setFaceState] = useState<ToastState>('default');
+
   // const [videoConstraints, _setVideoConstraints] = useState({
   //   width: window.innerWidth,
   //   height: window.innerHeight,
@@ -74,7 +75,6 @@ const FaceRecognition = () => {
       }
 
       setTimeout(() => {
-        // capturedFaceDes.current = null;
         setFaceState('default');
         setIsDetecting(true);
       }, 2000);
