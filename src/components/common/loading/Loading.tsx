@@ -4,7 +4,7 @@ export default function Loading() {
   return (
     <div>
       <S.LoadingOverlay>
-        <S.LoadingImage src="src/assets/images/loading.gif" alt="loading" />
+        <S.LoadingImage src="/images/loading.gif" alt="loading" />
       </S.LoadingOverlay>
     </div>
   );
