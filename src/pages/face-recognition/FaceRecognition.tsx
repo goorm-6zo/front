@@ -7,6 +7,7 @@ import { faceAuthentication } from '../../api/face/faceAuthentication';
 import { Toast } from '../../components/common/toast/Toast';
 import { faceMsg, ToastState } from '../../constant/faceMsg';
 import { useSearchParams } from 'react-router-dom';
+import Loading from '../../components/common/loading/Loading';
 
 const FACE_RECOGNITION_THRESHOLD = 0.35;
 
@@ -99,7 +100,7 @@ const FaceRecognition = () => {
 
   return (
     <S.FaceDetectionContainer>
-      {isLoading && <div>Loading...</div>}
+      {isLoading && <Loading />}
       <S.VideoBox>
         <Webcam
           ref={webcamRef}
@@ -126,7 +127,7 @@ const FaceRecognition = () => {
           </S.ToastBox>
         )}
       </S.VideoBox>
-      <h2 style={{ color: isFaceInside ? 'green' : 'red' }}>
+      {/* <h2 style={{ color: isFaceInside ? 'green' : 'red' }}>
         {isFaceInside
           ? '얼굴이 네모 안에 있습니다!'
           : '얼굴을 네모 안에 맞춰주세요.'}
@@ -139,7 +140,7 @@ const FaceRecognition = () => {
             style={{ width: '200px' }}
           />
         </div>
-      )}
+      )} */}
     </S.FaceDetectionContainer>
   );
 };

@@ -13,6 +13,7 @@ import AdminSessionMessageCard from '../../components/card/admin/adminSessionMes
 import useConferenceData from '../../hooks/useConferenceData.ts';
 import { sendMessage } from '../../api/admin/message/message.ts';
 import { Toast } from '../../components/common/toast/Toast.tsx';
+import Loading from '../../components/common/loading/Loading.tsx';
 
 interface CheckboxItemProps {
   key: 'ALL' | 'ATTENDEE' | 'NON_ATTENDEE';
@@ -41,11 +42,7 @@ const MessageSend = () => {
   const { conferenceDataQuery } = useConferenceData();
 
   if (conferenceDataQuery.isLoading || isLoading) {
-    return (
-      <S.Overlay>
-        <div>로딩 중...</div>
-      </S.Overlay>
-    );
+    return <Loading />;
   }
 
   const handleConferenceClick = (conferenceId: number) => {
@@ -181,13 +178,13 @@ const MessageSend = () => {
   return (
     <ResponsiveLayout hasFooter={true}>
       <S.PageContainer>
-      {showToast && (
-        <S.Overlay>
-          <S.StyledToast>
-            <Toast state="default">전송이 완료되었습니다.</Toast>
-          </S.StyledToast>
-        </S.Overlay>
-      )}
+        {showToast && (
+          <S.Overlay>
+            <S.StyledToast>
+              <Toast state="default">전송이 완료되었습니다.</Toast>
+            </S.StyledToast>
+          </S.Overlay>
+        )}
         <S.TitleContainer>
           <S.Title>메시지 전송</S.Title>
         </S.TitleContainer>

@@ -6,6 +6,7 @@ import { faceRegister } from '../../api/face/faceRegister';
 import { Toast } from '../../components/common/toast/Toast';
 import { useNavigate } from 'react-router-dom';
 import { faceMsg, ToastState } from '../../constant/faceMsg';
+import Loading from '../../components/common/loading/Loading';
 
 const FaceRegistration = () => {
   const webcamRef = useRef<Webcam | null>(null);
@@ -54,7 +55,7 @@ const FaceRegistration = () => {
 
   return (
     <S.FaceDetectionContainer>
-      {isLoading && <div>Loading...</div>}
+      {isLoading && <Loading />}
       {isCameraVisible && (
         <>
           <S.VideoBox>
