@@ -27,16 +27,33 @@ export const useFaceDetection = (
       if (modelStatus && webCamState) {
         setIsModelLoaded(true);
       }
-      const videoElement = webcamRef.current?.video;
-      if (videoElement) {
-        videoElement.addEventListener('loadeddata', () => {
-          setIsVideoLoaded(true);
-        });
-      }
+      // const videoElement = webcamRef.current?.video;
+      // if (videoElement) {
+      //   videoElement.addEventListener('loadeddata', () => {
+      //     setIsVideoLoaded(true);
+      //   });
+      // }
+
+      console.log('로드댐');
     };
 
     init();
   }, []);
+
+  useEffect(() => {
+    const videoElement = webcamRef.current?.video;
+    const handleLoaded = () => setIsVideoLoaded(true);
+
+    if (videoElement) {
+      videoElement.addEventListener('loadeddata', handleLoaded);
+    }
+
+    return () => {
+      if (videoElement) {
+        videoElement.removeEventListener('loadeddata', handleLoaded);
+      }
+    };
+  }, [webcamRef.current?.video]);
 
   // 얼굴 캡쳐
   const captureImage = () => {
