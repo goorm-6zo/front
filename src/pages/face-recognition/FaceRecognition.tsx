@@ -6,12 +6,22 @@ import Webcam from 'react-webcam';
 import { faceAuthentication } from '../../api/face/faceAuthentication';
 import { Toast } from '../../components/common/toast/Toast';
 import { faceMsg, ToastState } from '../../constant/faceMsg';
-const FACE_RECOGNITION_THRESHOLD = 0.5;
+import { useSearchParams } from 'react-router-dom';
+
+const FACE_RECOGNITION_THRESHOLD = 0.35;
 
 const FaceRecognition = () => {
   const capturedFaceDes = useRef<Float32Array | null>(null);
   const webcamRef = useRef<Webcam | null>(null);
   const [faceState, setFaceState] = useState<ToastState>('default');
+  const [searchParams] = useSearchParams();
+  const conferenceId = Number(searchParams.get('conferenceId'));
+  const sessionId = Number(searchParams.get('sessionId'));
+
+  const boxSize =
+    window.innerWidth > window.innerHeight
+      ? window.innerHeight / 2
+      : window.innerWidth / 2;
 
   // const [videoConstraints, _setVideoConstraints] = useState({
   //   width: window.innerWidth,
@@ -63,7 +73,11 @@ const FaceRecognition = () => {
       try {
         setIsDetecting(false);
 
-        const result = await faceAuthentication(1, 1, capturedImage);
+        const result = await faceAuthentication(
+          conferenceId,
+          sessionId,
+          capturedImage,
+        );
         console.log('인증 결과:', result.status);
 
         if (result.status) {
@@ -77,7 +91,7 @@ const FaceRecognition = () => {
       setTimeout(() => {
         setFaceState('default');
         setIsDetecting(true);
-      }, 2000);
+      }, 1600);
     };
 
     authenticateFace();
@@ -101,8 +115,8 @@ const FaceRecognition = () => {
 
         {isVideoLoaded && (
           <S.Box
-            $boxWidth={230}
-            $boxHeight={230}
+            $boxWidth={boxSize}
+            $boxHeight={boxSize}
             $isFaceInside={isFaceInside || faceState === 'success'}
           ></S.Box>
         )}
