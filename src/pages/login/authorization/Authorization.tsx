@@ -1,16 +1,18 @@
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import { signup } from '../../api/login/signup';
-import ResponsiveLayout from '../../components/common/layout/ResponsiveLayout';
-import Footer from '../../components/common/footer/Footer';
-import { Input } from '../../components/common/input/Input';
-import * as S from './Authorization.style';
-import Btn from '../../components/common/button/btn/Btn';
-import CtaBtn from '../../components/common/button/ctabtn/CtaBtn';
 
-import { editUsersPhone } from '../../api/authorization/editUsersPhone';
-import { sendVerifyMsg } from '../../api/authorization/sendVerifyMsg';
-import { isPhoneVerified as checkPhoneVerification } from '../../api/authorization/isPhoneVerified';
+import { editUsersPhone } from '../../../api/authorization/editUsersPhone';
+import { sendVerifyMsg } from '../../../api/authorization/sendVerifyMsg';
+import { isPhoneVerified as checkPhoneVerification } from '../../../api/authorization/isPhoneVerified';
+import { signup } from '../../../api/login/signup';
+
+import ResponsiveLayout from '../../../components/common/layout/ResponsiveLayout';
+import Footer from '../../../components/common/footer/Footer';
+import Btn from '../../../components/common/button/btn/Btn';
+import CtaBtn from '../../../components/common/button/ctabtn/CtaBtn';
+import { Input } from '../../../components/common/input/Input';
+
+import * as S from './Authorization.style';
 
 interface SignUpPayload {
   name: string;
