@@ -20,6 +20,7 @@ import LoginIndex from '../pages/login/LoginIndex';
 import PublicRoute from './PublicRoute';
 import PrivateRoute from './PrivateRoute';
 import Authorization from '../pages/login/authorization/Authorization';
+import AuthorizationCallback from '../pages/login/authorization/AuthorizationCallback';
 
 const router = createBrowserRouter([
   { path: '/face-recognition', element: <FaceRecognition /> },
@@ -61,6 +62,11 @@ const router = createBrowserRouter([
     ],
   },
 
+  {
+    path: '/authorization',
+    element: <PrivateRoute role="USER" />,
+    children: [{ path: 'callback', element: <AuthorizationCallback /> }],
+  },
   {
     path: '/dashboard',
     element: <PrivateRoute role="USER" />,
