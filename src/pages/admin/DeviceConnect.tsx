@@ -31,7 +31,7 @@ const DeviceConnect = () => {
   }, []);
 
   return (
-    <ResponsiveLayout hasHeaderIcon={true}>
+    <ResponsiveLayout>
       <S.Container>
         <S.TitleBox>
           <S.Title>기기 연결</S.Title>

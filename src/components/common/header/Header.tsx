@@ -11,10 +11,6 @@ interface HeaderProps {
 export const Header: React.FC<HeaderProps> = ({ icon }) => {
   const [isSheetOpen, setIsSheetOpen] = useState(false);
 
-  const handleClick = () => {
-    window.location.href = '/';
-  };
-
   // Sheet를 여는 함수
   const openSheet = () => {
     setIsSheetOpen(true);
@@ -27,9 +23,7 @@ export const Header: React.FC<HeaderProps> = ({ icon }) => {
 
   return (
     <S.HeaderContainer>
-      <IcnBtn onClick={handleClick}>
-        <Icon name="logo" size="l" />
-      </IcnBtn>
+      <Icon name="logo" size="l" />
       {icon && (
         <IcnBtn onClick={openSheet}>
           <Icon name="strokemenu" size="mn" />
