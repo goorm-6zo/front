@@ -15,13 +15,13 @@ export const StyledButton = styled.button<StyledButtonProps>`
   border: none;
   border-radius: var(--radius-12);
   cursor: pointer;
-
-  ${({ state, theme }) =>
-    state === 'on'
-      ? `
+  color: ${({ theme }) => theme.colors.typo.primary}
+    ${({ state, theme }) =>
+      state === 'on'
+        ? `
       background-color: ${theme.colors.background.secondary};
     `
-      : `
+        : `
       background-color: ${theme.colors.background.white};
-    `}
+    `};
 `;
