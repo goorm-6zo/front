@@ -127,7 +127,7 @@ const FaceRecognition = () => {
           </S.ToastBox>
         )}
       </S.VideoBox>
-      <h2 style={{ color: isFaceInside ? 'green' : 'red' }}>
+      {/* <h2 style={{ color: isFaceInside ? 'green' : 'red' }}>
         {isFaceInside
           ? '얼굴이 네모 안에 있습니다!'
           : '얼굴을 네모 안에 맞춰주세요.'}
@@ -140,7 +140,7 @@ const FaceRecognition = () => {
             style={{ width: '200px' }}
           />
         </div>
-      )}
+      )} */}
     </S.FaceDetectionContainer>
   );
 };
