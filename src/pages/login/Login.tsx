@@ -39,7 +39,7 @@ export default function Login() {
           <S.LoginForm onSubmit={handleLogin}>
             <Input
               state={inputError ? 'error' : 'default'}
-              // type="email"
+              type="email"
               placeholder="이메일"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
