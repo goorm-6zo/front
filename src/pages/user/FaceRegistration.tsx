@@ -47,7 +47,13 @@ const FaceRegistration = () => {
   }, [hasCaptured]);
 
   useEffect(() => {
-    if (!isCameraVisible) navigate('/profile');
+    if (!isCameraVisible) {
+      const video = webcamRef.current?.video;
+      const stream = video?.srcObject as MediaStream;
+      stream?.getTracks().forEach((track) => track.stop());
+
+      window.location.href = '/profile';
+    }
   }, [isCameraVisible]);
 
   const { isLoading, isFaceInside, isVideoLoaded, capturedImage } =
