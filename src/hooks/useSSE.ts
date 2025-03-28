@@ -16,9 +16,12 @@ export default function useSSE(conferenceId: number, sessionIds: number[]) {
 
     const baseSSEUrl = `${import.meta.env.VITE_API_BASE_URL}/sse/subscribe`;
 
+    const eventSources: EventSource[] = [];
+
     // 컨퍼런스 SSE 연결
     const conferenceUrl = `${baseSSEUrl}?conferenceId=${conferenceId}`;
     const conferenceEventSource = new EventSource(conferenceUrl);
+    eventSources.push(conferenceEventSource);
 
     conferenceEventSource.addEventListener('open', () => {
       console.log(`컨퍼런스 ${conferenceId} SSE 연결됨`);
@@ -40,6 +43,7 @@ export default function useSSE(conferenceId: number, sessionIds: number[]) {
     sessionIds.forEach((sessionId) => {
       const sessionUrl = `${baseSSEUrl}?conferenceId=${conferenceId}&sessionId=${sessionId}`;
       const sessionEventSource = new EventSource(sessionUrl);
+      eventSources.push(sessionEventSource);
 
       sessionEventSource.addEventListener('AttendanceCount', (event) => {
         try {
@@ -58,12 +62,8 @@ export default function useSSE(conferenceId: number, sessionIds: number[]) {
     });
 
     return () => {
-      conferenceEventSource.close();
-      sessionIds.forEach((sessionId) => {
-        const sessionEventSource = new EventSource(
-          `${baseSSEUrl}?conferenceId=${conferenceId}&sessionId=${sessionId}`,
-        );
-        sessionEventSource.close();
+      eventSources.forEach((eventSource) => {
+        eventSource.close();
       });
     };
   }, [conferenceId, sessionIds]);
