@@ -24,8 +24,8 @@ const Sheet: React.FC<SheetProps> = ({ isOpen, onClose }) => {
     const response = await logoutUser();
     if (response) {
       console.log('로그아웃 성공');
-      window.location.reload();
       navigate('/');
+      window.location.reload();
     } else {
       console.log('로그아웃 실패');
     }
