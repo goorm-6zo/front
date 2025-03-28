@@ -32,10 +32,10 @@ export const TextWrapper = styled.div`
   color: ${({ theme }) => theme.colors.typo.secondary};
 `;
 
-export const ContentsContainer = styled.div`
+export const ContentsContainer = styled.div<FaceDataCardProps>`
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
+  justify-content: ${({ $hasFace }) => ($hasFace ? 'flex-end' : 'center')};
   align-items: center;
   gap: var(--spacing-20);
   height: 168px;

@@ -15,7 +15,7 @@ export const StyledButton = styled.button<StyledButtonProps>`
   border: none;
   border-radius: var(--radius-12);
   cursor: pointer;
-
+  color: ${({ theme }) => theme.colors.typo.primary};
   ${({ state, theme }) =>
     state === 'on'
       ? `
@@ -23,5 +23,5 @@ export const StyledButton = styled.button<StyledButtonProps>`
     `
       : `
       background-color: ${theme.colors.background.white};
-    `}
+    `};
 `;

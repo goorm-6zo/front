@@ -67,7 +67,7 @@ const FaceDataCard = () => {
         </IcnBtn>
       </S.TextContainer>
 
-      <S.ContentsContainer>
+      <S.ContentsContainer $hasFace={hasFace}>
         <S.MainContentsContainer>
           <Icon
             name="strokeface"
