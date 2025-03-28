@@ -5,9 +5,14 @@ interface IBox {
   height: number;
 }
 
-const BOX_WIDTH = 230;
-const BOX_HEIGHT = 230;
-const DISTANCE_THRESHOLD = 50;
+const size =
+  window.innerWidth > window.innerHeight
+    ? window.innerHeight
+    : window.innerWidth;
+const BOX_WIDTH = size / 2;
+const BOX_HEIGHT = size / 2;
+
+const DISTANCE_THRESHOLD = size / 10;
 
 export const isFaceInBox = (
   box: IBox,

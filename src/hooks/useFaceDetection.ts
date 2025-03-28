@@ -50,7 +50,7 @@ export const useFaceDetection = (
   const [isDetecting, setIsDetecting] = useState(true);
 
   const detectFace = async () => {
-    if (!isDetecting) return; // 👈 감지 중단 상태면 실행 안 함
+    if (!isDetecting) return;
 
     const { detection, video } = await getFaceDetectionInfo(
       webcamRef,
