@@ -9,7 +9,7 @@ type UserData = {
 
 export const signup = async (userData: UserData) => {
   try {
-    const response = await API.post('/users/signup', userData);
+    const response = await API.post('/users/signup-link', userData);
     console.log('회원가입 성공:', response.data);
     return response.data;
   } catch (error) {
