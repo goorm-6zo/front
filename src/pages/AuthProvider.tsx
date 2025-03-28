@@ -1,3 +1,4 @@
+import Loading from '../components/common/loading/Loading';
 import useUserData from '../hooks/useUserData';
 import { useAuthStore } from '../store/useAuthStore';
 import { ReactNode, useEffect } from 'react';
@@ -17,7 +18,7 @@ export default function AuthProvider({ children }: AuthProviderProps) {
   }, [userDataQuery.data, setUserInfo]);
 
   if (userDataQuery.isLoading) {
-    return <div>Loading...</div>;
+    return <Loading />;
   }
 
   return children;
