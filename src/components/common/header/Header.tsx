@@ -3,6 +3,7 @@ import Icon from '../icon/Icon.tsx';
 import IcnBtn from '../button/icnbtn/IcnBtn.tsx';
 import Sheet from '../sheet/Sheet.tsx';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 interface HeaderProps {
   icon?: boolean;
@@ -10,6 +11,11 @@ interface HeaderProps {
 
 export const Header: React.FC<HeaderProps> = ({ icon }) => {
   const [isSheetOpen, setIsSheetOpen] = useState(false);
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate('/');
+  };
 
   // Sheet를 여는 함수
   const openSheet = () => {
@@ -23,7 +29,9 @@ export const Header: React.FC<HeaderProps> = ({ icon }) => {
 
   return (
     <S.HeaderContainer>
-      <Icon name="logo" size="l" />
+      <IcnBtn onClick={handleClick}>
+        <Icon name="logo" size="l" />
+      </IcnBtn>
       {icon && (
         <IcnBtn onClick={openSheet}>
           <Icon name="strokemenu" size="mn" />

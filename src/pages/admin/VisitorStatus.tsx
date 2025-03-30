@@ -55,7 +55,7 @@ const VisitorStatus = () => {
   }));
 
   return (
-    <ResponsiveLayout>
+    <ResponsiveLayout hasHeader={true} hasHeaderIcon={true}>
       <S.TitleContainer>
         <S.Title>행사명</S.Title>
         <S.Description>예매자의 참석 여부 데이터를 볼 수 있어요</S.Description>

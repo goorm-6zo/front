@@ -3,6 +3,7 @@ import styled from 'styled-components';
 export const TableContainer = styled.table`
   width: 100%;
   margin: 12px 0px;
+  user-select: none;
 `;
 
 export const Caption = styled.caption`

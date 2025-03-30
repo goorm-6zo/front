@@ -16,4 +16,6 @@ export const CardWrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 20px;
+  user-select: none;
+  cursor: auto;
 `;

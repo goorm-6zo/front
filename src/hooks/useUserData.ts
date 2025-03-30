@@ -20,5 +20,6 @@ export default function useUserData() {
 
   return {
     userDataQuery,
+    refetchUserData: userDataQuery.refetch,
   };
 }

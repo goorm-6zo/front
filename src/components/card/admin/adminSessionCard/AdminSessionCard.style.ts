@@ -13,6 +13,7 @@ export const CardContainer = styled.div`
   border-radius: var(--radius-12);
   background-color: ${({ theme }) => theme.colors.background.white};
   width: 100%;
+  user-select: none;
 `;
 
 export const ContentsContainer = styled.div<CardContainerProps>`
@@ -43,6 +44,7 @@ export const DetailBtn = styled.button`
   border: none;
   background-color: transparent;
   padding: 0;
+  cursor: pointer;
 `;
 
 export const TitleWrapper = styled.div`
