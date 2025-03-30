@@ -8,6 +8,8 @@ export const NotifyContainer = styled.div`
   align-items: center;
   background-color: ${({ theme }) => theme.colors.background.weak};
   border-radius: var(--radius-8);
+  user-select: none;
+  cursor: pointer;
 `;
 
 export const TextWrapper = styled.div`

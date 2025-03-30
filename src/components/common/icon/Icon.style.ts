@@ -12,6 +12,7 @@ const ICON_SIZES = {
 };
 
 export const ResponsiveIcon = styled.div<{ size: keyof typeof ICON_SIZES }>`
+  /* cursor: pointer; */
   ${media.mobile} {
     width: ${({ size }) => ICON_SIZES[size].mobile}px;
     height: ${({ size }) => ICON_SIZES[size].mobile}px;

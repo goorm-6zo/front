@@ -15,6 +15,7 @@ export const StyledButton = styled.button<StyledButtonProps>`
   font: var(--font-title-s);
   border-radius: var(--radius-8);
   width: 89px;
+  cursor: pointer;
 
   ${({ theme, variant, isBlue }) => {
     switch (variant) {
