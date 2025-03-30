@@ -2,8 +2,6 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTheme } from 'styled-components';
 import { useAuthStore } from '../../../../store/useAuthStore';
-
-import { getUserData } from '../../../../api/login/login';
 import { faceDelete } from '../../../../api/face/faceDelete';
 
 import Icon from '../../../common/icon/Icon';
@@ -11,18 +9,20 @@ import Popup from '../../../common/popup/Popup';
 import TxtBtn from '../../../common/button/txtbtn/TxtBtn';
 import IcnBtn from '../../../common/button/icnbtn/IcnBtn';
 import * as S from './FaceDataCard.style';
+import useUserData from '../../../../hooks/useUserData';
 
 const FaceDataCard = () => {
   const theme = useTheme();
   const navigate = useNavigate();
   const { userInfo } = useAuthStore();
+  const { refetchUserData } = useUserData();
 
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [popupState, setPopupState] = useState<
     'register' | 'reRegister' | 'deleteInfo'
   >('register');
 
-  const [hasFace, sethasFace] = useState(userInfo?.hasFace ?? false);
+  const hasFace = userInfo?.hasFace ?? false;
 
   const openPopupWithState = (state: typeof popupState) => {
     setPopupState(state);
@@ -38,8 +38,7 @@ const FaceDataCard = () => {
   const onDelete = async () => {
     try {
       await faceDelete();
-      const updated = await getUserData();
-      sethasFace(updated.hasFace);
+      await refetchUserData();
       closePopup();
     } catch (error) {
       alert('얼굴 정보 삭제에 실패했습니다.');
