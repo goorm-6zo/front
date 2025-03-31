@@ -3,7 +3,7 @@ import * as S from './Profile.style';
 
 type ProfileProps = {
   size?: 'L' | 'M' | 'S';
-  imageUrl?: string;
+  imageUrl?: string | null;
 };
 
 const Profile: React.FC<ProfileProps> = ({ size = 'M', imageUrl }) => {

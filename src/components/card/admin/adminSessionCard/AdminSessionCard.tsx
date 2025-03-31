@@ -8,6 +8,7 @@ import { useState, useEffect } from 'react';
 import { setActiveState } from '../../../../api/admin/active/setActiveState';
 type AdminSessionCardProps = {
   title: string;
+  imageUrl: string | null;
   name: string | null;
   from: string | null;
   id: number;
@@ -18,6 +19,7 @@ type AdminSessionCardProps = {
 
 const AdminSessionCard: React.FC<AdminSessionCardProps> = ({
   title,
+  imageUrl,
   name,
   from,
   id,
@@ -61,7 +63,9 @@ const AdminSessionCard: React.FC<AdminSessionCardProps> = ({
           </S.TopContainer>
           <S.TitleWrapper>{title}</S.TitleWrapper>
         </S.HeaderContainer>
-        {name && <ProfileContents name={name} from={from} />}
+        {name && (
+          <ProfileContents imageUrl={imageUrl} name={name} from={from} />
+        )}
       </S.ContentsContainer>
 
       <S.BtnContainer>
