@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { disconnectSSE } from '../api/sse/unsubscribe';
 
 interface EntryCounts {
   conferenceAttend: number;
@@ -37,9 +38,12 @@ export default function useSSE(conferenceId: number, sessionIds: number[]) {
     });
 
     // 세션 SSE 연결
+    const sessionEventSources: EventSource[] = [];
+
     sessionIds.forEach((sessionId) => {
       const sessionUrl = `${baseSSEUrl}?conferenceId=${conferenceId}&sessionId=${sessionId}`;
       const sessionEventSource = new EventSource(sessionUrl);
+      sessionEventSources.push(sessionEventSource);
 
       sessionEventSource.addEventListener('AttendanceCount', (event) => {
         try {
@@ -58,15 +62,17 @@ export default function useSSE(conferenceId: number, sessionIds: number[]) {
     });
 
     return () => {
-      conferenceEventSource.close();
-      sessionIds.forEach((sessionId) => {
-        const sessionEventSource = new EventSource(
-          `${baseSSEUrl}?conferenceId=${conferenceId}&sessionId=${sessionId}`,
-        );
-        sessionEventSource.close();
+      sessionEventSources.forEach((source, index) => {
+        console.log(`세션 ${sessionIds[index]} SSE 연결 해제`);
+        source.close();
+        disconnectSSE(conferenceId, sessionIds[index]);
       });
+
+      conferenceEventSource.close();
+      disconnectSSE(conferenceId);
+      console.log(`컨퍼런스 ${conferenceId} SSE 해제 완료`);
     };
-  }, [conferenceId, sessionIds]);
+  }, []);
 
   return entryCounts;
 }
