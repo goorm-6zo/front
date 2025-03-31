@@ -30,7 +30,6 @@ const ConferenceCard: React.FC<ConferenceCardProps> = ({
   imageUrl,
   onClick,
 }) => {
-  console.log('img:', imageUrl);
   return (
     <S.CardContainer onClick={onClick}>
       {imageUrl && <Img size={100} imageUrl={imageUrl} />}

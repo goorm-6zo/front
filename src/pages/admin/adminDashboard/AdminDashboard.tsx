@@ -53,6 +53,7 @@ const AdminDashboard = () => {
               name,
               endTime,
               startTime,
+              speakerImage,
               speakerName,
               speakerOrganization,
               location,
@@ -60,8 +61,10 @@ const AdminDashboard = () => {
             } = data;
             return (
               <AdminSessionCard
+                key={id}
                 title={name}
                 date={formatTimeRange(startTime, endTime)}
+                imageUrl={speakerImage}
                 name={speakerName}
                 from={speakerOrganization}
                 id={id}

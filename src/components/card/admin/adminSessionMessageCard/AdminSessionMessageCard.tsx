@@ -4,6 +4,7 @@ import ProfileContents from '../../profileContents/ProfileContents';
 
 type AdminSessionMessageCardProps = {
   title: string;
+  imageUrl?: string | null;
   name?: string | null;
   from?: string | null;
   id: number;
@@ -15,6 +16,7 @@ type AdminSessionMessageCardProps = {
 
 const AdminSessionMessageCard: React.FC<AdminSessionMessageCardProps> = ({
   title,
+  imageUrl,
   name,
   from,
   id,
@@ -44,7 +46,13 @@ const AdminSessionMessageCard: React.FC<AdminSessionMessageCardProps> = ({
           </S.TopContainer>
           <S.TitleWrapper>{title}</S.TitleWrapper>
         </S.HeaderContainer>
-        {name && <ProfileContents name={name ?? null} from={from ?? null} />}
+        {name && (
+          <ProfileContents
+            imageUrl={imageUrl}
+            name={name ?? null}
+            from={from ?? null}
+          />
+        )}
       </S.ContentsContainer>
     </S.CardContainer>
   );

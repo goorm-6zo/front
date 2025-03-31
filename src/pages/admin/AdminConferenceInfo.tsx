@@ -78,7 +78,7 @@ const AdminConferenceInfo = () => {
                 state="disabled"
                 placeholder={sessionData?.speakerName}
               />
-              <Profile size="L" />
+              <Profile imageUrl={sessionData?.speakerImage} size="L" />
             </S.ProfileBox>
           </>
         )}
