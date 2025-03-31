@@ -4,6 +4,7 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import ResponsiveLayout from '../../../components/common/layout/ResponsiveLayout';
 import AuthorizationForm from './AuthorizationForm';
 import { editUsersPhone } from '../../../api/authorization/editUsersPhone';
+import { linkUserReservation } from '../../../api/authorization/linkUserReservation';
 import * as S from './Authorization.style';
 
 const AuthorizationCallback = () => {
@@ -13,7 +14,6 @@ const AuthorizationCallback = () => {
   const hasPhone = searchParams.get('hasPhone');
 
   useEffect(() => {
-    // hasPhone이 true면 인증 이미 완료된 상태 → 바로 대시보드로
     if (hasPhone === 'true') {
       navigate('/dashboard');
     }
@@ -22,11 +22,19 @@ const AuthorizationCallback = () => {
   const handlePhoneSubmit = async (phone: string) => {
     try {
       await editUsersPhone(phone);
-      alert('전화번호 인증 완료!');
-      navigate('/dashboard');
     } catch {
       alert('전화번호 인증 실패. 다시 시도해주세요.');
+      return;
     }
+
+    try {
+      await linkUserReservation(phone);
+    } catch {
+      alert('예약 정보 연결 실패. 관리자에게 문의해주세요.');
+      return;
+    }
+
+    navigate('/dashboard');
   };
 
   return (
