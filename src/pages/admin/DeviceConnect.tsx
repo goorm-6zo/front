@@ -32,13 +32,13 @@ const DeviceConnect = () => {
 
   return (
     <ResponsiveLayout>
+      <S.TitleBox>
+        <S.Title>기기 연결</S.Title>
+        <S.SubTitle>
+          현장에서 사용할 기기를 화면에 표시된 QR로 연결하세요
+        </S.SubTitle>
+      </S.TitleBox>
       <S.Container>
-        <S.TitleBox>
-          <S.Title>기기 연결</S.Title>
-          <S.SubTitle>
-            현장에서 사용할 기기를 화면에 표시된 QR로 연결하세요
-          </S.SubTitle>
-        </S.TitleBox>
         <S.QRContainer
           style={{
             padding: '10px',
