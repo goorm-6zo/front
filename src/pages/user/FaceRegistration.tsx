@@ -77,7 +77,9 @@ const FaceRegistration = () => {
                 $boxWidth={230}
                 $boxHeight={230}
                 $isFaceInside={isFaceInside}
-              ></S.Box>
+              >
+                <div />
+              </S.Box>
             )}
             {isCameraVisible && isVideoLoaded && (
               <S.ToastBox>
