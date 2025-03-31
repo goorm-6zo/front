@@ -14,14 +14,20 @@ export const CardContainer = styled.div`
 
 export const TextContainer = styled.div`
   display: flex;
+  width: 90%;
   justify-content: space-around;
   flex-direction: column;
 `;
 
 export const HeaderWrapper = styled.div`
   color: ${({ theme }) => theme.colors.typo.primary};
-  display: flex;
+  display: block;
+  width: 90%;
   font: var(--font-title-l);
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 `;
 
 export const InfoWrapper = styled.div`
