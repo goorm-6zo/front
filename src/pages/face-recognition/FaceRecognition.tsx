@@ -119,7 +119,9 @@ const FaceRecognition = () => {
             $boxWidth={boxSize}
             $boxHeight={boxSize}
             $isFaceInside={isFaceInside || faceState === 'success'}
-          ></S.Box>
+          >
+            <div />
+          </S.Box>
         )}
         {isVideoLoaded && (
           <S.ToastBox>
