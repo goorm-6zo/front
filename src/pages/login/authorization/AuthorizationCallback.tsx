@@ -21,14 +21,16 @@ const AuthorizationCallback = () => {
 
   const handlePhoneSubmit = async (phone: string) => {
     try {
-      await editUsersPhone(phone);
+      const response = await editUsersPhone(phone);
+      console.log('폰넘버 등록 : ', response);
     } catch {
       alert('전화번호 인증 실패. 다시 시도해주세요.');
       return;
     }
 
     try {
-      await linkUserReservation(phone);
+      const response = await linkUserReservation(phone);
+      console.log('예약정보 연결 : ', response);
     } catch {
       alert('예약 정보 연결 실패. 관리자에게 문의해주세요.');
       return;
