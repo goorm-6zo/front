@@ -63,7 +63,6 @@ const AdminSessionCard: React.FC<AdminSessionCardProps> = ({
           </S.TopContainer>
           <S.TitleWrapper>{title}</S.TitleWrapper>
         </S.HeaderContainer>
-        {imageUrl && <img src={imageUrl} />}
         {name && (
           <ProfileContents imageUrl={imageUrl} name={name} from={from} />
         )}
