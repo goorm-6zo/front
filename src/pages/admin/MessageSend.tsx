@@ -213,6 +213,7 @@ const MessageSend = () => {
               <AdminSessionMessageCard
                 key={data.id}
                 title={data.name}
+                imageUrl={data.speakerImage}
                 name={data.speakerName}
                 from={data.speakerOrganization}
                 id={data.id}

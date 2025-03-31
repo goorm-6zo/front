@@ -4,7 +4,7 @@ import Profile from '../../common/profile/Profile';
 type ProfileProps = {
   name?: string | null;
   from?: string | null;
-  imageUrl?: string;
+  imageUrl?: string | null;
   isActive?: boolean;
 };
 
