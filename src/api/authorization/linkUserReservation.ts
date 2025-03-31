@@ -3,7 +3,9 @@ import API from '../axiosIntance';
 export const linkUserReservation = async (phone: string) => {
   try {
     const response = await API.post('/reservation/link-user', {
-      phone: phone,
+      params: {
+        phone: phone,
+      },
     });
 
     return response.data;
