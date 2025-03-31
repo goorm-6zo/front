@@ -7,6 +7,7 @@ export const linkUserReservation = async (phone: string) => {
       {},
       {
         params: { phone },
+        withCredentials: true, // 여기에 명시적으로 다시
       },
     );
 
