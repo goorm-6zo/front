@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const TitleBox = styled.div`
+export const TitleBox = styled.section`
   padding: var(--spacing-20) 0;
   display: flex;
   flex-direction: column;
@@ -13,10 +13,10 @@ export const Title = styled.h1`
   font-weight: 600;
   font-size: 22px;
 `;
-export const SubTitle = styled.div`
+export const SubTitle = styled.h2`
   color: ${({ theme }) => theme.colors.typo.tertiary};
 `;
-export const DataBox = styled.div`
+export const DataBox = styled.section`
   display: flex;
   flex-direction: column;
   align-items: center;

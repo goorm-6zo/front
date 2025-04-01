@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { media } from '../../../../styles/breakpoints';
 
-export const CardContainer = styled.div`
+export const CardContainer = styled.section`
   display: grid;
   gap: var(--spacing-4);
 
@@ -20,7 +20,7 @@ export const CardContainer = styled.div`
   }
 `;
 
-export const Card = styled.div`
+export const Card = styled.article`
   display: flex;
   width: 100%;
   flex-direction: column;

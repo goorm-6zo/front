@@ -225,7 +225,9 @@ const MessageSend = () => {
             ))}
           </S.CardContainer>
           <S.Destination>
-            <S.DestinationLabel>발송 대상</S.DestinationLabel>
+            <S.DestinationLabel htmlFor="발송 대상">
+              발송 대상
+            </S.DestinationLabel>
             {checkboxes.map(({ key, label }) => (
               <Checkbox
                 key={key}

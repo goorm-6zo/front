@@ -28,7 +28,7 @@ export const MarginTop = styled.header`
   }
 `;
 
-export const MainContainer = styled.div<{ $hasFooter: boolean }>`
+export const MainContainer = styled.main<{ $hasFooter: boolean }>`
   flex: 1;
   min-height: 0;
   overflow-y: auto;

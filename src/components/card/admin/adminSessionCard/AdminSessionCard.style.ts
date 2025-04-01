@@ -3,7 +3,7 @@ interface CardContainerProps {
   $isActive: boolean;
 }
 
-export const CardContainer = styled.div`
+export const CardContainer = styled.article`
   display: flex;
   flex-direction: column;
   gap: var(--spacing-24);
@@ -55,7 +55,7 @@ export const TitleWrapper = styled.div`
   text-overflow: ellipsis;
 `;
 
-export const BtnContainer = styled.h1`
+export const BtnContainer = styled.div`
   flex: 1;
   display: flex;
   gap: var(--spacing-8);

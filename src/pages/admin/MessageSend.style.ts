@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { media } from '../../styles/breakpoints';
 import Btn from '../../components/common/button/btn/Btn';
 
-export const TitleContainer = styled.div`
+export const TitleContainer = styled.section`
   display: flex;
   flex-direction: column;
   gap: var(--spacing-8);
@@ -52,7 +52,7 @@ export const CardContainer = styled.div`
   }
 `;
 
-export const Destination = styled.div`
+export const Destination = styled.section`
   display: flex;
   align-items: center;
   margin: var(--spacing-20) 0;
